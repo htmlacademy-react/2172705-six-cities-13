@@ -1,11 +1,13 @@
-import LoginPage from '../pages/login';
-import FavoritesPage from '../pages/favorites';
+import {LoginPage} from '../pages/login';
+import {FavoritesPage} from '../pages/favorites';
+import {OfferPage} from '../pages/offer';
 
 function App() {
   return (
     <div>
-      <LoginPage/>
-      <FavoritesPage/>
+      <LoginPage />
+      <FavoritesPage />
+      <OfferPage />
     </div>
   );
 }

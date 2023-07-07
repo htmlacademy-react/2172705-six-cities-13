@@ -1,4 +1,4 @@
-import { AddToFavorite } from '../../../features/favorite';
+import { AddToFavorite } from '../../../features/addToFavorite';
 import { Card } from '../../../entities/card';
 import { LinkItem } from '../../../shared/ui';
 

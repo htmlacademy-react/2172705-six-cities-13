@@ -1,4 +1,4 @@
-import { LoginForm } from '../../../features/authorization/login';
+import { LoginForm } from '../../../features/authorization/loginForm';
 import { ButtonType } from '../../../shared/types/types';
 
 type LoginProps = {

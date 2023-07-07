@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import cn from 'classnames';
 
-import { getWidthByStarsCount, getImageSize } from '../lib';
-import { Badge } from '../../../shared/ui';
+import { getImageSize } from '../lib';
+import { Badge, StarsRating } from '../../../shared/ui';
 
 type CardProps = {
   sectionName: string;
@@ -47,9 +47,7 @@ export function Card({
           />
         </a>
       </div>
-      <div
-        className={cn(`${sectionName}__card-info`, 'place-card__info')}
-      >
+      <div className={cn(`${sectionName}__card-info`, 'place-card__info')}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{priceValue} </b>
@@ -57,12 +55,10 @@ export function Card({
           </div>
           {actionSlot}
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: getWidthByStarsCount(starsCount) }}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <StarsRating
+          sectionName='place-card'
+          starsCount={starsCount}
+        />
         <h2 className="place-card__name">
           <a href="#">{name}</a>
         </h2>

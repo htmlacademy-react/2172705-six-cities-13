@@ -3,7 +3,7 @@ import { Login } from '../../widgets/login';
 import { Header } from '../../widgets/header';
 
 
-function LoginPage() {
+export function LoginPage() {
   return (
     <div className="page page--gray page--login">
       <Header
@@ -43,5 +43,3 @@ function LoginPage() {
     </div>
   );
 }
-
-export default LoginPage;

@@ -10,6 +10,11 @@ export const getImageSize = (sectionName: string) => {
         width: 260,
         height: 200
       };
+    case ('near-places'):
+      return {
+        width: 260,
+        height: 200
+      };
     default:
       throw new Error('There are no image sizes provided for this class');
   }

@@ -2,7 +2,7 @@ import { Header } from '../../widgets/header';
 import { Footer } from '../../widgets/footer';
 import { Favorites } from '../../widgets/favorites';
 
-function FavoritesPage() {
+export function FavoritesPage() {
   return (
     <div className="page">
       <Header />
@@ -17,5 +17,3 @@ function FavoritesPage() {
     </div>
   );
 }
-
-export default FavoritesPage;
