@@ -1,4 +1,4 @@
-type InputProps = {
+type InputBlockProps = {
   wrapperClss: string;
   labelClss: string;
   inputClss: string;
@@ -8,7 +8,15 @@ type InputProps = {
   isRequired: boolean;
 }
 
-export function Input({ wrapperClss, labelClss, inputClss, labelText, type, placeholder, isRequired }: InputProps) {
+export function InputBlock({
+  wrapperClss,
+  labelClss,
+  inputClss,
+  labelText,
+  type,
+  placeholder,
+  isRequired
+}: InputBlockProps) {
   return (
     <div className={wrapperClss}>
       <label

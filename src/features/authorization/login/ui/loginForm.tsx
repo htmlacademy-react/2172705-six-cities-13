@@ -1,6 +1,6 @@
-import { ButtonType } from '../../../../shared/types/types';
-import { Input, Button } from '../../../../shared/ui';
+import { InputBlock, Button } from '../../../../shared/ui';
 import { capitalizeWord } from '../../../../shared/lib';
+import { ButtonType } from '../../../../shared/types/types';
 
 type LoginFormProps = {
   inputWrapperClss: string;
@@ -40,7 +40,7 @@ export function LoginForm({
       action='#'
       method="post"
     >
-      <Input
+      <InputBlock
         wrapperClss={inputWrapperClss}
         labelClss={inputLabelClss}
         inputClss={inputClss}
@@ -49,7 +49,7 @@ export function LoginForm({
         placeholder={capitalizeWord(firstInputType)}
         isRequired={firstInputIsRequired}
       />
-      <Input
+      <InputBlock
         wrapperClss={inputWrapperClss}
         labelClss={inputLabelClss}
         inputClss={inputClss}

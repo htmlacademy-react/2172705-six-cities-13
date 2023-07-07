@@ -1,3 +1,5 @@
+import { LogoLink } from '../../../shared/ui';
+
 type HeaderProps = {
   isLoginPage?: boolean;
 }
@@ -8,9 +10,15 @@ export function Header({ isLoginPage = false }: HeaderProps) {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link" href="main.html">
-              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-            </a>
+            <LogoLink
+              linkClss='header__logo-link'
+              href='main.html'
+              imgClss='header__logo'
+              src='img/logo.svg'
+              alt='6 cities logo'
+              width={81}
+              height={41}
+            />
           </div>
           {!isLoginPage && (
             <nav className="header__nav">

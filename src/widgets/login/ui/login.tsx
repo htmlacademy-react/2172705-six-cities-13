@@ -1,5 +1,5 @@
-import { ButtonType } from '../../../shared/types/types';
 import { LoginForm } from '../../../features/authorization/login';
+import { ButtonType } from '../../../shared/types/types';
 
 type LoginProps = {
   inputWrapperClss: string;

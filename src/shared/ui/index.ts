@@ -1,3 +1,5 @@
 export { Button } from './button/button';
-export { Input } from './input/input';
+export { Badge } from './badge/badge';
+export { InputBlock } from './inputBlock/inputBlock';
 export { LinkItem } from './linkItem/linkItem';
+export { LogoLink } from './logoLink/logoLink';
