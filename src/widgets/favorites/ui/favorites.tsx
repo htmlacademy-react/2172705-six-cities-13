@@ -1,3 +1,4 @@
+import { AddToFavorite } from '../../../features/favorite';
 import { Card } from '../../../entities/card';
 import { LinkItem } from '../../../shared/ui';
 
@@ -24,8 +25,13 @@ export function Favorites() {
               starsCount={5}
               name='Nice, cozy, warm big bed apartment'
               type='Apartment'
-              isFavorite
               isPremium
+              actionSlot={
+                <AddToFavorite
+                  sectionName='place-card'
+                  isFavorite
+                />
+              }
             />
             <Card
               sectionName='favorites'
@@ -34,7 +40,12 @@ export function Favorites() {
               starsCount={4}
               name='Wood and stone place'
               type='Private room'
-              isFavorite
+              actionSlot={
+                <AddToFavorite
+                  sectionName='place-card'
+                  isFavorite
+                />
+              }
             />
           </div>
         </li>
@@ -57,7 +68,12 @@ export function Favorites() {
               starsCount={5}
               name='White castle'
               type='Apartment'
-              isFavorite
+              actionSlot={
+                <AddToFavorite
+                  sectionName='place-card'
+                  isFavorite
+                />
+              }
             />
           </div>
         </li>
