@@ -1,6 +1,6 @@
 type LogoLinkProps = {
   linkClss: string;
-  href: string;
+  href: string | undefined;
   imgClss: string;
   src: string;
   alt: string;

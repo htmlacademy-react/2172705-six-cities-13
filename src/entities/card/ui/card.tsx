@@ -11,7 +11,7 @@ type CardProps = {
   starsCount: number;
   name: string;
   type: string;
-  isPremium?: boolean;
+  isPremium: boolean;
   actionSlot?: ReactNode;
 }
 

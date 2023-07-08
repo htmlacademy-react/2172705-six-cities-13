@@ -40,6 +40,7 @@ export function Favorites() {
               starsCount={4}
               name='Wood and stone place'
               type='Private room'
+              isPremium={false}
               actionSlot={
                 <AddToFavorite
                   sectionName='place-card'
@@ -68,6 +69,7 @@ export function Favorites() {
               starsCount={5}
               name='White castle'
               type='Apartment'
+              isPremium={false}
               actionSlot={
                 <AddToFavorite
                   sectionName='place-card'

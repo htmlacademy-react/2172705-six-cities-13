@@ -4,17 +4,17 @@ import { getIconSize } from '../lib';
 
 type AddToFavoriteProps = {
   sectionName: string;
-  isFavorite?: boolean;
+  isFavorite: boolean;
 }
 
-export function AddToFavorite({sectionName, isFavorite}: AddToFavoriteProps) {
+export function AddToFavorite({ sectionName, isFavorite }: AddToFavoriteProps) {
   const iconSize = getIconSize(sectionName);
 
   return (
     <button
       className={cn(
         `${sectionName}__bookmark-button button`,
-        {[`${sectionName}__bookmark-button--active`]: isFavorite }
+        { [`${sectionName}__bookmark-button--active`]: isFavorite }
       )}
       type="button"
     >

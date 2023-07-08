@@ -1,18 +1,24 @@
+import cn from 'classnames';
+
 import { LogoLink } from '../../../shared/ui';
 
 type HeaderProps = {
+  isMainPage?: boolean;
   isLoginPage?: boolean;
 }
 
-export function Header({ isLoginPage = false }: HeaderProps) {
+export function Header({ isMainPage = false, isLoginPage = false }: HeaderProps) {
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
             <LogoLink
-              linkClss='header__logo-link'
-              href='main.html'
+              linkClss={cn(
+                'header__logo-link',
+                {'header__logo-link--active': isMainPage}
+              )}
+              href={!isMainPage ? 'main.html' : undefined}
               imgClss='header__logo'
               src='img/logo.svg'
               alt='6 cities logo'
