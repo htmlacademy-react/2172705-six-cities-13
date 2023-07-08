@@ -62,6 +62,7 @@ export function LoginForm({
         clss={buttonClss}
         type={buttonType}
         text={buttonText}
+        isDisabled={false}
       />
     </form>
   );

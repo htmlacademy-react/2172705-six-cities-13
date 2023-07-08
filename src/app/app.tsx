@@ -1,7 +1,7 @@
 import { MainPage } from '../pages/main';
-import { LoginPage } from '../pages/login';
-import { FavoritesPage } from '../pages/favorites';
-import { OfferPage } from '../pages/offer';
+// import { LoginPage } from '../pages/login';
+// import { FavoritesPage } from '../pages/favorites';
+// import { OfferPage } from '../pages/offer';
 
 type AppProps = {
   offersCount: number;
@@ -13,9 +13,9 @@ function App({ offersCount }: AppProps) {
       <MainPage
         offersCount={offersCount}
       />
-      <LoginPage />
+      {/* <LoginPage />
       <FavoritesPage />
-      <OfferPage />
+      <OfferPage /> */}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import { ratings } from '../const/const';
 
+import { Button } from '../../../shared/ui';
+
 export function AddReviewForm() {
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -44,7 +46,12 @@ export function AddReviewForm() {
           &ensp;and describe your stay with at least&ensp;
           <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
+        <Button
+          clss='reviews__submit form__submit'
+          type='submit'
+          text='Submit'
+          isDisabled
+        />
       </div>
     </form>
   );

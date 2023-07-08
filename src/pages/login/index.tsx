@@ -25,7 +25,7 @@ export function LoginPage() {
             secondInputType='password'
             secondInputIsRequired
 
-            buttonClss='login__submit form__submit button'
+            buttonClss='login__submit form__submit'
             buttonType='submit'
             buttonText='Sign in'
           />
