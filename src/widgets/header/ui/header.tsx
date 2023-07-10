@@ -1,50 +1,20 @@
-import cn from 'classnames';
-
-import { LogoLink } from '../../../shared/ui';
+import { Navigation } from '@/features/navigation';
+import { LogoLink } from '@/shared/ui';
 
 type HeaderProps = {
-  isMainPage?: boolean;
-  isLoginPage?: boolean;
+  hasNavigation?: boolean;
 }
 
-export function Header({ isMainPage = false, isLoginPage = false }: HeaderProps) {
+export function Header({ hasNavigation = true }: HeaderProps) {
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <LogoLink
-              linkClss={cn(
-                'header__logo-link',
-                {'header__logo-link--active': isMainPage}
-              )}
-              href={!isMainPage ? 'main.html' : undefined}
-              imgClss='header__logo'
-              src='img/logo.svg'
-              alt='6 cities logo'
-              width={81}
-              height={41}
-            />
+            <LogoLink type="header" />
           </div>
-          {!isLoginPage && (
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          )}
+
+          {hasNavigation && <Navigation />}
         </div>
       </div>
     </header>

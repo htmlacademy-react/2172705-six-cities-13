@@ -1,8 +1,9 @@
-import { AddToFavorite } from '../../../features/addToFavorite';
-import { AddReviewForm } from '../../../features/addReviewForm';
-import { Review } from '../../../entities/review';
-import { Host } from '../../../entities/host';
-import { Badge } from '../../../shared/ui';
+import { FavoriteButton } from '@/features/favoriteButton';
+import { AddReviewForm } from '@/features/addReviewForm';
+import { Map } from '@/features/map';
+import { Review } from '@/entities/review';
+import { Host } from '@/entities/host';
+import { Badge, StarsRatingInfo } from '@/shared/ui';
 
 export function Offer() {
   return (
@@ -19,28 +20,21 @@ export function Offer() {
 
       <div className="offer__container container">
         <div className="offer__wrapper">
-          <Badge
-            clss='offer__mark'
-            text='Premium'
-          />
+          <Badge className="offer__mark" text="Premium" />
 
           <div className="offer__name-wrapper">
             <h1 className="offer__name">
               Beautiful &amp; luxurious studio at great location
             </h1>
-            <AddToFavorite
-              sectionName='offer'
-              isFavorite={false}
-            />
+            <FavoriteButton sectionName="offer" isFavorite={false} />
           </div>
 
-          <div className="offer__rating rating">
-            <div className="offer__stars rating__stars">
-              <span style={{ width: '80%' }}></span>
-              <span className="visually-hidden">Rating</span>
-            </div>
-            <span className="offer__rating-value rating__value">4.8</span>
-          </div>
+          <StarsRatingInfo
+            sectionName="offer"
+            starsCount={4}
+            numberRating={4.8}
+          />
+
           <ul className="offer__features">
             <li className="offer__feature offer__feature--entire">
               Apartment
@@ -70,32 +64,33 @@ export function Offer() {
           </div>
 
           <Host
-            userAvatarSrc='img/avatar-angelina.jpg'
-            userName='Angelina'
-            text={`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+            avatarUrl="img/avatar-angelina.jpg"
+            name="Angelina"
+            comment={`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                 The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera,
                 but where the bustle of the city comes to rest in this alley flowery and colorful.`}
           />
 
-          <section className='offer__reviews reviews'>
+          <section className="offer__reviews reviews">
             <h2 className="reviews__title">
               Reviews &middot;
               <span className="reviews__amount">1</span>
             </h2>
             <ul className="reviews__list">
               <Review
-                userAvatarSrc='img/avatar-max.jpg'
-                userName='Max'
-                starsCount={4}
-                text='A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.'
-                date='2019-04-24'
+                date="2019-04-24"
+                name="Max"
+                avatarUrl="img/avatar-max.jpg"
+                comment="A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century."
+                rating={4}
               />
             </ul>
             <AddReviewForm />
           </section>
         </div>
       </div>
-      <section className="offer__map map"></section>
+
+      <Map sectionName="offer" />
     </section>
   );
 }

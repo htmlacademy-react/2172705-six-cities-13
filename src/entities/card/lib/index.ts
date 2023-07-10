@@ -1,1 +1,2 @@
-export { getImageSize } from './fns/getImageSize';
+export { getImageSize } from './getImageSize';
+

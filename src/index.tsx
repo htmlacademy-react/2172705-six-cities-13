@@ -11,8 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App
-      offersCount={MOCK_OFFERS_COUNT}
-    />
+    <App offersCount={MOCK_OFFERS_COUNT} />
   </React.StrictMode>
 );

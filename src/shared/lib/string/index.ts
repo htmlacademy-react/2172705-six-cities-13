@@ -1,1 +1,1 @@
-export { capitalizeWord } from './fns/capitalizeWord';
+export { capitalizeWord } from './capitalizeWord';

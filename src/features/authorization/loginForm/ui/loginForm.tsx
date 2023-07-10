@@ -1,69 +1,41 @@
-import { InputBlock, Button } from '../../../../shared/ui';
-import { capitalizeWord } from '../../../../shared/lib';
-import { ButtonType } from '../../../../shared/types/types';
+import { Input, Button } from '@/shared/ui';
 
-type LoginFormProps = {
-  inputWrapperClss: string;
-  inputLabelClss: string;
-  inputClss: string;
-
-  firstInputLabelText: string;
-  firstInputType: string;
-  firstInputIsRequired: boolean;
-
-  secondInputLabelText: string;
-  secondInputType: string;
-  secondInputIsRequired: boolean;
-
-  buttonClss: string;
-  buttonType: ButtonType;
-  buttonText: string;
-}
-
-export function LoginForm({
-  inputWrapperClss,
-  inputLabelClss,
-  inputClss,
-  firstInputLabelText,
-  firstInputType,
-  firstInputIsRequired,
-  secondInputLabelText,
-  secondInputType,
-  secondInputIsRequired,
-  buttonClss,
-  buttonType,
-  buttonText,
-}: LoginFormProps) {
+export function LoginForm() {
   return (
-    <form
-      className='login__form form'
-      action='#'
-      method="post"
-    >
-      <InputBlock
-        wrapperClss={inputWrapperClss}
-        labelClss={inputLabelClss}
-        inputClss={inputClss}
-        labelText={firstInputLabelText}
-        type={firstInputType}
-        placeholder={capitalizeWord(firstInputType)}
-        isRequired={firstInputIsRequired}
-      />
-      <InputBlock
-        wrapperClss={inputWrapperClss}
-        labelClss={inputLabelClss}
-        inputClss={inputClss}
-        labelText={secondInputLabelText}
-        type={secondInputType}
-        placeholder={capitalizeWord(secondInputType)}
-        isRequired={secondInputIsRequired}
-      />
-      <Button
-        clss={buttonClss}
-        type={buttonType}
-        text={buttonText}
-        isDisabled={false}
-      />
-    </form>
+    <div className="page__login-container container">
+      <section className="login">
+        <h1 className="login__title">Sign in</h1>
+        <form className='login__form form' action='#' method="post">
+          <Input
+            wrapperClassName="login__input-wrapper form__input-wrapper"
+            labelClassName="visually-hidden"
+            inputClassName="login__input form__input"
+            labelText="E-mail"
+            type="email"
+            placeholder="Email"
+            required
+          />
+          <Input
+            wrapperClassName="login__input-wrapper form__input-wrapper"
+            labelClassName="visually-hidden"
+            inputClassName="login__input form__input"
+            labelText="Password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <Button className="login__submit form__submit" type="submit">
+            Sign in
+          </Button>
+        </form>
+      </section>
+      <section className="locations locations--login locations--current">
+        <div className="locations__item">
+          <a className="locations__item-link" href="#">
+            <span>Amsterdam</span>
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }

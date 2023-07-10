@@ -1,6 +1,6 @@
-export { Button } from './button/button';
-export { Badge } from './badge/badge';
-export { InputBlock } from './inputBlock/inputBlock';
-export { LinkItem } from './linkItem/linkItem';
-export { LogoLink } from './logoLink/logoLink';
-export { StarsRating } from './starsRating';
+export { Badge } from './badge';
+export { Button } from './button';
+export { Input } from './input';
+export { LogoLink } from './logoLink';
+export { RatingFormStarItem } from './ratingFormStarItem';
+export { StarsRatingInfo } from './starsRatingInfo';

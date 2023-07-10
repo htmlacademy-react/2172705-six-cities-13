@@ -1,4 +1,4 @@
-export const ratings: {value: number; status: string}[] = [
+export const ratings: { value: number; status: string }[] = [
   {
     value: 5,
     status: 'perfect'

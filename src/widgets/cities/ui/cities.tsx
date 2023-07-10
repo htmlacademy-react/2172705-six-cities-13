@@ -1,12 +1,13 @@
-import { SortPlaces } from '../../../features/sortPlaces';
-import { AddToFavorite } from '../../../features/addToFavorite';
-import { Card } from '../../../entities/card';
+import { SortPlaces } from '@/features/sortPlaces';
+import { FavoriteButton } from '@/features/favoriteButton';
+import { Map } from '@/features/map';
+import { Card } from '@/entities/card';
 
 type CitiesProps = {
   offersCount: number;
 }
 
-export function Cities({offersCount}: CitiesProps) {
+export function Cities({ offersCount }: CitiesProps) {
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -18,26 +19,20 @@ export function Cities({offersCount}: CitiesProps) {
             {Array.from({ length: 5 }, (_, id) => id * 2).map((el) => (
               <Card
                 key={el}
-                sectionName='cities'
-                imgSrc='img/apartment-01.jpg'
-                priceValue={120}
-                starsCount={4}
-                name='Beautiful &amp; luxurious apartment at great location'
-                type='Apartment'
+                sectionName="cities"
+                title="Beautiful &amp; luxurious apartment at great location"
+                type="Apartment"
+                price={120}
                 isPremium
-                actionSlot={
-                  <AddToFavorite
-                    sectionName='place-card'
-                    isFavorite={false}
-                  />
-                }
+                rating={4}
+                previewImage="img/apartment-01.jpg"
+                actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
               />
             ))}
           </div>
         </section>
-        <div className="cities__right-section">
-          <section className="cities__map map"></section>
-        </div>
+
+        <Map sectionName="cities" />
       </div>
     </div>
   );
