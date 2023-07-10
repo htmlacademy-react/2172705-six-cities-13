@@ -1,0 +1,2 @@
+export { getImageSize } from './getImageSize';
+
