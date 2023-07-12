@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export function Page404() {
   return (
@@ -10,6 +11,9 @@ export function Page404() {
       alignItems: 'center'
     }}
     >
+      <Helmet>
+        <title>Error 404</title>
+      </Helmet>
       <h1 style={{ fontSize: '36px', margin: '0 0 15px 0' }}>Error 404!</h1>
       <p style={{ fontSize: '36px', fontWeight: 700, margin: '0 0 30px 0' }}>We can not seem to find the resource you are looking for.</p>
       <p style={{ fontSize: '16px', opacity: 0.7, textAlign: 'center' }}>

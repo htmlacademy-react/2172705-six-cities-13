@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { MainPage } from '@/pages/main';
 import { LoginPage } from '@/pages/login';
@@ -13,22 +14,24 @@ type AppProps = {
 
 export function App({ offersCount }: AppProps) {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" >
-          <Route index element={<MainPage offersCount={offersCount} />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="offer/:id" element={
-            <PrivateRoute authorizationStatus="NO_AUTH">
-              <OfferPage />
-            </PrivateRoute>
-          }
-          />
-        </Route>
-        <Route path="*" element={<Page404 />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" >
+            <Route index element={<MainPage offersCount={offersCount} />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="favorites" element={<FavoritesPage />} />
+            <Route path="offer/:id" element={
+              <PrivateRoute authorizationStatus="NO_AUTH">
+                <OfferPage />
+              </PrivateRoute>
+            }
+            />
+          </Route>
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

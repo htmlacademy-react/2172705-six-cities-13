@@ -13,7 +13,9 @@ export function OfferPage() {
           <NearPlaces />
         </>
       }
-      pageName='offer'
+      footer={false}
+      pageName="offer"
+      title="6 cities: offer"
     />
   );
 }

@@ -18,8 +18,10 @@ export function MainPage({ offersCount }: MainPageProps) {
           <Cities offersCount={offersCount} />
         </>
       }
-      pageName='main'
-      className='page--gray page__main--main'
+      footer={false}
+      pageName="main"
+      title="6 cities: main"
+      className="page--gray page__main--main"
     />
   );
 }

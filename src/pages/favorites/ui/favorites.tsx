@@ -9,7 +9,8 @@ export function FavoritesPage() {
       header={<Header />}
       content={<Favorites />}
       footer={<Footer />}
-      pageName='favorites'
+      pageName="favorites"
+      title="6 cities: favorites"
     />
   );
 }
