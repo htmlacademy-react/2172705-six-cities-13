@@ -4,13 +4,14 @@ import { getLogoSize } from '../lib';
 
 type LogoLinkProps = {
   type: 'header' | 'footer';
+  to: string;
 }
 
-export function LogoLink({ type }: LogoLinkProps) {
+export function LogoLink({ type, to }: LogoLinkProps) {
   const logoSize = getLogoSize(type);
 
   return (
-    <Link className={`${type}__logo-link`} to="/">
+    <Link className={`${type}__logo-link`} to={to}>
       <img
         className={`${type}__logo`}
         src="img/logo.svg"

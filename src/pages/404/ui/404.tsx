@@ -1,25 +1,22 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
+import styles from '../styles/styles.module.css';
+import { AppRoute } from '@/const';
+
 export function Page404() {
   return (
-    <div style={{
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }}
-    >
+    <div className={styles.wrapper}>
       <Helmet>
         <title>Error 404</title>
       </Helmet>
-      <h1 style={{ fontSize: '36px', margin: '0 0 15px 0' }}>Error 404!</h1>
-      <p style={{ fontSize: '36px', fontWeight: 700, margin: '0 0 30px 0' }}>We can not seem to find the resource you are looking for.</p>
-      <p style={{ fontSize: '16px', opacity: 0.7, textAlign: 'center' }}>
+
+      <h1 className={styles.title}>Error 404!</h1>
+      <p className={styles.description}>We can not seem to find the resource you are looking for.</p>
+      <p className={styles.text}>
         Please check that the Web site address is spelled correctly.
         <br />
-        Or go to our <Link to="/" style={{ color: 'blue' }}>home page</Link>, and use the menus to navigate to a specific section.
+        Or go to our <Link className={styles.link} to={AppRoute.Root}>home page</Link>, and use the menus to navigate to a specific section.
       </p>
     </div>
   );

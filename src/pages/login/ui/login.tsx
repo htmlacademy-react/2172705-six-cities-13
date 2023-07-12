@@ -6,9 +6,12 @@ export function LoginPage() {
   return (
     <Layout
       header={<Header hasNavigation={false} />}
-      content={<LoginForm />}
+      content={
+        <main className="page__main page__main--login">
+          <LoginForm />
+        </main>
+      }
       footer={false}
-      pageName="login"
       title="6 cities: login"
       className="page--gray page--login"
     />

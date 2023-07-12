@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import { cities } from '../const/const';
 
 export function Tabs() {
@@ -8,7 +10,7 @@ export function Tabs() {
           {cities.map((name) => (
             <li key={name} className="locations__item">
               <a
-                className={`locations__item-link tabs__item ${name === 'Paris' ? 'tabs__item--active' : ''}`}
+                className={clsx('locations__item-link tabs__item', { 'tabs__item--active': name === 'Paris' })}
                 href="#"
               >
                 <span>{name}</span>

@@ -1,3 +1,4 @@
+import { AppRoute } from '@/const';
 import { UserMenu } from '@/features/userMenu';
 import { LogoLink } from '@/shared/ui';
 
@@ -11,7 +12,7 @@ export function Header({ hasNavigation = true }: HeaderProps) {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <LogoLink type="header" />
+            <LogoLink type="header" to={AppRoute.Root} />
           </div>
 
           {hasNavigation && <UserMenu />}
