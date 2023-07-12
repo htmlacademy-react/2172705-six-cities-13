@@ -8,7 +8,7 @@ export function Tabs() {
           {cities.map((name) => (
             <li key={name} className="locations__item">
               <a
-                className={`locations__item-link tabs__item ${name === 'Amsterdam' ? 'tabs__item--active' : ''}`}
+                className={`locations__item-link tabs__item ${name === 'Paris' ? 'tabs__item--active' : ''}`}
                 href="#"
               >
                 <span>{name}</span>

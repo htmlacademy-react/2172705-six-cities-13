@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { getImageSize } from '../lib';
@@ -35,7 +36,7 @@ export function Card({
       {isPremium && <Badge className='place-card__mark' text='Premium' />}
 
       <div className={clsx(`${sectionName}__image-wrapper`, 'place-card__image-wrapper')}>
-        <a href="#">
+        <Link to="#todo">
           <img
             className="place-card__image"
             src={previewImage}
@@ -43,7 +44,7 @@ export function Card({
             height={imageSize.height}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
 
       <div className={clsx(`${sectionName}__card-info`, 'place-card__info')}>
@@ -56,7 +57,7 @@ export function Card({
         </div>
         <StarsRatingInfo sectionName="place-card" starsCount={rating} />
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to="#todo">{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

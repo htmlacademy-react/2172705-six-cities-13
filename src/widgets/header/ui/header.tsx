@@ -1,4 +1,4 @@
-import { Navigation } from '@/features/navigation';
+import { UserMenu } from '@/features/userMenu';
 import { LogoLink } from '@/shared/ui';
 
 type HeaderProps = {
@@ -14,7 +14,7 @@ export function Header({ hasNavigation = true }: HeaderProps) {
             <LogoLink type="header" />
           </div>
 
-          {hasNavigation && <Navigation />}
+          {hasNavigation && <UserMenu />}
         </div>
       </div>
     </header>
