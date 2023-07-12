@@ -15,7 +15,7 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
   },
   server: {
-    open: 'index.html'
+    open: '/'
   },
   resolve: {
     alias: {
