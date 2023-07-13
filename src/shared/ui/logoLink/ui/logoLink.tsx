@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom';
+
 import { getLogoSize } from '../lib';
 
 type LogoLinkProps = {
   type: 'header' | 'footer';
-  href?: string;
+  to: string;
 }
 
-export function LogoLink({ type, href }: LogoLinkProps) {
+export function LogoLink({ type, to }: LogoLinkProps) {
   const logoSize = getLogoSize(type);
 
   return (
-    <a className={`${type}__logo-link`} href={href}>
+    <Link className={`${type}__logo-link`} to={to}>
       <img
         className={`${type}__logo`}
         src="img/logo.svg"
@@ -17,6 +19,6 @@ export function LogoLink({ type, href }: LogoLinkProps) {
         width={logoSize.width}
         height={logoSize.height}
       />
-    </a>
+    </Link>
   );
 }

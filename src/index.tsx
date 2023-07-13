@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './app/app';
-
-const MOCK_OFFERS_COUNT = 1337;
+import { App } from './app/app';
+import { MOCK_OFFERS_COUNT } from './const';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

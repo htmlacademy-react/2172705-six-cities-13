@@ -1,9 +1,11 @@
+import { AppRoute } from '@/const';
+
 import { LogoLink } from '@/shared/ui';
 
 export function Footer() {
   return (
     <footer className="footer container">
-      <LogoLink type="footer" />
+      <LogoLink type="footer" to={AppRoute.Root} />
     </footer>
   );
 }

@@ -7,9 +7,14 @@ export function FavoritesPage() {
   return (
     <Layout
       header={<Header />}
-      content={<Favorites />}
+      content={
+        <main className="page__main page__main--favorites">
+          <Favorites />
+        </main>
+      }
       footer={<Footer />}
-      pageName='favorites'
+      title="6 cities: favorites"
+      className="page"
     />
   );
 }

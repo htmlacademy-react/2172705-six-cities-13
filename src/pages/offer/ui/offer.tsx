@@ -8,12 +8,14 @@ export function OfferPage() {
     <Layout
       header={<Header />}
       content={
-        <>
+        <main className="page__main page__main--offer">
           <Offer />
           <NearPlaces />
-        </>
+        </main>
       }
-      pageName='offer'
+      footer={false}
+      title="6 cities: offer"
+      className="page"
     />
   );
 }

@@ -1,21 +1,39 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+
+import './app.module.css';
+
 import { MainPage } from '@/pages/main';
 import { LoginPage } from '@/pages/login';
 import { FavoritesPage } from '@/pages/favorites';
 import { OfferPage } from '@/pages/offer';
+import { Page404 } from '@/pages/404';
+import { ScrollToTop, PrivateRoute } from '@/shared/lib';
+import { AuthorizationStatus } from '@/shared/lib';
+import { AppRoute } from '@/const';
 
 type AppProps = {
   offersCount: number;
 }
 
-function App({ offersCount }: AppProps) {
+export function App({ offersCount }: AppProps) {
   return (
-    <div>
-      <MainPage offersCount={offersCount} />
-      <LoginPage />
-      <FavoritesPage />
-      <OfferPage />
-    </div>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path={AppRoute.Root} element={<MainPage offersCount={offersCount} />} />
+          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route path={AppRoute.Favorites} element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
+          />
+          <Route path={AppRoute.Offer} element={<OfferPage />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
-
-export default App;

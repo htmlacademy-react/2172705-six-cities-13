@@ -32,7 +32,9 @@ export function Cities({ offersCount }: CitiesProps) {
           </div>
         </section>
 
-        <Map sectionName="cities" />
+        <div className="cities__right-section">
+          <Map sectionName="cities" />
+        </div>
       </div>
     </div>
   );

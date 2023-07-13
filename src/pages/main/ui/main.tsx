@@ -12,14 +12,15 @@ export function MainPage({ offersCount }: MainPageProps) {
     <Layout
       header={<Header />}
       content={
-        <>
+        <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <Tabs />
           <Cities offersCount={offersCount} />
-        </>
+        </main>
       }
-      pageName='main'
-      className='page--gray page__main--main'
+      footer={false}
+      title="6 cities: main"
+      className="page page--gray page__main--main"
     />
   );
 }
