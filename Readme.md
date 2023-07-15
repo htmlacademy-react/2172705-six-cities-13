@@ -1,5 +1,5 @@
-![Build Status](https://github.com/CendresChaudes/HTMLAcademy__JS3-SixCities/actions/workflows/check.yml/badge.svg)
-![Maintainability](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/maintainability)
+![Build Status](https://github.com/CendresChaudes/HTMLAcademy__JS3-SixCities/actions/workflows/check.yml/badge.svg)&ensp;
+![Maintainability](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/maintainability)&ensp;
 ![Test Coverage](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/test_coverage)
 
 
