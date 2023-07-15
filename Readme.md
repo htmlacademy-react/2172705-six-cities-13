@@ -1,3 +1,8 @@
+![Build Status](https://github.com/CendresChaudes/HTMLAcademy__JS3-SixCities/actions/workflows/check.yml/badge.svg)
+![Maintainability](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/maintainability)
+![Test Coverage](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/test_coverage)
+
+
 # Личный проект «Шесть городов»
 
 * Студент: [Роман Пронин](https://up.htmlacademy.ru/react/13/user/2172705).
