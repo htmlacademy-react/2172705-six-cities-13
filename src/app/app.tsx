@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import { AppRoute } from '@/global/const';
+
 import './app.module.css';
 
 import { MainPage } from '@/pages/main';
@@ -10,7 +12,6 @@ import { OfferPage } from '@/pages/offer';
 import { Page404 } from '@/pages/404';
 import { ScrollToTop, PrivateRoute } from '@/shared/lib';
 import { AuthorizationStatus } from '@/shared/lib';
-import { AppRoute } from '@/const';
 
 type AppProps = {
   offersCount: number;

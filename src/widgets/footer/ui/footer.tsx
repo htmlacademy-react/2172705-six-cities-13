@@ -1,4 +1,4 @@
-import { AppRoute } from '@/const';
+import { AppRoute } from '@/global/const';
 
 import { LogoLink } from '@/shared/ui';
 
