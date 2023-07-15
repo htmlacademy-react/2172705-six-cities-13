@@ -5,7 +5,7 @@ import { AppRoute } from '@/global/const';
 
 import styles from '../styles/styles.module.css';
 
-export function Page404() {
+export default function Page404() {
   return (
     <div className={styles.wrapper}>
       <Helmet>

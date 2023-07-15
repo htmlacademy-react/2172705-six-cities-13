@@ -3,13 +3,15 @@ import { Footer } from '@/widgets/footer';
 import { Favorites } from '@/widgets/favorites';
 import { Layout } from '@/shared/layouts';
 
-export function FavoritesPage() {
+export default function FavoritesPage() {
   return (
     <Layout
       header={<Header />}
       content={
         <main className="page__main page__main--favorites">
-          <Favorites />
+          <div className="page__favorites-container container">
+            <Favorites />
+          </div>
         </main>
       }
       footer={<Footer />}

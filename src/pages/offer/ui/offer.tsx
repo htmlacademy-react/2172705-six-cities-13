@@ -3,14 +3,16 @@ import { Offer } from '@/widgets/offer';
 import { NearPlaces } from '@/widgets/nearPlaces';
 import { Layout } from '@/shared/layouts';
 
-export function OfferPage() {
+export default function OfferPage() {
   return (
     <Layout
       header={<Header />}
       content={
         <main className="page__main page__main--offer">
           <Offer />
-          <NearPlaces />
+          <div className="container">
+            <NearPlaces />
+          </div>
         </main>
       }
       footer={false}

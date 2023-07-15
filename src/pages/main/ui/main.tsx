@@ -7,7 +7,7 @@ type MainPageProps = {
   offersCount: number;
 }
 
-export function MainPage({ offersCount }: MainPageProps) {
+export default function MainPage({ offersCount }: MainPageProps) {
   return (
     <Layout
       header={<Header />}
