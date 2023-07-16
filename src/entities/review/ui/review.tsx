@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 import { StarsRatingInfo } from '@/shared/ui';
-import { ReviewType, UserType } from '@/shared/types';
+import { ReviewType, UserType } from '@/global/types';
 
 //! Временное решение
 type ReviewProps = Pick<ReviewType, 'date' | 'comment' | 'rating'> & Pick<UserType, 'avatarUrl' | 'name'>;

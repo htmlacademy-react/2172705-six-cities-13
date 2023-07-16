@@ -1,6 +1,7 @@
 type MapProps = {
   sectionName: string;
-  hoveredCardId: string;
+  //! Временно необязательный
+  hoveredCardId?: string;
 }
 
 export function Map({ sectionName, hoveredCardId }: MapProps) {

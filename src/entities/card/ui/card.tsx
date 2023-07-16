@@ -11,7 +11,8 @@ import { Badge, StarsRatingInfo } from '@/shared/ui';
 type CardProps = {
   offer: PreviewOfferType;
   sectionName: string;
-  onMouseEnter: () => void;
+  //! Временно необязательный
+  onMouseEnter?: () => void;
   actionSlot?: ReactNode;
 }
 
