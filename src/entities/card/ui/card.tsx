@@ -11,18 +11,23 @@ import { Badge, StarsRatingInfo } from '@/shared/ui';
 type CardProps = {
   offer: PreviewOfferType;
   sectionName: string;
+  onMouseEnter: () => void;
   actionSlot?: ReactNode;
 }
 
 export function Card({
   offer,
   sectionName,
+  onMouseEnter,
   actionSlot
 }: CardProps) {
   const imageSize = getImageSize(sectionName);
 
   return (
-    <article className={clsx(`${sectionName}__card`, 'place-card')}>
+    <article
+      className={clsx(`${sectionName}__card`, 'place-card')}
+      onMouseEnter={onMouseEnter}
+    >
       {offer.isPremium && <Badge className='place-card__mark' text='Premium' />}
 
       <div className={clsx(`${sectionName}__image-wrapper`, 'place-card__image-wrapper')}>
