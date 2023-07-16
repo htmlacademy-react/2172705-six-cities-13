@@ -1,4 +1,4 @@
-import { LocationType } from '..';
+import { LocationType } from '.';
 
 export type CityType = {
   name: string;

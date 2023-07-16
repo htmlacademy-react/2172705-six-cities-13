@@ -1,4 +1,4 @@
-import { CityType, LocationType, UserType } from '..';
+import { CityType, LocationType, UserType } from '.';
 
 export type FullOfferType = {
   id: string;
@@ -24,6 +24,7 @@ export type PreviewOfferType = Omit<FullOfferType, (
   'bedrooms' |
   'goods' |
   'images' |
+  'host' |
   'maxAdults'
 )>
 
