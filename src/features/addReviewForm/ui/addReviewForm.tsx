@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 import { ratings } from '../const/const';
 
 import { Button, RatingFormStarItem } from '@/shared/ui';
 
 export function AddReviewForm() {
+  const [reviewText, setReviewText] = useState('');
+
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -16,6 +20,8 @@ export function AddReviewForm() {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        value={reviewText}
+        onChange={(evt) => setReviewText(evt.target.value)}
       >
       </textarea>
 

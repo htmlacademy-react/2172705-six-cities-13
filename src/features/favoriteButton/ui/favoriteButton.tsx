@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import clsx from 'clsx';
 
 import { getIconSize } from '../lib';
@@ -8,15 +9,18 @@ type FavoriteButtonProps = {
 }
 
 export function FavoriteButton({ sectionName, isFavorite }: FavoriteButtonProps) {
+  const [favoriteStatus, setFavoriteStatus] = useState(isFavorite);
+
   const iconSize = getIconSize(sectionName);
 
   return (
     <button
       className={clsx(
         `${sectionName}__bookmark-button button`,
-        { [`${sectionName}__bookmark-button--active`]: isFavorite }
+        { [`${sectionName}__bookmark-button--active`]: favoriteStatus }
       )}
       type="button"
+      onClick={() => setFavoriteStatus((f) => !f)}
     >
       <svg
         className={`${sectionName}__bookmark-icon`}

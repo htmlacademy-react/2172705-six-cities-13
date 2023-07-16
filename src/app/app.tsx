@@ -7,14 +7,14 @@ import './app.module.css';
 import { AppRoute } from '@/global/const';
 import { PreviewOfferType, OpenedOfferType } from '@/global/types';
 
-import MainPage from '@/pages/main/ui/main';
-import OfferPage from '@/pages/offer/ui/offer';
-import LoadingPage from '@/pages/loading/ui/loading';
+import MainPage from '@/pages/main/ui/mainPage';
+import OfferPage from '@/pages/offer/ui/offerPage';
+import LoadingPage from '@/pages/loading/ui/loadingPage';
 import { ScrollToTop, PrivateRoute, AuthorizationStatus } from '@/shared/lib';
 
-const LoginPage = lazy(() => import('@/pages/login/ui/login'));
-const FavoritesPage = lazy(() => import('@/pages/favorites/ui/favorites'));
-const Page404 = lazy(() => import('@/pages/404/ui/404'));
+const LoginPage = lazy(() => import('@/pages/login/ui/loginPage'));
+const FavoritesPage = lazy(() => import('@/pages/favorites/ui/favoritesPage'));
+const Page404 = lazy(() => import('@/pages/404/ui/page404'));
 
 type AppProps = {
   previewOffers: PreviewOfferType[];
