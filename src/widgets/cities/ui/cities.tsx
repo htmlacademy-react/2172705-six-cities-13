@@ -1,31 +1,28 @@
+import { PreviewOfferType } from '@/global/types';
+
 import { SortPlaces } from '@/features/sortPlaces';
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Map } from '@/features/map';
 import { Card } from '@/entities/card';
 
 type CitiesProps = {
-  offersCount: number;
+  offers: PreviewOfferType[];
 }
 
-export function Cities({ offersCount }: CitiesProps) {
+export function Cities({ offers }: CitiesProps) {
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{`${offersCount} places to stay in Amsterdam`}</b>
+          <b className="places__found">{`${offers.length} places to stay in Amsterdam`}</b>
           <SortPlaces />
           <div className="cities__places-list places__list tabs__content">
-            {Array.from({ length: 5 }, (_, id) => id * 2).map((el) => (
+            {offers.map((offer) => (
               <Card
-                key={el}
+                key={offer.id}
+                offer={offer}
                 sectionName="cities"
-                title="Beautiful &amp; luxurious apartment at great location"
-                type="Apartment"
-                price={120}
-                isPremium
-                rating={4}
-                previewImage="img/apartment-01.jpg"
                 actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
               />
             ))}
