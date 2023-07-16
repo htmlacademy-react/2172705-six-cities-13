@@ -1,3 +1,6 @@
+//! Временно, чтобы не ломало работу приложения
+import { previewOffers } from '@/global/mock/previewOffers';
+
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
 
@@ -16,24 +19,14 @@ export function Favorites() {
           </div>
           <div className="favorites__places">
             <Card
+              offer={previewOffers[0]}
               sectionName="favorites"
-              title="Nice, cozy, warm big bed apartment"
-              type="Apartment"
-              price={180}
-              isPremium
-              rating={5}
-              previewImage="img/apartment-small-03.jpg"
-              actionSlot={<FavoriteButton sectionName="place-card" isFavorite />}
+              actionSlot={<FavoriteButton sectionName="place-card" isFavorite={previewOffers[0].isFavorite} />}
             />
             <Card
+              offer={previewOffers[1]}
               sectionName="favorites"
-              title="Wood and stone place"
-              type="Private room"
-              price={80}
-              isPremium={false}
-              rating={4}
-              previewImage="img/room-small.jpg"
-              actionSlot={<FavoriteButton sectionName="place-card" isFavorite />}
+              actionSlot={<FavoriteButton sectionName="place-card" isFavorite={previewOffers[1].isFavorite} />}
             />
           </div>
         </li>
@@ -48,14 +41,9 @@ export function Favorites() {
           </div>
           <div className="favorites__places">
             <Card
+              offer={previewOffers[2]}
               sectionName="favorites"
-              title="White castle"
-              type="Apartment"
-              price={180}
-              isPremium={false}
-              rating={5}
-              previewImage="img/apartment-small-04.jpg"
-              actionSlot={<FavoriteButton sectionName="place-card" isFavorite />}
+              actionSlot={<FavoriteButton sectionName="place-card" isFavorite={previewOffers[2].isFavorite} />}
             />
           </div>
         </li>
