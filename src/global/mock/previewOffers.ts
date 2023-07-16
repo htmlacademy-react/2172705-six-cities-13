@@ -6,7 +6,7 @@ export const previewOffers = [
     price: 163,
     previewImage: 'https://13.design.pages.academy/static/hotel/5.jpg',
     city: {
-      name: 'Paris',
+      name: 'Brussels',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -18,7 +18,7 @@ export const previewOffers = [
       longitude: 2.342499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 2.4
   },
@@ -52,7 +52,7 @@ export const previewOffers = [
     price: 192,
     previewImage: 'https://13.design.pages.academy/static/hotel/17.jpg',
     city: {
-      name: 'Paris',
+      name: 'Brussels',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -64,7 +64,7 @@ export const previewOffers = [
       longitude: 2.335499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 3.5
   },
@@ -75,7 +75,7 @@ export const previewOffers = [
     price: 453,
     previewImage: 'https://13.design.pages.academy/static/hotel/19.jpg',
     city: {
-      name: 'Paris',
+      name: 'Hamburg',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -87,7 +87,7 @@ export const previewOffers = [
       longitude: 2.358499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 3.8
   }

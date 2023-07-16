@@ -2,10 +2,10 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import './app.module.css';
+
 import { AppRoute } from '@/global/const';
 import { PreviewOfferType, OpenedOfferType, ReviewType } from '@/global/types';
-
-import './app.module.css';
 
 import MainPage from '@/pages/main/ui/main';
 import OfferPage from '@/pages/offer/ui/offer';
@@ -32,8 +32,8 @@ export function App({ previewOffers, openedOffers, reviews }: AppProps) {
             <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
             <Route path={AppRoute.Login} element={<LoginPage />} />
             <Route path={AppRoute.Favorites} element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <FavoritesPage />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <FavoritesPage offers={previewOffers} />
               </PrivateRoute>
             }
             />

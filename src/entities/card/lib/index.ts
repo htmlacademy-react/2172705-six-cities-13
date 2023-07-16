@@ -1,2 +1,0 @@
-export { getImageSize } from './getImageSize';
-

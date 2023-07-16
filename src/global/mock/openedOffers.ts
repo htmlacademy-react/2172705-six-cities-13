@@ -14,7 +14,7 @@ export const openedOffers = [
       'https://13.design.pages.academy/static/hotel/2.jpg'
     ],
     city: {
-      name: 'Paris',
+      name: 'Brussels',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -43,7 +43,7 @@ export const openedOffers = [
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
     isPremium: false,
-    isFavorite: false,
+    isFavorite: true,
     rating: 2.4,
     bedrooms: 5,
     maxAdults: 6
@@ -108,7 +108,7 @@ export const openedOffers = [
       'https://13.design.pages.academy/static/hotel/18.jpg'
     ],
     city: {
-      name: 'Paris',
+      name: 'Brussels',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -140,7 +140,7 @@ export const openedOffers = [
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
     isPremium: false,
-    isFavorite: false,
+    isFavorite: true,
     rating: 3.5,
     bedrooms: 3,
     maxAdults: 7
@@ -160,7 +160,7 @@ export const openedOffers = [
       'https://13.design.pages.academy/static/hotel/9.jpg'
     ],
     city: {
-      name: 'Paris',
+      name: 'Hamburg',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -192,7 +192,7 @@ export const openedOffers = [
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
     isPremium: true,
-    isFavorite: false,
+    isFavorite: true,
     rating: 3.8,
     bedrooms: 4,
     maxAdults: 2

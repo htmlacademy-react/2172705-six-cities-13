@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import { PreviewOfferType } from '@/global/types';
+import { getImageSize } from '../lib/getImageSize';
 
-import { getImageSize } from '../lib';
+import { PreviewOfferType } from '@/global/types';
 
 import { Badge, StarsRatingInfo } from '@/shared/ui';
 
