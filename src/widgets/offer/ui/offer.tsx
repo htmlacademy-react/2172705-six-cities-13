@@ -1,17 +1,26 @@
+import { MAX_IMAGES_COUNT } from '../const/const';
+
+import { OpenedOfferType } from '@/global/types';
+
 import { FavoriteButton } from '@/features/favoriteButton';
 import { AddReviewForm } from '@/features/addReviewForm';
 import { Map } from '@/features/map';
 import { Review } from '@/entities/review';
 import { Badge, StarsRatingInfo } from '@/shared/ui';
+import { capitalizeWord } from '@/shared/lib';
 
-export function Offer() {
+type OfferProps = {
+  offer: OpenedOfferType;
+}
+
+export function Offer({ offer }: OfferProps) {
   return (
     <section className="offer">
       <div className="offer__gallery-container container">
         <div className="offer__gallery">
-          {Array.from({ length: 6 }, (_, id) => id * 2).map((el) => (
-            <div key={el} className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
+          {offer.images.slice(0, MAX_IMAGES_COUNT).map((image) => (
+            <div key={image} className="offer__image-wrapper">
+              <img className="offer__image" src={image} alt="Photo studio" />
             </div>
           ))}
         </div>
@@ -19,44 +28,44 @@ export function Offer() {
 
       <div className="offer__container container">
         <div className="offer__wrapper">
-          <Badge className="offer__mark" text="Premium" />
+          {offer.isPremium && <Badge className="offer__mark" text="Premium" />}
 
           <div className="offer__name-wrapper">
             <h1 className="offer__name">
-              Beautiful &amp; luxurious studio at great location
+              {offer.title}
             </h1>
-            <FavoriteButton sectionName="offer" isFavorite={false} />
+            <FavoriteButton sectionName="offer" isFavorite={offer.isFavorite} />
           </div>
 
           <StarsRatingInfo
             sectionName="offer"
-            starsCount={4}
-            numberRating={4.8}
+            rating={offer.rating}
+            hasAvgRating
           />
 
           <ul className="offer__features">
             <li className="offer__feature offer__feature--entire">
-              Apartment
+              {capitalizeWord(offer.type)}
             </li>
             <li className="offer__feature offer__feature--bedrooms">
-              3 Bedrooms
+              {offer.bedrooms} {offer.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
             </li>
             <li className="offer__feature offer__feature--adults">
-              Max 4 adults
+              Max {offer.maxAdults} {offer.maxAdults === 1 ? 'adult' : 'adults'}
             </li>
           </ul>
 
           <div className="offer__price">
-            <b className="offer__price-value">&euro;120</b>
+            <b className="offer__price-value">&euro;{offer.price}</b>
             <span className="offer__price-text">&nbsp;night</span>
           </div>
 
           <div className="offer__inside">
             <h2 className="offer__inside-title">What&apos;s inside</h2>
             <ul className="offer__inside-list">
-              {Array.from({ length: 8 }, (_, id) => id * 2).map((el) => (
-                <li key={el} className="offer__inside-item">
-                  Wi-Fi
+              {offer.goods.map((good) => (
+                <li key={good} className="offer__inside-item">
+                  {good}
                 </li>
               ))}
             </ul>
@@ -66,19 +75,17 @@ export function Offer() {
             <h2 className="offer__host-title">Meet the host</h2>
             <div className="offer__host-user user">
               <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                <img className="offer__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
               </div>
               <span className="offer__user-name">
-                Angelina
+                {offer.host.name}
               </span>
               <span className="offer__user-status">
-                Pro
+                {offer.host.isPro && 'Pro'}
               </span>
             </div>
             <div className="offer__description">
-              A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-              The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera,
-              but where the bustle of the city comes to rest in this alley flowery and colorful.
+              {offer.description}
             </div>
           </div>
 

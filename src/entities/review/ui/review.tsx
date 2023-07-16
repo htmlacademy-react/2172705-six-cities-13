@@ -23,8 +23,9 @@ export function Review({
           {name}
         </span>
       </div>
+
       <div className="reviews__info">
-        <StarsRatingInfo sectionName="reviews" starsCount={rating} />
+        <StarsRatingInfo sectionName="reviews" rating={rating} />
         <p className="reviews__text">
           {comment}
         </p>

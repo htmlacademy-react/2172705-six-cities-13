@@ -2,5 +2,5 @@ export const AppRoute = {
   Root: '/',
   Login: '/login',
   Favorites: '/favorites',
-  Offer: '/offer/:id',
+  Offer: '/offer',
 } as const;

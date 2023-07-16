@@ -1,15 +1,26 @@
+import { useParams } from 'react-router-dom';
+
+import { OpenedOfferType } from '@/global/types';
+
 import { Header } from '@/widgets/header';
 import { Offer } from '@/widgets/offer';
 import { NearPlaces } from '@/widgets/nearPlaces';
 import { Layout } from '@/shared/layouts';
 
-export default function OfferPage() {
+type OfferPageProps = {
+  offers: OpenedOfferType[];
+}
+
+export default function OfferPage({ offers }: OfferPageProps) {
+  const { id: offerId } = useParams();
+  const offerItem = offers.find((offer) => offer.id === offerId);
+
   return (
     <Layout
       header={<Header />}
       content={
         <main className="page__main page__main--offer">
-          <Offer />
+          <Offer offer={offerItem as OpenedOfferType} />
           <div className="container">
             <NearPlaces />
           </div>

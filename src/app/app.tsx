@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import './app.module.css';
 
 import { AppRoute } from '@/global/const';
-import { PreviewOfferType, OpenedOfferType, ReviewType } from '@/global/types';
+import { PreviewOfferType, OpenedOfferType } from '@/global/types';
 
 import MainPage from '@/pages/main/ui/main';
 import OfferPage from '@/pages/offer/ui/offer';
@@ -19,10 +19,9 @@ const Page404 = lazy(() => import('@/pages/404/ui/404'));
 type AppProps = {
   previewOffers: PreviewOfferType[];
   openedOffers: OpenedOfferType[];
-  reviews: ReviewType[];
 }
 
-export function App({ previewOffers, openedOffers, reviews }: AppProps) {
+export function App({ previewOffers, openedOffers }: AppProps) {
   return (
     <Suspense fallback={<LoadingPage />}>
       <HelmetProvider>
@@ -37,7 +36,7 @@ export function App({ previewOffers, openedOffers, reviews }: AppProps) {
               </PrivateRoute>
             }
             />
-            <Route path={AppRoute.Offer} element={<OfferPage />} />
+            <Route path={`${AppRoute.Offer}/:id`} element={<OfferPage offers={openedOffers} />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </BrowserRouter>

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { getImageSize } from '../lib/getImageSize';
 
+import { AppRoute } from '@/global/const';
 import { PreviewOfferType } from '@/global/types';
 
 import { Badge, StarsRatingInfo } from '@/shared/ui';
@@ -32,7 +33,7 @@ export function Card({
       {offer.isPremium && <Badge className='place-card__mark' text='Premium' />}
 
       <div className={clsx(`${sectionName}__image-wrapper`, 'place-card__image-wrapper')}>
-        <Link to="#todo">
+        <Link to={`${AppRoute.Offer}/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -51,9 +52,9 @@ export function Card({
           </div>
           {actionSlot}
         </div>
-        <StarsRatingInfo sectionName="place-card" starsCount={offer.rating} />
+        <StarsRatingInfo sectionName="place-card" rating={offer.rating} />
         <h2 className="place-card__name">
-          <Link to="#todo">{offer.title}</Link>
+          <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>
