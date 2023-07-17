@@ -1,7 +1,12 @@
+![Build lint status](https://github.com/CendresChaudes/HTMLAcademy__JS3-SixCities/actions/workflows/lint.yml/badge.svg)&ensp;
+![Build test status](https://github.com/CendresChaudes/HTMLAcademy__JS3-SixCities/actions/workflows/test.yml/badge.svg)&ensp;
+![Maintainability](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/maintainability)&ensp;
+![Test Coverage](https://api.codeclimate.com/v1/badges/d04ed0e6eccbb1d125ba/test_coverage)
+
 # Личный проект «Шесть городов»
 
-* Студент: [Роман Пронин](https://up.htmlacademy.ru/react/13/user/2172705).
-* Наставник: [Алексей Хабиров](https://htmlacademy.ru/profile/alex_khab).
+- Студент: [Роман Пронин](https://up.htmlacademy.ru/react/13/user/2172705).
+- Наставник: [Алексей Хабиров](https://htmlacademy.ru/profile/alex_khab).
 
 ---
 

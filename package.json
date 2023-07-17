@@ -1,5 +1,5 @@
 {
-  "name": "6 cities",
+  "name": "six_cities",
   "version": "13.0.0",
   "type": "module",
   "scripts": {
@@ -42,6 +42,7 @@
     "eslint-config-htmlacademy": "9.1.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.1",
+    "eslint-plugin-sonarjs": "0.19.0",
     "faker": "5.5.3",
     "jsdom": "22.1.0",
     "typescript": "5.0.4",

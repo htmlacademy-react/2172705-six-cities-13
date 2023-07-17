@@ -1,5 +1,3 @@
-export const MOCK_OFFERS_COUNT = 1337;
-
 export const AppRoute = {
   Root: '/',
   Login: '/login',

@@ -2,22 +2,29 @@ import clsx from 'clsx';
 
 import { getWidthByStarsCount } from '../lib/getWidthByStarsCount';
 
-type StarsRatingProps = {
+type StarsRatingInfoProps = {
   sectionName: string;
-  starsCount: number;
-  numberRating?: number;
+  rating: number;
+  isStarsRatingRounded?: boolean;
+  hasAvgRating?: boolean;
 }
 
-export function StarsRatingInfo({ sectionName, starsCount, numberRating }: StarsRatingProps) {
+export function StarsRatingInfo({ sectionName, rating, isStarsRatingRounded = true, hasAvgRating = false }: StarsRatingInfoProps) {
+  const avgRating = rating;
+
+  if (isStarsRatingRounded) {
+    rating = Math.round(rating);
+  }
+
   return (
     <div className={clsx(`${sectionName}__rating`, 'rating')}>
       <div className={clsx(`${sectionName}__stars`, 'rating__stars')}>
-        <span style={{ width: getWidthByStarsCount(starsCount) }}></span>
+        <span style={{ width: getWidthByStarsCount(rating) }}></span>
         <span className="visually-hidden">Rating</span>
       </div>
-      {numberRating && (
+      {hasAvgRating && (
         <span className={clsx(`${sectionName}__rating-value`, 'rating__value')}>
-          {numberRating}
+          {avgRating}
         </span>
       )}
     </div>

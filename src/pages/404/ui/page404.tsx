@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import styles from '../styles/styles.module.css';
-import { AppRoute } from '@/const';
 
-export function Page404() {
+import { AppRoute } from '@/global/const';
+
+export default function Page404() {
   return (
     <div className={styles.wrapper}>
       <Helmet>
