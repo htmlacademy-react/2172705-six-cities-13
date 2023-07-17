@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { getImageSize } from '../lib/getImageSize';
@@ -8,12 +8,13 @@ import { AppRoute } from '@/global/const';
 import { PreviewOfferType } from '@/global/types';
 
 import { Badge, StarsRatingInfo } from '@/shared/ui';
+import { capitalizeWord } from '@/shared/lib';
 
 type CardProps = {
   offer: PreviewOfferType;
   sectionName: string;
-  //! Временно необязательный
-  onMouseEnter?: () => void;
+  onMouseEnter?: (id: string) => void;
+  onMouseLeave?: () => void;
   actionSlot?: ReactNode;
 }
 
@@ -21,6 +22,7 @@ export function Card({
   offer,
   sectionName,
   onMouseEnter,
+  onMouseLeave,
   actionSlot
 }: CardProps) {
   const imageSize = getImageSize(sectionName);
@@ -28,12 +30,13 @@ export function Card({
   return (
     <article
       className={clsx(`${sectionName}__card`, 'place-card')}
-      onMouseEnter={onMouseEnter}
+      onMouseEnter={typeof onMouseEnter === 'function' ? () => onMouseEnter(offer.id) : undefined}
+      onMouseLeave={onMouseLeave}
     >
       {offer.isPremium && <Badge className='place-card__mark' text='Premium' />}
 
       <div className={clsx(`${sectionName}__image-wrapper`, 'place-card__image-wrapper')}>
-        <Link to={`${AppRoute.Offer}/${offer.id}`}>
+        <Link to={generatePath(AppRoute.Offer, { id: offer.id })}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -54,9 +57,9 @@ export function Card({
         </div>
         <StarsRatingInfo sectionName="place-card" rating={offer.rating} />
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.title}</Link>
+          <Link to={generatePath(AppRoute.Offer, { id: offer.id })}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{capitalizeWord(offer.type)}</p>
       </div>
     </article>
   );

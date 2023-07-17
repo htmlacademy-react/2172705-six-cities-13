@@ -6,18 +6,21 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    "htmlacademy/react-typescript",
+    'htmlacademy/react-typescript',
+    'plugin:sonarjs/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module', project: 'tsconfig.json' },
   settings: { react: { version: 'detect' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'sonarjs'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'sonarjs/cognitive-complexity': 'error',
+    'sonarjs/no-identical-expressions': 'error'
   },
   overrides: [
     {
-      files: [ '*test*' ],
+      files: ['*test*'],
       rules: { '@typescript-eslint/unbound-method': 'off' }
     },
   ],

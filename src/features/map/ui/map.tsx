@@ -1,14 +1,9 @@
 type MapProps = {
   sectionName: string;
-  //! Временно необязательный
-  hoveredCardId?: string;
+  offerId: string;
 }
 
-export function Map({ sectionName, hoveredCardId }: MapProps) {
-  if (hoveredCardId) {
-    console.log(`Card ${hoveredCardId} is checked on map!`);
-  }
-
+export function Map({ sectionName, offerId }: MapProps) {
   return (
     <section className={`${sectionName}__map map`}></section>
   );

@@ -14,10 +14,9 @@ type CitiesProps = {
 export function Cities({ offers }: CitiesProps) {
   const [hoveredCardId, setHoveredCardId] = useState('');
 
-  const handleCardHover = (id: string) => {
-    console.log(`Card ${id} is hovered!`);
-    setHoveredCardId(id);
-  };
+  const handleCardMouseEnter = (id: string) => setHoveredCardId(id);
+
+  const handleCardMouseLeave = () => setHoveredCardId('');
 
   return (
     <div className="cities">
@@ -32,7 +31,8 @@ export function Cities({ offers }: CitiesProps) {
                 key={offer.id}
                 offer={offer}
                 sectionName="cities"
-                onMouseEnter={() => handleCardHover(offer.id)}
+                onMouseEnter={handleCardMouseEnter}
+                onMouseLeave={handleCardMouseLeave}
                 actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
               />
             ))}
@@ -40,7 +40,7 @@ export function Cities({ offers }: CitiesProps) {
         </section>
 
         <div className="cities__right-section">
-          <Map sectionName="cities" hoveredCardId={hoveredCardId} />
+          <Map sectionName="cities" offerId={hoveredCardId} />
         </div>
       </div>
     </div>

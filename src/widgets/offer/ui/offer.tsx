@@ -108,7 +108,7 @@ export function Offer({ offer }: OfferProps) {
         </div>
       </div>
 
-      <Map sectionName="offer" />
+      <Map sectionName="offer" offerId={offer.id} />
     </section>
   );
 }
