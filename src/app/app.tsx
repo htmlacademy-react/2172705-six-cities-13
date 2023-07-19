@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { ErrorBoundary } from 'react-error-boundary';
 
 import './app.module.css';
 
@@ -14,7 +15,8 @@ import { ScrollToTop, PrivateRoute, AuthorizationStatus } from '@/shared/lib';
 
 const LoginPage = lazy(() => import('@/pages/login/ui/loginPage'));
 const FavoritesPage = lazy(() => import('@/pages/favorites/ui/favoritesPage'));
-const Page404 = lazy(() => import('@/pages/404/ui/page404'));
+const Page404 = lazy(() => import('@/pages/errors/404/ui/page404'));
+const AppCrashPage = lazy(() => import('@/pages/errors/appCrash/ui/appCrashPage'));
 
 type AppProps = {
   previewOffers: PreviewOfferType[];
@@ -23,24 +25,26 @@ type AppProps = {
 
 export function App({ previewOffers, openedOffers }: AppProps) {
   return (
-    <Suspense fallback={<LoadingPage />}>
-      <HelmetProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
-            <Route path={AppRoute.Login} element={<LoginPage />} />
-            <Route path={AppRoute.Favorites} element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <FavoritesPage offers={previewOffers} />
-              </PrivateRoute>
-            }
-            />
-            <Route path={AppRoute.Offer} element={<OfferPage offers={openedOffers} />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </BrowserRouter>
-      </HelmetProvider>
-    </Suspense>
+    <ErrorBoundary fallback={<AppCrashPage />}>
+      <Suspense fallback={<LoadingPage />}>
+        <HelmetProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
+              <Route path={AppRoute.Login} element={<LoginPage />} />
+              <Route path={AppRoute.Favorites} element={
+                <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                  <FavoritesPage offers={previewOffers} />
+                </PrivateRoute>
+              }
+              />
+              <Route path={AppRoute.Offer} element={<OfferPage offers={openedOffers} />} />
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </BrowserRouter>
+        </HelmetProvider>
+      </Suspense>
+    </ErrorBoundary >
   );
 }
