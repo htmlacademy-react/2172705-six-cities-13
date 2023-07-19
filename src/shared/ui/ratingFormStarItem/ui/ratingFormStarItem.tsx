@@ -1,9 +1,12 @@
+import { ChangeEvent } from 'react';
+
 type RatingFormStarItemProps = {
   value: number;
   status: string;
+  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function RatingFormStarItem({ value, status }: RatingFormStarItemProps) {
+export function RatingFormStarItem({ value, status, onChange }: RatingFormStarItemProps) {
   const starsCountString = value > 1 ? `${value}-stars` : '1-star';
 
   return (
@@ -14,6 +17,7 @@ export function RatingFormStarItem({ value, status }: RatingFormStarItemProps) {
         value={value}
         id={starsCountString}
         type="radio"
+        onChange = {onChange}
       />
       <label
         htmlFor={starsCountString}

@@ -13,16 +13,14 @@ import { capitalizeWord } from '@/shared/lib';
 type CardProps = {
   offer: PreviewOfferType;
   sectionName: string;
-  onMouseEnter?: (id: string) => void;
-  onMouseLeave?: () => void;
+  onCardActive?: (id: Nullable<string>) => void;
   actionSlot?: ReactNode;
 }
 
 export function Card({
   offer,
   sectionName,
-  onMouseEnter,
-  onMouseLeave,
+  onCardActive,
   actionSlot
 }: CardProps) {
   const imageSize = getImageSize(sectionName);
@@ -30,8 +28,8 @@ export function Card({
   return (
     <article
       className={clsx(`${sectionName}__card`, 'place-card')}
-      onMouseEnter={typeof onMouseEnter === 'function' ? () => onMouseEnter(offer.id) : undefined}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => onCardActive?.(offer.id)}
+      onMouseLeave={() => onCardActive?.(null)}
     >
       {offer.isPremium && <Badge className='place-card__mark' text='Premium' />}
 

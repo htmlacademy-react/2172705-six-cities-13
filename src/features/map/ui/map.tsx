@@ -1,6 +1,6 @@
 type MapProps = {
   sectionName: string;
-  offerId: string;
+  offerId: Nullable<string>;
 }
 
 export function Map({ sectionName, offerId }: MapProps) {
