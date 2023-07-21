@@ -13,7 +13,7 @@ import { capitalizeWord } from '@/shared/lib';
 type CardProps = {
   offer: PreviewOfferType;
   sectionName: string;
-  onCardActive?: (id: Nullable<string>) => void;
+  onCardActive?: (id: Nullable<PreviewOfferType>) => void;
   actionSlot?: ReactNode;
 }
 
@@ -28,7 +28,7 @@ export function Card({
   return (
     <article
       className={clsx(`${sectionName}__card`, 'place-card')}
-      onMouseEnter={() => onCardActive?.(offer.id)}
+      onMouseEnter={() => onCardActive?.(offer)}
       onMouseLeave={() => onCardActive?.(null)}
     >
       {offer.isPremium && <Badge className='place-card__mark' text='Premium' />}

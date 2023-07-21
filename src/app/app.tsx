@@ -39,7 +39,7 @@ export function App({ previewOffers, openedOffers }: AppProps) {
                 </PrivateRoute>
               }
               />
-              <Route path={AppRoute.Offer} element={<OfferPage offers={openedOffers} />} />
+              <Route path={AppRoute.Offer} element={<OfferPage openedOffers={openedOffers} previewOffers={previewOffers} />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </BrowserRouter>

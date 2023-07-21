@@ -1,6 +1,6 @@
 import { MAX_IMAGES_COUNT } from '../const/const';
 
-import { OpenedOfferType } from '@/global/types';
+import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 
 import { FavoriteButton } from '@/features/favoriteButton';
 import { AddReviewForm } from '@/features/addReviewForm';
@@ -10,15 +10,16 @@ import { Badge, StarsRatingInfo } from '@/shared/ui';
 import { capitalizeWord } from '@/shared/lib';
 
 type OfferProps = {
-  offer: OpenedOfferType;
+  activeOffer: OpenedOfferType;
+  offers: PreviewOfferType[] | OpenedOfferType[];
 }
 
-export function Offer({ offer }: OfferProps) {
+export function Offer({ activeOffer, offers }: OfferProps) {
   return (
     <section className="offer">
       <div className="offer__gallery-container container">
         <div className="offer__gallery">
-          {offer.images.slice(0, MAX_IMAGES_COUNT).map((image) => (
+          {activeOffer.images.slice(0, MAX_IMAGES_COUNT).map((image) => (
             <div key={image} className="offer__image-wrapper">
               <img className="offer__image" src={image} alt="Photo studio" />
             </div>
@@ -28,42 +29,42 @@ export function Offer({ offer }: OfferProps) {
 
       <div className="offer__container container">
         <div className="offer__wrapper">
-          {offer.isPremium && <Badge className="offer__mark" text="Premium" />}
+          {activeOffer.isPremium && <Badge className="offer__mark" text="Premium" />}
 
           <div className="offer__name-wrapper">
             <h1 className="offer__name">
-              {offer.title}
+              {activeOffer.title}
             </h1>
-            <FavoriteButton sectionName="offer" isFavorite={offer.isFavorite} />
+            <FavoriteButton sectionName="offer" isFavorite={activeOffer.isFavorite} />
           </div>
 
           <StarsRatingInfo
             sectionName="offer"
-            rating={offer.rating}
+            rating={activeOffer.rating}
             hasAvgRating
           />
 
           <ul className="offer__features">
             <li className="offer__feature offer__feature--entire">
-              {capitalizeWord(offer.type)}
+              {capitalizeWord(activeOffer.type)}
             </li>
             <li className="offer__feature offer__feature--bedrooms">
-              {offer.bedrooms} {offer.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+              {activeOffer.bedrooms} {activeOffer.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
             </li>
             <li className="offer__feature offer__feature--adults">
-              Max {offer.maxAdults} {offer.maxAdults === 1 ? 'adult' : 'adults'}
+              Max {activeOffer.maxAdults} {activeOffer.maxAdults === 1 ? 'adult' : 'adults'}
             </li>
           </ul>
 
           <div className="offer__price">
-            <b className="offer__price-value">&euro;{offer.price}</b>
+            <b className="offer__price-value">&euro;{activeOffer.price}</b>
             <span className="offer__price-text">&nbsp;night</span>
           </div>
 
           <div className="offer__inside">
             <h2 className="offer__inside-title">What&apos;s inside</h2>
             <ul className="offer__inside-list">
-              {offer.goods.map((good) => (
+              {activeOffer.goods.map((good) => (
                 <li key={good} className="offer__inside-item">
                   {good}
                 </li>
@@ -75,17 +76,17 @@ export function Offer({ offer }: OfferProps) {
             <h2 className="offer__host-title">Meet the host</h2>
             <div className="offer__host-user user">
               <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                <img className="offer__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
+                <img className="offer__avatar user__avatar" src={activeOffer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
               </div>
               <span className="offer__user-name">
-                {offer.host.name}
+                {activeOffer.host.name}
               </span>
               <span className="offer__user-status">
-                {offer.host.isPro && 'Pro'}
+                {activeOffer.host.isPro && 'Pro'}
               </span>
             </div>
             <div className="offer__description">
-              {offer.description}
+              {activeOffer.description}
             </div>
           </div>
 
@@ -108,7 +109,7 @@ export function Offer({ offer }: OfferProps) {
         </div>
       </div>
 
-      <Map sectionName="offer" offerId={offer.id} />
+      <Map sectionName="offer" activeOffer={activeOffer} offers={offers} />
     </section>
   );
 }
