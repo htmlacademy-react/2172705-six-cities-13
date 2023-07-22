@@ -1,18 +1,32 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { ratings } from '../const/const';
 
 import { Button, RatingFormStarItem } from '@/shared/ui';
 
 export function AddReviewForm() {
-  const [reviewText, setReviewText] = useState('');
+  const [reviewData, setReviewData] = useState({
+    review: '',
+    rating: '0'
+  });
+
+  const handleReviewDataChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setReviewData({
+    ...reviewData,
+    [evt.target.name]: evt.target.value
+  });
 
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
       <div className="reviews__rating-form form__rating">
-        {ratings.map(({ value, status }) => <RatingFormStarItem key={status} value={value} status={status} />)}
+        {ratings.map(({ value, status }) => (
+          <RatingFormStarItem
+            key={status}
+            value={value}
+            status={status}
+            onChange={handleReviewDataChange}
+          />))}
       </div>
 
       <textarea
@@ -20,8 +34,8 @@ export function AddReviewForm() {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={reviewText}
-        onChange={(evt) => setReviewText(evt.target.value)}
+        value={reviewData.review}
+        onChange={handleReviewDataChange}
       >
       </textarea>
 

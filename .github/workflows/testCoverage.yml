@@ -2,8 +2,7 @@ name: Project test coverage
 
 on:
   push:
-    branches:
-      - master
+    branches: '*'
   pull_request:
     branches: '*'
 
@@ -23,13 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run build
-        run: npm build
-
       - name: Calculate test coverage
         uses: paambaati/codeclimate-action@v3.1.1
-
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: yarn coverage
+          coverageCommand: npm run test
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov

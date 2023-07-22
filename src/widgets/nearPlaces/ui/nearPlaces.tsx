@@ -1,15 +1,20 @@
-//! Временно, чтобы не ломало работу приложения
-import { previewOffers } from '@/global/mock/previewOffers';
+import { NEAR_PLACES_COUNT } from '../const/const';
+
+import { PreviewOfferType } from '@/global/types';
 
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
 
-export function NearPlaces() {
+type NearPlacesProps = {
+  offers: PreviewOfferType[];
+}
+
+export function NearPlaces({ offers }: NearPlacesProps) {
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {previewOffers.map((offer) => (
+        {Array.from({length: NEAR_PLACES_COUNT}, (_, index) => offers[index]).map((offer) => (
           <Card
             key={offer.id}
             offer={offer}

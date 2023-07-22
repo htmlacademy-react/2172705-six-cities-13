@@ -3,4 +3,5 @@ export const AppRoute = {
   Login: '/login',
   Favorites: '/favorites',
   Offer: '/offer/:id',
+  NotFound: '*'
 } as const;
