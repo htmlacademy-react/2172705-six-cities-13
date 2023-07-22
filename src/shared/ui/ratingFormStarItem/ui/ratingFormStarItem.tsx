@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-type RatingFormStarItemProps = {
+interface RatingFormStarItemProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: number;
   status: string;
   onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
@@ -17,7 +17,7 @@ export function RatingFormStarItem({ value, status, onChange }: RatingFormStarIt
         value={value}
         id={starsCountString}
         type="radio"
-        onChange = {onChange}
+        onChange={onChange}
       />
       <label
         htmlFor={starsCountString}

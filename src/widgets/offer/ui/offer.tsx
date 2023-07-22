@@ -11,7 +11,7 @@ import { capitalizeWord } from '@/shared/lib';
 
 type OfferProps = {
   activeOffer: OpenedOfferType;
-  offers: PreviewOfferType[] | OpenedOfferType[];
+  offers: PreviewOfferType[];
 }
 
 export function Offer({ activeOffer, offers }: OfferProps) {

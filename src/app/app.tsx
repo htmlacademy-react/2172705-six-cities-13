@@ -15,8 +15,8 @@ import { ScrollToTop, PrivateRoute, AuthorizationStatus } from '@/shared/lib';
 
 const LoginPage = lazy(() => import('@/pages/login/ui/loginPage'));
 const FavoritesPage = lazy(() => import('@/pages/favorites/ui/favoritesPage'));
-const Page404 = lazy(() => import('@/pages/errors/404/ui/page404'));
-const AppCrashPage = lazy(() => import('@/pages/errors/appCrash/ui/appCrashPage'));
+const NotFoundPage = lazy(() => import('@/pages/errors/notFound/ui/notFoundPage'));
+const FallbackPage = lazy(() => import('@/pages/errors/fallback/ui/fallbackPage'));
 
 type AppProps = {
   previewOffers: PreviewOfferType[];
@@ -25,7 +25,7 @@ type AppProps = {
 
 export function App({ previewOffers, openedOffers }: AppProps) {
   return (
-    <ErrorBoundary fallback={<AppCrashPage />}>
+    <ErrorBoundary fallback={<FallbackPage />}>
       <Suspense fallback={<LoadingPage />}>
         <HelmetProvider>
           <BrowserRouter>
@@ -40,7 +40,7 @@ export function App({ previewOffers, openedOffers }: AppProps) {
               }
               />
               <Route path={AppRoute.Offer} element={<OfferPage openedOffers={openedOffers} previewOffers={previewOffers} />} />
-              <Route path="*" element={<Page404 />} />
+              <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>
         </HelmetProvider>

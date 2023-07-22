@@ -8,7 +8,7 @@ import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 type MapProps = {
   sectionName: string;
   activeOffer: Nullable<OpenedOfferType | PreviewOfferType>;
-  offers: PreviewOfferType[] | OpenedOfferType[];
+  offers: PreviewOfferType[];
 }
 
 export function Map({ sectionName, activeOffer, offers }: MapProps) {

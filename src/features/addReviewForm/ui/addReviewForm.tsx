@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { ratings } from '../const/const';
 
@@ -6,13 +6,13 @@ import { Button, RatingFormStarItem } from '@/shared/ui';
 
 export function AddReviewForm() {
   const [reviewData, setReviewData] = useState({
-    text: '',
-    rating: 0
+    review: '',
+    rating: '0'
   });
 
-  const handleReviewDataChange = (name: keyof typeof reviewData, value: typeof reviewData[keyof typeof reviewData]) => setReviewData({
+  const handleReviewDataChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setReviewData({
     ...reviewData,
-    [name]: value
+    [evt.target.name]: evt.target.value
   });
 
   return (
@@ -25,7 +25,7 @@ export function AddReviewForm() {
             key={status}
             value={value}
             status={status}
-            onChange={(evt) => handleReviewDataChange('rating', evt.target.value)}
+            onChange={handleReviewDataChange}
           />))}
       </div>
 
@@ -34,8 +34,8 @@ export function AddReviewForm() {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={reviewData.text}
-        onChange={(evt) => handleReviewDataChange('text', evt.target.value)}
+        value={reviewData.review}
+        onChange={handleReviewDataChange}
       >
       </textarea>
 

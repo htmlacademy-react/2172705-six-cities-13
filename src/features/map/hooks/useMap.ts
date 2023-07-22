@@ -1,7 +1,7 @@
 import { useEffect, useState, MutableRefObject, useRef } from 'react';
 import { Map, TileLayer } from 'leaflet';
 
-import { MAP_ZOOM } from '../const/const';
+import { MAP_ZOOM, TileLayerSetup } from '../const/const';
 
 import { CityType } from '@/global/types';
 
@@ -22,13 +22,9 @@ export function useMap(
         zoom: MAP_ZOOM
       });
 
-      const layer = new TileLayer(
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-        {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        }
-      );
+      const layer = new TileLayer(TileLayerSetup.URL, {
+        attribution: TileLayerSetup.Attribution
+      });
 
       instance.addLayer(layer);
       setMap(instance);

@@ -9,11 +9,12 @@ import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 export function useMapPins(
   map: Nullable<Map>,
   activeOffer: Nullable<OpenedOfferType | PreviewOfferType>,
-  offers: PreviewOfferType[] | OpenedOfferType[]
+  offers: PreviewOfferType[]
 ) {
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
+
       offers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.latitude,

@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 
 import { OpenedOfferType, PreviewOfferType } from '@/global/types';
+import { AppRoute } from '@/global/const';
 
 import { Header } from '@/widgets/header';
 import { Offer } from '@/widgets/offer';
@@ -12,18 +13,22 @@ type OfferPageProps = {
   previewOffers: PreviewOfferType[];
 }
 
-export default function OfferPage({ openedOffers, previewOffers}: OfferPageProps) {
+export default function OfferPage({ openedOffers, previewOffers }: OfferPageProps) {
   const { id: offerId } = useParams();
 
-  const offerItem = openedOffers.find((offer) => offer.id === offerId);
   const nearPlaces = previewOffers;
+  const offerItem = openedOffers.find((offer) => offer.id === offerId);
+
+  if (!offerItem) {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
 
   return (
     <Layout
       header={<Header />}
       content={
         <main className="page__main page__main--offer">
-          <Offer activeOffer={offerItem as OpenedOfferType} offers={nearPlaces} />
+          <Offer activeOffer={offerItem} offers={nearPlaces} />
 
           <div className="container">
             <NearPlaces offers={nearPlaces} />
