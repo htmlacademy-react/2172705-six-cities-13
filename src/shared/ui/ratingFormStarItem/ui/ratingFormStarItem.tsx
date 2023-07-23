@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-interface RatingFormStarItemProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type RatingFormStarItemProps = {
   value: number;
   status: string;
   onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
