@@ -84,7 +84,7 @@ export const openedOffers = [
       'Towels'
     ],
     host: {
-      isPro: true,
+      isPro: false,
       name: 'Angelina',
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
@@ -136,7 +136,7 @@ export const openedOffers = [
       'Washer'
     ],
     host: {
-      isPro: true,
+      isPro: false,
       name: 'Angelina',
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
