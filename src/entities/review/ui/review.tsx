@@ -1,36 +1,32 @@
 import dayjs from 'dayjs';
 
+import { ReviewType } from '@/global/types';
+
 import { StarsRatingInfo } from '@/shared/ui';
-import { ReviewType, UserType } from '@/global/types';
 
-//! Временное решение
-type ReviewProps = Pick<ReviewType, 'date' | 'comment' | 'rating'> & Pick<UserType, 'avatarUrl' | 'name'>;
+type ReviewProps = {
+  review: ReviewType;
+}
 
-export function Review({
-  date,
-  name,
-  avatarUrl,
-  comment,
-  rating,
-}: ReviewProps) {
+export function Review({ review }: ReviewProps) {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src={avatarUrl} width="54" height="54" alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={review.user.avatarUrl} width="54" height="54" alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
-          {name}
+          {review.user.name}
         </span>
       </div>
 
       <div className="reviews__info">
-        <StarsRatingInfo sectionName="reviews" rating={rating} />
+        <StarsRatingInfo sectionName="reviews" rating={review.rating} />
         <p className="reviews__text">
-          {comment}
+          {review.comment}
         </p>
-        <time className="reviews__time" dateTime={dayjs(date).format('YYYY-MM-DD')}>
-          {dayjs(date).format('MMMM YYYY')}
+        <time className="reviews__time" dateTime={dayjs(review.date).format('YYYY-MM-DD')}>
+          {dayjs(review.date).format('MMMM YYYY')}
         </time>
       </div>
     </li>
