@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider, ErrorBoundary } from '@rollbar/react';
 
-import './app.module.css';
+import './styles/app.module.css';
+import { rollbarConfig } from './config/rollbar';
 
 import { AppRoute } from '@/global/const';
 import { PreviewOfferType, OpenedOfferType } from '@/global/types';
@@ -17,11 +18,6 @@ const LoginPage = lazy(() => import('@/pages/login/ui/loginPage'));
 const FavoritesPage = lazy(() => import('@/pages/favorites/ui/favoritesPage'));
 const NotFoundPage = lazy(() => import('@/pages/errors/notFound/ui/notFoundPage'));
 const FallbackPage = lazy(() => import('@/pages/errors/fallback/ui/fallbackPage'));
-
-const rollbarConfig = {
-  accessToken: '609b92e59bab4cd3857dd1e06d3e93e4',
-  environment: 'production',
-};
 
 type AppProps = {
   previewOffers: PreviewOfferType[];
