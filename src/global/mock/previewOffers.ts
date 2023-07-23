@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 export const previewOffers = [
   {
     id: '6cedd5f6-ca3e-42ff-9bad-7f1c4f52f5a9',
