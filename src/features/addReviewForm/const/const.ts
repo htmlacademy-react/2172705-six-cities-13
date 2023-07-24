@@ -1,22 +1,22 @@
-export const ratings: { value: number; status: string }[] = [
+export const ratings: { value: string; status: string }[] = [
   {
-    value: 5,
+    value: '5',
     status: 'perfect'
   },
   {
-    value: 4,
+    value: '4',
     status: 'good'
   },
   {
-    value: 3,
+    value: '3',
     status: 'not bad'
   },
   {
-    value: 2,
+    value: '2',
     status: 'badly'
   },
   {
-    value: 1,
+    value: '1',
     status: 'terribly'
   },
 ];

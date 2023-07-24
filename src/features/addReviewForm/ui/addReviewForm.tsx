@@ -25,6 +25,7 @@ export function AddReviewForm() {
             key={status}
             value={value}
             status={status}
+            isChecked={value === reviewData.rating}
             onChange={handleReviewDataChange}
           />))}
       </div>

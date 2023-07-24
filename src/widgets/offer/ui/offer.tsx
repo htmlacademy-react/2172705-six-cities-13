@@ -1,6 +1,9 @@
+import clsx from 'clsx';
+
 import { MAX_IMAGES_COUNT } from '../const/const';
 
 import { OpenedOfferType, PreviewOfferType } from '@/global/types';
+import { reviews } from '@/global/mock/reviews';
 
 import { FavoriteButton } from '@/features/favoriteButton';
 import { AddReviewForm } from '@/features/addReviewForm';
@@ -75,7 +78,7 @@ export function Offer({ activeOffer, offers }: OfferProps) {
           <div className="offer__host">
             <h2 className="offer__host-title">Meet the host</h2>
             <div className="offer__host-user user">
-              <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
+              <div className={clsx('offer__avatar-wrapper user__avatar-wrapper', { 'offer__avatar-wrapper--pro': activeOffer.host.isPro })}>
                 <img className="offer__avatar user__avatar" src={activeOffer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
               </div>
               <span className="offer__user-name">
@@ -93,16 +96,10 @@ export function Offer({ activeOffer, offers }: OfferProps) {
           <section className="offer__reviews reviews">
             <h2 className="reviews__title">
               Reviews &middot;
-              <span className="reviews__amount">1</span>
+              <span className="reviews__amount">{reviews.length}</span>
             </h2>
             <ul className="reviews__list">
-              <Review
-                date="2019-04-24"
-                name="Max"
-                avatarUrl="img/avatar-max.jpg"
-                comment="A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century."
-                rating={4}
-              />
+              {reviews.map((review) => <Review key={review.id} review={review} />)}
             </ul>
             <AddReviewForm />
           </section>

@@ -1,13 +1,14 @@
 import { ChangeEvent } from 'react';
 
-interface RatingFormStarItemProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  value: number;
+type RatingFormStarItemProps = {
+  value: string;
   status: string;
+  isChecked: boolean;
   onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function RatingFormStarItem({ value, status, onChange }: RatingFormStarItemProps) {
-  const starsCountString = value > 1 ? `${value}-stars` : '1-star';
+export function RatingFormStarItem({ value, status, isChecked, onChange }: RatingFormStarItemProps) {
+  const starsCountString = Number(value) > 1 ? `${value}-stars` : '1-star';
 
   return (
     <>
@@ -17,6 +18,7 @@ export function RatingFormStarItem({ value, status, onChange }: RatingFormStarIt
         value={value}
         id={starsCountString}
         type="radio"
+        checked={isChecked}
         onChange={onChange}
       />
       <label

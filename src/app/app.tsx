@@ -1,9 +1,10 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { ErrorBoundary } from 'react-error-boundary';
+import { Provider, ErrorBoundary } from '@rollbar/react';
 
-import './app.module.css';
+import './styles/app.module.css';
+import { rollbarConfig } from './config/rollbar';
 
 import { AppRoute } from '@/global/const';
 import { PreviewOfferType, OpenedOfferType } from '@/global/types';
@@ -25,26 +26,28 @@ type AppProps = {
 
 export function App({ previewOffers, openedOffers }: AppProps) {
   return (
-    <ErrorBoundary fallback={<FallbackPage />}>
-      <Suspense fallback={<LoadingPage />}>
-        <HelmetProvider>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
-              <Route path={AppRoute.Login} element={<LoginPage />} />
-              <Route path={AppRoute.Favorites} element={
-                <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                  <FavoritesPage offers={previewOffers} />
-                </PrivateRoute>
-              }
-              />
-              <Route path={AppRoute.Offer} element={<OfferPage openedOffers={openedOffers} previewOffers={previewOffers} />} />
-              <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
-            </Routes>
-          </BrowserRouter>
-        </HelmetProvider>
-      </Suspense>
-    </ErrorBoundary >
+    <Provider config={rollbarConfig}>
+      <ErrorBoundary fallbackUI={FallbackPage}>
+        <Suspense fallback={<LoadingPage />}>
+          <HelmetProvider>
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
+                <Route path={AppRoute.Login} element={<LoginPage />} />
+                <Route path={AppRoute.Favorites} element={
+                  <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                    <FavoritesPage offers={previewOffers} />
+                  </PrivateRoute>
+                }
+                />
+                <Route path={AppRoute.Offer} element={<OfferPage openedOffers={openedOffers} previewOffers={previewOffers} />} />
+                <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
+              </Routes>
+            </BrowserRouter>
+          </HelmetProvider>
+        </Suspense>
+      </ErrorBoundary >
+    </Provider>
   );
 }

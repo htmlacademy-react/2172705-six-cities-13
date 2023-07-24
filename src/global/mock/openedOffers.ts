@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 export const openedOffers = [
   {
     id: '6cedd5f6-ca3e-42ff-9bad-7f1c4f52f5a9',
@@ -83,7 +84,7 @@ export const openedOffers = [
       'Towels'
     ],
     host: {
-      isPro: true,
+      isPro: false,
       name: 'Angelina',
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
@@ -135,7 +136,7 @@ export const openedOffers = [
       'Washer'
     ],
     host: {
-      isPro: true,
+      isPro: false,
       name: 'Angelina',
       avatarUrl: 'https://13.design.pages.academy/static/host/avatar-angelina.jpg'
     },
