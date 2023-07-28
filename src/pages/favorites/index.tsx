@@ -28,7 +28,7 @@ export default function FavoritesPage({ offers }: FavoritesPageProps) {
       }
       footer={<Footer />}
       title="6 cities: favorites"
-      className={clsx('page', { 'page--favorites-empty': isEmpty })}
+      wrapperClassName={clsx('page', { 'page--favorites-empty': isEmpty })}
     />
   );
 }

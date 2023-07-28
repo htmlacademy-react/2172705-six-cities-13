@@ -35,7 +35,7 @@ export default function OfferPage({ openedOffers, previewOffers }: OfferPageProp
       }
       footer={false}
       title="6 cities: offer"
-      className="page"
+      wrapperClassName="page"
     />
   );
 }

@@ -6,12 +6,12 @@ type LayoutProps = {
   content: ReactNode;
   footer: ReactNode;
   title: string;
-  className?: string;
+  wrapperClassName?: string;
 }
 
-export function Layout({ header, content, footer, title, className }: LayoutProps) {
+export function Layout({ header, content, footer, title, wrapperClassName }: LayoutProps) {
   return (
-    <div className={className}>
+    <div className={wrapperClassName}>
       <Helmet>
         <title>{title}</title>
       </Helmet>

@@ -1,9 +1,7 @@
-import { getFavoritePlacesByCity } from '../lib/getFavoritePlacesByCity';
-
-import { PreviewOfferType } from '@/global/types';
-
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
+import { getFavoritePlacesByCity } from '../lib/getFavoritePlacesByCity';
+import { PreviewOfferType } from '@/global/types';
 
 type FavoritesProps = {
   offers: PreviewOfferType[];

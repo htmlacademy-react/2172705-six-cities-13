@@ -1,16 +1,13 @@
 import clsx from 'clsx';
-
-import { MAX_IMAGES_COUNT } from '../const/const';
-
-import { OpenedOfferType, PreviewOfferType } from '@/global/types';
-import { reviews } from '@/global/mock/reviews';
-
-import { FavoriteButton } from '@/features/favoriteButton';
 import { AddReviewForm } from '@/features/addReviewForm';
+import { FavoriteButton } from '@/features/favoriteButton';
 import { Map } from '@/features/map';
 import { Review } from '@/entities/review';
-import { Badge, StarsRatingInfo } from '@/shared/ui';
 import { capitalizeWord } from '@/shared/lib';
+import { Badge, StarsRatingInfo } from '@/shared/ui';
+import { MAX_IMAGES_COUNT } from '../const/const';
+import { reviews } from '@/global/mock/reviews';
+import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 
 type OfferProps = {
   activeOffer: OpenedOfferType;

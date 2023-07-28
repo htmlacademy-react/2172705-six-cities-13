@@ -1,27 +1,26 @@
+import clsx from 'clsx';
 import { Cities } from '@/widgets/cities';
 import { Header } from '@/widgets/header';
 import { Tabs } from '@/features/tabs';
 import { Layout } from '@/shared/layouts';
-import { PreviewOfferType } from '@/global/types';
+import { useAppSelector } from '@/shared/model';
 
-type MainPageProps = {
-  offers: PreviewOfferType[];
-}
+export default function MainPage() {
+  const offers = useAppSelector((state) => state.tabs.renderedOffers);
 
-export default function MainPage({ offers }: MainPageProps) {
   return (
     <Layout
       header={<Header />}
       content={
-        <main className="page__main page__main--index">
+        <main className={clsx('page__main page__main--index', {'page__main--index-empty': !offers.length})}>
           <h1 className="visually-hidden">Cities</h1>
           <Tabs />
-          <Cities offers={offers} />
+          <Cities />
         </main>
       }
       footer={false}
       title="6 cities: main"
-      className="page page--gray page__main--main"
+      wrapperClassName="page page--gray page--main"
     />
   );
 }
