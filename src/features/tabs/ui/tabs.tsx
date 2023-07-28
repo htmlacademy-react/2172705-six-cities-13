@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-
 import { cities } from '../const/const';
 
 export function Tabs() {

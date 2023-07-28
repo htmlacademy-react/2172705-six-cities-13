@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-
 import { getWidthByStarsCount } from '../lib/getWidthByStarsCount';
 
 type StarsRatingInfoProps = {

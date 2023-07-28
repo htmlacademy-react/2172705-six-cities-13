@@ -1,13 +1,10 @@
 import clsx from 'clsx';
-
-import { calcFavoritesCount } from '../lib/calcFavoritesCount';
-
-import { PreviewOfferType } from '@/global/types';
-
-import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
 import { Favorites, EmptyFavorites } from '@/widgets/favorites';
+import { Footer } from '@/widgets/footer';
+import { Header } from '@/widgets/header';
 import { Layout } from '@/shared/layouts';
+import { calcFavoritesCount } from './lib/calcFavoritesCount';
+import { PreviewOfferType } from '@/global/types';
 
 type FavoritesPageProps = {
   offers: PreviewOfferType[];

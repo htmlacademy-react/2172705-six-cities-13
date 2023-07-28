@@ -1,9 +1,8 @@
-import { PreviewOfferType } from '@/global/types';
-
-import { Header } from '@/widgets/header';
 import { Cities } from '@/widgets/cities';
+import { Header } from '@/widgets/header';
 import { Tabs } from '@/features/tabs';
 import { Layout } from '@/shared/layouts';
+import { PreviewOfferType } from '@/global/types';
 
 type MainPageProps = {
   offers: PreviewOfferType[];

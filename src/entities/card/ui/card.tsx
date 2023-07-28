@@ -1,14 +1,11 @@
+import clsx from 'clsx';
 import { ReactNode } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import clsx from 'clsx';
-
+import { capitalizeWord } from '@/shared/lib';
+import { Badge, StarsRatingInfo } from '@/shared/ui';
 import { getImageSize } from '../lib/getImageSize';
-
 import { AppRoute } from '@/global/const';
 import { PreviewOfferType } from '@/global/types';
-
-import { Badge, StarsRatingInfo } from '@/shared/ui';
-import { capitalizeWord } from '@/shared/lib';
 
 type CardProps = {
   offer: PreviewOfferType;

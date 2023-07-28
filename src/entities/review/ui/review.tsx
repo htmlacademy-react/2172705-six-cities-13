@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
-
-import { ReviewType } from '@/global/types';
-
 import { StarsRatingInfo } from '@/shared/ui';
+import { ReviewType } from '@/global/types';
 
 type ReviewProps = {
   review: ReviewType;
