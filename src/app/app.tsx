@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import './styles/app.module.css';
 import LoadingPage from '@/pages/loading';
 import { rollbarConfig } from './config/rollbar';
-import { Routing } from './routes/routes';
+import { Routing } from './routes';
 
 const FallbackPage = lazy(() => import('@/pages/errors/fallback/fallbackPage'));
 

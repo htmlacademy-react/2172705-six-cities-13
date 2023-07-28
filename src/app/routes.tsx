@@ -16,7 +16,7 @@ export function Routing() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path={AppRoute.Root} element={<MainPage offers={previewOffers} />} />
+        <Route path={AppRoute.Root} element={<MainPage />} />
         <Route path={AppRoute.Login} element={<LoginPage />} />
         <Route path={AppRoute.Favorites} element={
           <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
