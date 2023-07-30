@@ -1,7 +1,6 @@
 import { Map, TileLayer } from 'leaflet';
 import { useEffect, useState, MutableRefObject, useRef } from 'react';
 import { MAP_ZOOM, TileLayerSetup } from '../const/const';
-import { CityType } from '@/global/types';
 
 export function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,

@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useMap } from '../hooks/useMap';
 import { useMapPins } from '../hooks/useMapPins';
-import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 
 type MapProps = {
   sectionName: string;

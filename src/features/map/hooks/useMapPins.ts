@@ -2,7 +2,6 @@ import { Icon, Marker, layerGroup, Map, BaseIconOptions } from 'leaflet';
 import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { IconSetup } from '../const/const';
-import { OpenedOfferType, PreviewOfferType } from '@/global/types';
 
 export function useMapPins(
   map: Nullable<Map>,

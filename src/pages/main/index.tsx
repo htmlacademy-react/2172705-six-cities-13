@@ -3,10 +3,10 @@ import { Cities } from '@/widgets/cities';
 import { Header } from '@/widgets/header';
 import { Tabs } from '@/features/tabs';
 import { Layout } from '@/shared/layouts';
-import { useAppSelector } from '@/shared/model';
+import { useAppSelector } from '@/shared/lib';
 
 export default function MainPage() {
-  const offers = useAppSelector((state) => state.tabs.renderedOffers);
+  const offers = useAppSelector((state) => state.offer.previewOffers);
 
   return (
     <Layout

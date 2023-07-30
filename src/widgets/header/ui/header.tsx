@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { resetTabs } from '@/features/tabs';
-import { useAppDispatch } from '@/shared/model';
+import { resetCurrentCity } from '@/entities/city';
+import { useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
-import { AppRoute } from '@/global/const';
+import { AppRoute } from '@/const';
 
 type HeaderProps = {
   hasUserMenu?: boolean;
@@ -11,7 +11,7 @@ type HeaderProps = {
 export function Header({ hasUserMenu = true }: HeaderProps) {
   const dispatch = useAppDispatch();
 
-  const handleSignOut = () => dispatch(resetTabs());
+  const handleSignOut = () => dispatch(resetCurrentCity());
 
   return (
     <header className="header">

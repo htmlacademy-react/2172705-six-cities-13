@@ -4,12 +4,13 @@ import { FavoriteButton } from '@/features/favoriteButton';
 import { Map } from '@/features/map';
 import { SortPlaces } from '@/features/sortPlaces';
 import { Card } from '@/entities/card';
-import { useAppSelector } from '@/shared/model';
-import { PreviewOfferType } from '@/global/types';
+import { useAppSelector } from '@/shared/lib';
+import { getfilteredOffersByCity } from '../model/selectors';
+import { CitiesNoPlaces } from './citiesNoPlaces';
 
 export function Cities() {
-  const city = useAppSelector((state) => state.tabs.city);
-  const offers = useAppSelector((state) => state.tabs.renderedOffers);
+  const city = useAppSelector((state) => state.city.city);
+  const offers = useAppSelector(getfilteredOffersByCity);
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
@@ -41,16 +42,7 @@ export function Cities() {
               </div>
             </>
           )
-          : (
-            <>
-              <section className="cities__no-places">
-                <div className="cities__status-wrapper tabs__content">
-                  <b className="cities__status">No places to stay available</b>
-                  <p className="cities__status-description">We could not find any property available at the moment in {city}</p>
-                </div>
-              </section><div className="cities__right-section"></div>
-            </>
-          )}
+          : <CitiesNoPlaces city={city} />}
       </div>
     </div>
   );

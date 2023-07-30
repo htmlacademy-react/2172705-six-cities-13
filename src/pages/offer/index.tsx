@@ -3,8 +3,7 @@ import { Header } from '@/widgets/header';
 import { NearPlaces } from '@/widgets/nearPlaces';
 import { Offer } from '@/widgets/offer';
 import { Layout } from '@/shared/layouts';
-import { AppRoute } from '@/global/const';
-import { OpenedOfferType, PreviewOfferType } from '@/global/types';
+import { AppRoute } from '@/const';
 
 type OfferPageProps = {
   openedOffers: OpenedOfferType[];

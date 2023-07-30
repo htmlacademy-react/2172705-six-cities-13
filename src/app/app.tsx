@@ -1,23 +1,13 @@
-import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
-import { Suspense, lazy } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import './styles/app.module.css';
-import LoadingPage from '@/pages/loading';
-import { rollbarConfig } from './config/rollbar';
-import { Routing } from './routes';
+import { AppRouter } from './appRouter';
+import { withProviders } from './providers';
+import './styles.module.css';
 
-const FallbackPage = lazy(() => import('@/pages/errors/fallback/fallbackPage'));
-
-export function App() {
+function App() {
   return (
-    <RollbarProvider config={rollbarConfig}>
-      <ErrorBoundary fallbackUI={FallbackPage}>
-        <Suspense fallback={<LoadingPage />}>
-          <HelmetProvider>
-            <Routing />
-          </HelmetProvider>
-        </Suspense>
-      </ErrorBoundary >
-    </RollbarProvider>
+    <AppRouter />
   );
 }
+
+const appWithProviders = withProviders(App);
+
+export default appWithProviders;

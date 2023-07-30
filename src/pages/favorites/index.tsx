@@ -4,7 +4,6 @@ import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 import { Layout } from '@/shared/layouts';
 import { calcFavoritesCount } from './lib/calcFavoritesCount';
-import { PreviewOfferType } from '@/global/types';
 
 type FavoritesPageProps = {
   offers: PreviewOfferType[];
