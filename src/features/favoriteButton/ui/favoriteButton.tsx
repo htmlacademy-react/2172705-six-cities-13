@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import clsx from 'clsx';
-
-import { getIconSize } from '../lib';
+import { useState } from 'react';
+import { getIconSize } from '../lib/getIconSize';
 
 type FavoriteButtonProps = {
   sectionName: string;

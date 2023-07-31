@@ -1,6 +1,5 @@
-import { AppRoute } from '@/global/const';
-
 import { LogoLink } from '@/shared/ui';
+import { AppRoute } from '@/const';
 
 export function Footer() {
   return (
