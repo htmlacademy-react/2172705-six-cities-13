@@ -1,6 +1,6 @@
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
-import { NEAR_PLACES_COUNT } from '../const/const';
+import { NEAR_PLACES_COUNT } from '../const';
 
 type NearPlacesProps = {
   offers: PreviewOfferType[];

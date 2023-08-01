@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { changeCurrentCity } from '@/entities/city';
-import { cities } from '@/entities/city/const/const';
+import { cities } from '@/entities/city/const';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export function Tabs() {

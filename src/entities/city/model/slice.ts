@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { INITIAL_CITY } from '../const/const';
+import { INITIAL_CITY } from '../const';
 
 type initialStateType = {
   city: CityTypes;

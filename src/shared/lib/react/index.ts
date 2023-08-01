@@ -4,4 +4,4 @@ export { PrivateRoute } from './components/privateRoute';
 export { useAppDispatch } from './hooks/useAppDispatch';
 export { useAppSelector } from './hooks/useAppSelector';
 
-export { AuthorizationStatus } from './const/const';
+export { AuthorizationStatus } from './const';

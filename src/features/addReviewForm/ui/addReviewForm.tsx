@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Button, RatingFormStarItem } from '@/shared/ui';
-import { ratings } from '../const/const';
+import { ratings } from '../const';
 
 export function AddReviewForm() {
   const [reviewData, setReviewData] = useState({
