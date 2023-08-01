@@ -1,1 +1,2 @@
-export { offerSlice } from './model/slice';
+export { offerSlice, changeSortType, resetSortType } from './model/slice';
+export { SortType } from './const';

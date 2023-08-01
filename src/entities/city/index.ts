@@ -1,5 +1,5 @@
 export {
   citySlice,
-  changeCurrentCity,
-  resetCurrentCity
+  changeCity,
+  resetCity
 } from './model/slice';
