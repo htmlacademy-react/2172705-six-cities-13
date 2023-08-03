@@ -6,16 +6,14 @@ import { Sort } from '@/features/sort';
 import { Card } from '@/entities/card';
 import { changeSortType, SortType } from '@/entities/offer';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
-import { getFilteredOffersByCity, getSortedOffers } from '../model/selectors';
+import { getFilteredSortedOffers } from '../model/selectors';
 import { CitiesNoPlaces } from './citiesNoPlaces';
 
 export function Cities() {
   const dispatch = useAppDispatch();
-  const city = useAppSelector((state) => state.city.city);
 
-  let offers;
-  offers = useAppSelector(getFilteredOffersByCity);
-  offers = useAppSelector(getSortedOffers);
+  const city = useAppSelector((state) => state.city.city);
+  const offers = useAppSelector(getFilteredSortedOffers);
 
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 

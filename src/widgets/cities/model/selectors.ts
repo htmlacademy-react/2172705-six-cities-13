@@ -6,12 +6,12 @@ const selectPreviewOffers = (state: State) => state.offer.previewOffers;
 const selectCurrentCity = (state: State) => state.city.city;
 const currentSortType = (state: State) => state.offer.sortType;
 
-export const getFilteredOffersByCity = createSelector(
+const getFilteredOffersByCity = createSelector(
   [selectPreviewOffers, selectCurrentCity],
   (previewOffers, city) => previewOffers.filter((offer) => offer.city.name === city)
 );
 
-export const getSortedOffers = createSelector(
+const getSortedOffers = createSelector(
   [currentSortType, getFilteredOffersByCity],
   (sortType, previewOffers) => {
     const previewOffersCopy = structuredClone(previewOffers);
@@ -29,5 +29,10 @@ export const getSortedOffers = createSelector(
         throw new Error('There is no sorting implementation for this sorting type');
     }
   }
+);
+
+export const getFilteredSortedOffers = createSelector(
+  [getSortedOffers],
+  (offers) => offers
 );
 
