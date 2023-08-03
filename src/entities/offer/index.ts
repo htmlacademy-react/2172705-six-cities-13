@@ -1,2 +1,2 @@
-export { offerSlice, changeSortType, resetSortType } from './model/slice';
-export { SortType } from './const';
+export { offerSlice, changeSortType } from './model/slice';
+export { SortType, INITIAL_SORT_TYPE } from './const';

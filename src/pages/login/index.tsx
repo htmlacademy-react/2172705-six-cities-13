@@ -1,5 +1,5 @@
 import { Header } from '@/widgets/header';
-import { LoginForm } from '@/features/authorization/loginForm';
+import { LoginForm } from '@/features/authorization';
 import { Layout } from '@/shared/layouts';
 
 export default function LoginPage() {

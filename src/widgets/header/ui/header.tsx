@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { resetCity } from '@/entities/city';
-import { resetSortType } from '@/entities/offer';
+import { resetState } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
 import { AppRoute } from '@/const';
@@ -12,10 +11,7 @@ type HeaderProps = {
 export function Header({ hasUserMenu = true }: HeaderProps) {
   const dispatch = useAppDispatch();
 
-  const handleSignOut = () => {
-    dispatch(resetCity());
-    dispatch(resetSortType());
-  };
+  const handleSignOut = () => dispatch(resetState());
 
   return (
     <header className="header">
