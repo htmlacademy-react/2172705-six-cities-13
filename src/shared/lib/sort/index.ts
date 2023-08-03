@@ -1,2 +1,1 @@
-export { sortByPropertyAsc } from './sortByPropertyAsc';
-export { sortByPropertyDesc } from './sortByPropertyDesc';
+export { sortByProperty } from './sortByProperty';

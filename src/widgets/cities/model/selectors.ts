@@ -1,7 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { sortByPriceAsc, sortByPriceDesc, sortByRatingDesc } from '@/features/sort';
 import { SortType } from '@/entities/offer';
-import { sortByPriceAsc, sortByPriceDesc } from '../lib/sortByPrice';
-import { sortByRatingDesc } from '../lib/sortByRating';
 
 const selectPreviewOffers = (state: State) => state.offer.previewOffers;
 const selectCurrentCity = (state: State) => state.city.city;
@@ -17,7 +16,7 @@ export const getSortedOffers = createSelector(
   (sortType, previewOffers) => {
     const previewOffersCopy = structuredClone(previewOffers);
 
-    switch(sortType) {
+    switch (sortType) {
       case SortType.Popular:
         return previewOffers;
       case SortType.PriceAsc:
