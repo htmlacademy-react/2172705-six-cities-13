@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { INITIAL_CITY } from '../const/const';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { resetState } from '@/shared/lib';
+import { INITIAL_CITY } from '../const';
+
 
 type initialStateType = {
-  city: CityTypes;
+  city: CitiesType;
 }
 
 const initialState: initialStateType = {
@@ -13,13 +15,15 @@ export const citySlice = createSlice({
   name: 'city',
   initialState,
   reducers: {
-    changeCurrentCity(state, action: { type: string; payload: { city: CityTypes } }) {
+    changeCity(state, action: PayloadAction<{ city: CitiesType }>) {
       state.city = action.payload.city;
-    },
-    resetCurrentCity(state) {
-      state.city = INITIAL_CITY;
     }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(resetState, (state) => {
+      state.city = INITIAL_CITY;
+    });
   }
 });
 
-export const { changeCurrentCity, resetCurrentCity } = citySlice.actions;
+export const { changeCity } = citySlice.actions;

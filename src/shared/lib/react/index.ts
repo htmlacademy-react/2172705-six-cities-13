@@ -3,5 +3,8 @@ export { PrivateRoute } from './components/privateRoute';
 
 export { useAppDispatch } from './hooks/useAppDispatch';
 export { useAppSelector } from './hooks/useAppSelector';
+export { useOutsideClick } from './hooks/useOutsideClick';
 
-export { AuthorizationStatus } from './const/const';
+export { resetState } from './actions/resetState';
+
+export { AuthorizationStatus } from './const';

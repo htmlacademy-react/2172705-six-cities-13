@@ -1,5 +1,2 @@
-export {
-  citySlice,
-  changeCurrentCity,
-  resetCurrentCity
-} from './model/slice';
+export { citySlice, changeCity } from './model/slice';
+export { INITIAL_CITY } from './const';

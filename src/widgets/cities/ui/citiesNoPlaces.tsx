@@ -1,8 +1,8 @@
 type CitiesNoPlacesProps = {
-  city: CityTypes;
+  city: CitiesType;
 }
 
-export function CitiesNoPlaces({city}: CitiesNoPlacesProps) {
+export function CitiesNoPlaces({ city }: CitiesNoPlacesProps) {
   return (
     <>
       <section className="cities__no-places">

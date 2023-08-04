@@ -7,4 +7,4 @@ type CityType = {
   };
 }
 
-type CityTypes = typeof import('./const/const').cities[number];
+type CitiesType = typeof import('./const').cities[number];
