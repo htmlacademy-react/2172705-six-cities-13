@@ -13,7 +13,7 @@ import { CitiesNoPlaces } from './citiesNoPlaces';
 export function Cities() {
   const dispatch = useAppDispatch();
 
-  const city = useAppSelector((state) => state.city.city);
+  const currentCity = useAppSelector((state) => state.city.currentCity);
   const offers = useAppSelector(getCurrentOffers);
   const isOffersLoading = useAppSelector((state) => state.offer.isOffersLoadingStatus);
 
@@ -36,7 +36,7 @@ export function Cities() {
                 <Map sectionName="cities" activeOffer={hoveredCard} offers={offers} />
               </div>
             </>
-            : <CitiesNoPlaces city={city} />}
+            : <CitiesNoPlaces city={currentCity} />}
         </div>
       </div>
     );
@@ -47,7 +47,7 @@ export function Cities() {
       <div className={clsx('cities__places-container container')}>
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${city}`}</b>
+          <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${currentCity}`}</b>
           <Sort onSortTypeChange={handleSortTypeChange} />
 
           <div className="cities__places-list places__list tabs__content">

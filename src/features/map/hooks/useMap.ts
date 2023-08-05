@@ -27,7 +27,16 @@ export function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+
+    if (city && isRenderedRef) {
+      map?.flyTo(
+        {
+          lat: city.location.latitude,
+          lng: city.location.longitude
+        }
+      );
+    }
+  }, [mapRef, map, city]);
 
   return map;
 }

@@ -4,13 +4,13 @@ import { INITIAL_SORT_TYPE, SortType } from '../const';
 
 type initialStateType = {
   previewOffers: PreviewOfferType[];
-  sortType: SortType;
+  currentSortType: SortType;
   isOffersLoadingStatus: boolean;
 }
 
 const initialState: initialStateType = {
   previewOffers: [],
-  sortType: INITIAL_SORT_TYPE,
+  currentSortType: INITIAL_SORT_TYPE,
   isOffersLoadingStatus: true
 };
 
@@ -19,7 +19,7 @@ export const offerSlice = createSlice({
   initialState,
   reducers: {
     changeSortType(state, action: PayloadAction<{ sortType: SortType }>) {
-      state.sortType = action.payload.sortType;
+      state.currentSortType = action.payload.sortType;
     },
     loadPreviewOffers(state, action: PayloadAction<{ previewOffers: PreviewOfferType[] }>) {
       state.previewOffers = action.payload.previewOffers;
@@ -30,7 +30,7 @@ export const offerSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(resetState, (state) => {
-      state.sortType = INITIAL_SORT_TYPE;
+      state.currentSortType = INITIAL_SORT_TYPE;
     });
   }
 });

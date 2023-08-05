@@ -3,8 +3,8 @@ import { sortByPriceAsc, sortByPriceDesc, sortByRatingDesc } from '@/features/so
 import { SortType } from '@/entities/offer';
 
 const selectPreviewOffers = (state: State) => state.offer.previewOffers;
-const selectCurrentCity = (state: State) => state.city.city;
-const currentSortType = (state: State) => state.offer.sortType;
+const selectCurrentCity = (state: State) => state.city.currentCity;
+const currentSortType = (state: State) => state.offer.currentSortType;
 
 const getFilteredOffersByCity = createSelector(
   [selectPreviewOffers, selectCurrentCity],

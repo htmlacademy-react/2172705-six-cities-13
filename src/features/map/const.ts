@@ -1,4 +1,4 @@
-export const MAP_ZOOM = 10;
+export const MAP_ZOOM = 13;
 
 export const IconSetup = {
   Default: {

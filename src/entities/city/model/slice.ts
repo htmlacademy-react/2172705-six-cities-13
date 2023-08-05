@@ -4,11 +4,11 @@ import { INITIAL_CITY } from '../const';
 
 
 type initialStateType = {
-  city: CitiesType;
+  currentCity: CitiesType;
 }
 
 const initialState: initialStateType = {
-  city: INITIAL_CITY,
+  currentCity: INITIAL_CITY,
 };
 
 export const citySlice = createSlice({
@@ -16,12 +16,12 @@ export const citySlice = createSlice({
   initialState,
   reducers: {
     changeCity(state, action: PayloadAction<{ city: CitiesType }>) {
-      state.city = action.payload.city;
+      state.currentCity = action.payload.city;
     }
   },
   extraReducers: (builder) => {
     builder.addCase(resetState, (state) => {
-      state.city = INITIAL_CITY;
+      state.currentCity = INITIAL_CITY;
     });
   }
 });
