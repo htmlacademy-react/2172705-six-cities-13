@@ -1,19 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { resetState } from '@/shared/lib';
 import { INITIAL_SORT_TYPE, SortType } from '../const';
-import { openedOffers } from '@/mock/openedOffers';
-import { previewOffers } from '@/mock/previewOffers';
 
 type initialStateType = {
   previewOffers: PreviewOfferType[];
-  openedOffers: OpenedOfferType[];
   sortType: SortType;
+  isOffersLoadingStatus: boolean;
 }
 
 const initialState: initialStateType = {
-  previewOffers: previewOffers,
-  openedOffers: openedOffers,
+  previewOffers: [],
   sortType: INITIAL_SORT_TYPE,
+  isOffersLoadingStatus: true
 };
 
 export const offerSlice = createSlice({
@@ -22,6 +20,12 @@ export const offerSlice = createSlice({
   reducers: {
     changeSortType(state, action: PayloadAction<{ sortType: SortType }>) {
       state.sortType = action.payload.sortType;
+    },
+    loadPreviewOffers(state, action: PayloadAction<{ previewOffers: PreviewOfferType[] }>) {
+      state.previewOffers = action.payload.previewOffers;
+    },
+    setIsOffersLoadingStatus(state, action: PayloadAction<{ status: boolean }>) {
+      state.isOffersLoadingStatus = action.payload.status;
     }
   },
   extraReducers: (builder) => {
@@ -31,4 +35,4 @@ export const offerSlice = createSlice({
   }
 });
 
-export const { changeSortType } = offerSlice.actions;
+export const { changeSortType, loadPreviewOffers, setIsOffersLoadingStatus } = offerSlice.actions;

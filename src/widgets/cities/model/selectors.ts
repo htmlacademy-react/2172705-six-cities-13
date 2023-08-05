@@ -31,7 +31,7 @@ const getSortedOffers = createSelector(
   }
 );
 
-export const getFilteredSortedOffers = createSelector(
+export const getCurrentOffers = createSelector(
   [getSortedOffers],
   (offers) => offers
 );

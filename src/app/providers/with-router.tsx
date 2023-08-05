@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import LoadingPage from '@/pages/loading';
+import Loader from '@/features/loader';
 
 export const withRouter = (Component: Component) => {
   const DecoratedComponent = () => (
     <BrowserRouter>
-      <Suspense fallback={<LoadingPage />}>
+      <Suspense fallback={<Loader isPage />}>
         <Component />
       </Suspense>
     </BrowserRouter>

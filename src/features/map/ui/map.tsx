@@ -10,11 +10,13 @@ type MapProps = {
 
 export function Map({ sectionName, activeOffer, offers }: MapProps) {
   const mapRef = useRef(null);
-
-  const city = {
-    name: offers[0].city.name,
-    location: offers[0].city.location
-  };
+  const city = offers.length
+    ?
+    {
+      name: offers[0].city.name,
+      location: offers[0].city.location
+    }
+    : null;
 
   const map = useMap(mapRef, city);
   useMapPins(map, activeOffer, offers);

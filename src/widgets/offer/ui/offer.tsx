@@ -6,7 +6,6 @@ import { Review } from '@/entities/review';
 import { capitalizeWord } from '@/shared/lib';
 import { Badge, StarsRatingInfo } from '@/shared/ui';
 import { MAX_IMAGES_COUNT } from '../const';
-import { reviews } from '@/mock/reviews';
 
 type OfferProps = {
   activeOffer: OpenedOfferType;
