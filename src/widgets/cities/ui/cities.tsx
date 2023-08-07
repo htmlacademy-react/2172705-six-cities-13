@@ -22,21 +22,11 @@ export function Cities() {
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
   const handleSortTypeChange = (type: SortType) => dispatch(changeSortType({ sortType: type }));
 
-  if (!offers.length) {
+  if (isOffersLoading) {
     return (
       <div className="cities">
-        <div className={clsx('cities__places-container container', { 'cities__places-container--empty': (!isOffersLoading && !offers.length) })}>
-          {isOffersLoading
-            ?
-            <>
-              <section className="cities__places places">
-                <Loader />
-              </section>
-              <div className="cities__right-section">
-                <Map sectionName="cities" activeOffer={hoveredCard} offers={offers} />
-              </div>
-            </>
-            : <CitiesNoPlaces city={currentCity} />}
+        <div className="cities__places-container container">
+          <Loader />
         </div>
       </div>
     );
@@ -44,28 +34,33 @@ export function Cities() {
 
   return (
     <div className="cities">
-      <div className={clsx('cities__places-container container')}>
-        <section className="cities__places places">
-          <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${currentCity}`}</b>
-          <Sort onSortTypeChange={handleSortTypeChange} />
+      <div className={clsx('cities__places-container container', { 'cities__places-container--empty': !offers.length })}>
+        {offers.length
+          ? (
+            <>
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${currentCity}`}</b>
+                <Sort onSortTypeChange={handleSortTypeChange} />
 
-          <div className="cities__places-list places__list tabs__content">
-            {offers.map((offer) => (
-              <Card
-                key={offer.id}
-                offer={offer}
-                sectionName="cities"
-                onCardActive={handleCardActive}
-                actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
-              />
-            ))}
-          </div>
-        </section>
-
-        <div className="cities__right-section">
-          <Map sectionName="cities" activeOffer={hoveredCard} offers={offers} />
-        </div>
+                <div className="cities__places-list places__list tabs__content">
+                  {offers.map((offer) => (
+                    <Card
+                      key={offer.id}
+                      offer={offer}
+                      sectionName="cities"
+                      onCardActive={handleCardActive}
+                      actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
+                    />
+                  ))}
+                </div>
+              </section>
+              <div className="cities__right-section">
+                <Map sectionName="cities" activeOffer={hoveredCard} offers={offers} />
+              </div>
+            </>
+          )
+          : <CitiesNoPlaces city={currentCity} />}
       </div>
     </div>
   );

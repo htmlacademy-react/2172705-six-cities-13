@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { fetchPreviewOffers } from '@/entities/offer';
 import { createAPI } from '@/shared/api';
 import { rootReducer } from './rootReducer';
 
@@ -17,5 +16,3 @@ export const store = configureStore({
     }
   }),
 });
-
-store.dispatch(fetchPreviewOffers());

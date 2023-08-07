@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { IconSetup } from '../const';
 
-export function useMapPins(
+export function useCreateMapPins(
   map: Nullable<Map>,
   activeOffer: Nullable<OpenedOfferType | PreviewOfferType>,
   offers: PreviewOfferType[]

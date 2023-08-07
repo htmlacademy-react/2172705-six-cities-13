@@ -5,7 +5,7 @@ import Loader from '@/features/loader';
 export const withRouter = (Component: Component) => {
   const DecoratedComponent = () => (
     <BrowserRouter>
-      <Suspense fallback={<Loader isPage />}>
+      <Suspense fallback={<Loader fullPage />}>
         <Component />
       </Suspense>
     </BrowserRouter>
