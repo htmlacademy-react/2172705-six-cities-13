@@ -35,4 +35,8 @@ export const offerSlice = createSlice({
   }
 });
 
-export const { changeSortType, loadPreviewOffers, setIsOffersLoadingStatus } = offerSlice.actions;
+export const {
+  changeSortType,
+  loadPreviewOffers,
+  setIsOffersLoadingStatus
+} = offerSlice.actions;

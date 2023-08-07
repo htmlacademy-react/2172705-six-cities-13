@@ -7,4 +7,4 @@ export { useOutsideClick } from './hooks/useOutsideClick';
 
 export { resetState } from './actions/resetState';
 
-export { AuthorizationStatus } from './const';
+export { AuthStatus } from './const';

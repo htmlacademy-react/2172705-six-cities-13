@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainPage from '@/pages/main';
 import OfferPage from '@/pages/offer';
-import { ScrollToTop, PrivateRoute, AuthorizationStatus } from '@/shared/lib';
+import { ScrollToTop, PrivateRoute, AuthStatus } from '@/shared/lib';
 import { AppRoute } from '@/const';
 
 const LoginPage = lazy(() => import('@/pages/login'));
@@ -17,7 +17,7 @@ export function AppRouter() {
         <Route path={AppRoute.Root} element={<MainPage />} />
         <Route path={AppRoute.Login} element={<LoginPage />} />
         <Route path={AppRoute.Favorites} element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+          <PrivateRoute authorizationStatus={AuthStatus.Auth}>
             <FavoritesPage offers={[]} />
           </PrivateRoute>
         }
