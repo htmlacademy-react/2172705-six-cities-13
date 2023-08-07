@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { dropToken } from '@/shared/api';
 import { resetState } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
@@ -11,7 +12,10 @@ type HeaderProps = {
 export function Header({ hasUserMenu = true }: HeaderProps) {
   const dispatch = useAppDispatch();
 
-  const handleSignOut = () => dispatch(resetState());
+  const handleSignOut = () => {
+    dropToken();
+    dispatch(resetState());
+  };
 
   return (
     <header className="header">

@@ -1,7 +1,7 @@
 type UserType = {
   name: string;
-  avatarUrl: string;
+  avatarUrl: URL;
   isPro: boolean;
-  email: string;
-  token: string;
+  email: Email;
+  token: Token;
 }

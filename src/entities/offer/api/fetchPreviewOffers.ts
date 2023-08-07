@@ -8,7 +8,7 @@ export const fetchPreviewOffers = createAsyncThunk<void, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'api/fetchOffers',
+  'api/fetchPreviewOffers',
   async (_arg, { dispatch, extra: api }) => {
     const { data } = await api.get<PreviewOfferType[]>(APIRoute.Offers);
     dispatch(setIsOffersLoadingStatus({ status: false }));

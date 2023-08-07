@@ -4,7 +4,7 @@ import { AuthStatus } from '@/shared/lib';
 import { changeAuthStatus } from '../index';
 import { APIRoute } from '@/const';
 
-export const getAuthStatus = createAsyncThunk<void, undefined, {
+export const checkAuthStatus = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
