@@ -1,19 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { resetState } from '@/shared/lib';
 import { INITIAL_SORT_TYPE, SortType } from '../const';
-import { openedOffers } from '@/mock/openedOffers';
-import { previewOffers } from '@/mock/previewOffers';
 
 type initialStateType = {
   previewOffers: PreviewOfferType[];
-  openedOffers: OpenedOfferType[];
-  sortType: SortType;
+  currentSortType: SortType;
+  isOffersLoadingStatus: boolean;
 }
 
 const initialState: initialStateType = {
-  previewOffers: previewOffers,
-  openedOffers: openedOffers,
-  sortType: INITIAL_SORT_TYPE,
+  previewOffers: [],
+  currentSortType: INITIAL_SORT_TYPE,
+  isOffersLoadingStatus: true
 };
 
 export const offerSlice = createSlice({
@@ -21,14 +19,20 @@ export const offerSlice = createSlice({
   initialState,
   reducers: {
     changeSortType(state, action: PayloadAction<{ sortType: SortType }>) {
-      state.sortType = action.payload.sortType;
+      state.currentSortType = action.payload.sortType;
+    },
+    loadPreviewOffers(state, action: PayloadAction<{ previewOffers: PreviewOfferType[] }>) {
+      state.previewOffers = action.payload.previewOffers;
+    },
+    setIsOffersLoadingStatus(state, action: PayloadAction<{ status: boolean }>) {
+      state.isOffersLoadingStatus = action.payload.status;
     }
   },
   extraReducers: (builder) => {
     builder.addCase(resetState, (state) => {
-      state.sortType = INITIAL_SORT_TYPE;
+      state.currentSortType = INITIAL_SORT_TYPE;
     });
   }
 });
 
-export const { changeSortType } = offerSlice.actions;
+export const { changeSortType, loadPreviewOffers, setIsOffersLoadingStatus } = offerSlice.actions;

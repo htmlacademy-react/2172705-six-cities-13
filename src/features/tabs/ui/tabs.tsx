@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export function Tabs() {
   const dispatch = useAppDispatch();
-  const currentCity = useAppSelector((state) => state.city.city);
+  const currentCity = useAppSelector((state) => state.city.currentCity);
 
   const handleTabItemClick = (city: CitiesType) => dispatch(changeCity({ city }));
 

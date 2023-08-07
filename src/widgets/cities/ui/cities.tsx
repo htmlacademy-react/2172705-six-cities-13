@@ -1,24 +1,36 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { FavoriteButton } from '@/features/favoriteButton';
+import Loader from '@/features/loader';
 import { Map } from '@/features/map';
 import { Sort } from '@/features/sort';
 import { Card } from '@/entities/card';
 import { changeSortType, SortType } from '@/entities/offer';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
-import { getFilteredSortedOffers } from '../model/selectors';
+import { getCurrentOffers } from '../model/selectors';
 import { CitiesNoPlaces } from './citiesNoPlaces';
 
 export function Cities() {
   const dispatch = useAppDispatch();
 
-  const city = useAppSelector((state) => state.city.city);
-  const offers = useAppSelector(getFilteredSortedOffers);
+  const currentCity = useAppSelector((state) => state.city.currentCity);
+  const offers = useAppSelector(getCurrentOffers);
+  const isOffersLoading = useAppSelector((state) => state.offer.isOffersLoadingStatus);
 
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
   const handleSortTypeChange = (type: SortType) => dispatch(changeSortType({ sortType: type }));
+
+  if (isOffersLoading) {
+    return (
+      <div className="cities">
+        <div className="cities__places-container container">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="cities">
@@ -28,7 +40,7 @@ export function Cities() {
             <>
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${city}`}</b>
+                <b className="places__found">{`${offers.length} ${offers.length > 1 ? 'places' : 'place'} to stay in ${currentCity}`}</b>
                 <Sort onSortTypeChange={handleSortTypeChange} />
 
                 <div className="cities__places-list places__list tabs__content">
@@ -43,13 +55,12 @@ export function Cities() {
                   ))}
                 </div>
               </section>
-
               <div className="cities__right-section">
                 <Map sectionName="cities" activeOffer={hoveredCard} offers={offers} />
               </div>
             </>
           )
-          : <CitiesNoPlaces city={city} />}
+          : <CitiesNoPlaces city={currentCity} />}
       </div>
     </div>
   );

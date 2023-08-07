@@ -2,7 +2,7 @@ import { Map, TileLayer } from 'leaflet';
 import { useEffect, useState, MutableRefObject, useRef } from 'react';
 import { MAP_ZOOM, TileLayerSetup } from '../const';
 
-export function useMap(
+export function useCreateMap(
   mapRef: MutableRefObject<HTMLElement | null>,
   city: CityType
 ): Nullable<Map> {
@@ -27,7 +27,7 @@ export function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [mapRef, map, city]);
 
   return map;
 }

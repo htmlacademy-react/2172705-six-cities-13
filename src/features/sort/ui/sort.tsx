@@ -8,7 +8,7 @@ type SortProps = {
 }
 
 export function Sort({ onSortTypeChange }: SortProps) {
-  const currentSortType = useAppSelector((state) => state.offer.sortType);
+  const currentSortType = useAppSelector((state) => state.offer.currentSortType);
   const [isOpenedSortOptions, setIsOpenedSortOptions] = useState(false);
 
   const handleSortTypeClick = () => setIsOpenedSortOptions(true);

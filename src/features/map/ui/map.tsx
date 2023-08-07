@@ -1,6 +1,7 @@
 import { useRef } from 'react';
-import { useMap } from '../hooks/useMap';
-import { useMapPins } from '../hooks/useMapPins';
+import { useCreateMap } from '../hooks/useCreateMap';
+import { useCreateMapPins } from '../hooks/useCreateMapPins';
+import { useMapFlyTo } from '../hooks/useMapFlyTo';
 
 type MapProps = {
   sectionName: string;
@@ -16,8 +17,9 @@ export function Map({ sectionName, activeOffer, offers }: MapProps) {
     location: offers[0].city.location
   };
 
-  const map = useMap(mapRef, city);
-  useMapPins(map, activeOffer, offers);
+  const map = useCreateMap(mapRef, city);
+  useCreateMapPins(map, activeOffer, offers);
+  useMapFlyTo(map, city);
 
   return (
     <section className={`${sectionName}__map map`} ref={mapRef}></section>
