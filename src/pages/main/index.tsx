@@ -12,7 +12,10 @@ export default function MainPage() {
   const offers = useAppSelector((state) => state.offer.previewOffers);
 
   useEffect(() => {
-    dispatch(fetchPreviewOffers());
+    const controller = new AbortController();
+    dispatch(fetchPreviewOffers(controller.signal));
+
+    return () => controller.abort();
   }, []);
 
   return (
