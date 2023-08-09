@@ -24,7 +24,7 @@ export const offerSlice = createSlice({
     loadPreviewOffers(state, action: PayloadAction<{ previewOffers: PreviewOfferType[] }>) {
       state.previewOffers = action.payload.previewOffers;
     },
-    setIsOffersLoadingStatus(state, action: PayloadAction<{ status: boolean }>) {
+    changeIsOffersLoadingStatus(state, action: PayloadAction<{ status: boolean }>) {
       state.isOffersLoadingStatus = action.payload.status;
     }
   },
@@ -38,5 +38,5 @@ export const offerSlice = createSlice({
 export const {
   changeSortType,
   loadPreviewOffers,
-  setIsOffersLoadingStatus
+  changeIsOffersLoadingStatus
 } = offerSlice.actions;

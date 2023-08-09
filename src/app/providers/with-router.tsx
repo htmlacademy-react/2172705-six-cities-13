@@ -1,13 +1,13 @@
 
 import { Suspense } from 'react';
-import Loader from '@/features/loader';
 import { HistoryRouter } from '@/shared/lib';
+import { ClockLoader } from '@/shared/ui';
 import { browserHistory } from '../browser-history';
 
 export const withRouter = (Component: Component) => {
   const DecoratedComponent = () => (
     <HistoryRouter history={browserHistory}>
-      <Suspense fallback={<Loader fullPage />}>
+      <Suspense fallback={<ClockLoader fullPage />}>
         <Component />
       </Suspense>
     </HistoryRouter>

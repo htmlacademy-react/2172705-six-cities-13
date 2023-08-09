@@ -5,7 +5,7 @@ type LoaderProps = {
   fullPage?: boolean;
 }
 
-export default function Loader({ fullPage = false }: LoaderProps) {
+export function ClockLoader({ fullPage = false }: LoaderProps) {
   return (
     <div className={clsx(styles.wrapper, { [styles['wrapper--page']]: fullPage })}>
       <div className={styles['clock-loader']}></div>

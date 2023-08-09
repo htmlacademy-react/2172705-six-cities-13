@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { FavoriteButton } from '@/features/favoriteButton';
-import Loader from '@/features/loader';
 import { Map } from '@/features/map';
 import { Sort } from '@/features/sort';
 import { Card } from '@/entities/card';
 import { changeSortType, SortType } from '@/entities/offer';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
+import { ClockLoader } from '@/shared/ui';
 import { getCurrentOffers } from '../model/selectors';
 import { CitiesNoPlaces } from './citiesNoPlaces';
 
@@ -26,7 +26,7 @@ export function Cities() {
     return (
       <div className="cities">
         <div className="cities__places-container container">
-          <Loader />
+          <ClockLoader />
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ export {
   offerSlice,
   changeSortType,
   loadPreviewOffers,
-  setIsOffersLoadingStatus,
+  changeIsOffersLoadingStatus,
 } from './model/offerSlice';
 export { fetchPreviewOffers } from './api/fetchPreviewOffers';
 export { SortType, INITIAL_SORT_TYPE } from './const';

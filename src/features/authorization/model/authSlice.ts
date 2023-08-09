@@ -4,11 +4,13 @@ import { AuthStatus, resetState } from '@/shared/lib';
 type initialStateType = {
   authStatus: AuthStatus;
   userData: UserType | Record<string, never>;
+  isAuthInProgressStatus: boolean;
 }
 
 const initialState: initialStateType = {
   authStatus: AuthStatus.Unknown,
-  userData: {}
+  userData: {},
+  isAuthInProgressStatus: false
 };
 
 export const authSlice = createSlice({
@@ -20,6 +22,9 @@ export const authSlice = createSlice({
     },
     changeUserData(state, action: PayloadAction<{ userData: UserType }>) {
       state.userData = action.payload.userData;
+    },
+    changeIsAuthInProgressStatus(state, action: PayloadAction<{ status: boolean }>) {
+      state.isAuthInProgressStatus = action.payload.status;
     }
   },
   extraReducers: (builder) => {
@@ -30,4 +35,4 @@ export const authSlice = createSlice({
   }
 });
 
-export const { changeAuthStatus, changeUserData } = authSlice.actions;
+export const { changeAuthStatus, changeUserData, changeIsAuthInProgressStatus } = authSlice.actions;
