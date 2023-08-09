@@ -1,32 +1,13 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
+import clsx from 'clsx';
+import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  wrapperClassName: string;
-  labelClassName: string;
-  inputClassName: string;
-  labelText: string;
-  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
+  className: string;
 }
 
 export function Input({
-  wrapperClassName,
-  labelClassName,
-  inputClassName,
-  labelText,
-  onChange,
+  className,
   ...args
 }: InputProps) {
-  return (
-    <div className={wrapperClassName}>
-      <label className={labelClassName}>
-        {labelText}
-      </label>
-
-      <input
-        className={inputClassName}
-        onChange={onChange}
-        {...args}
-      />
-    </div>
-  );
+  return <input className={clsx('input', className)} {...args} />;
 }

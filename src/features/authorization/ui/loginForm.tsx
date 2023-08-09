@@ -1,20 +1,21 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { Input, Button, RingLoader } from '@/shared/ui';
+import { inputs } from '../const';
 import { login } from '../index';
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
   const isAuthInProgressStatus = useAppSelector((state) => state.auth.isAuthInProgressStatus);
-  const [authData, setAuthData] = useState({
-    login: '',
-    password: ''
-  });
+  const [authData, setAuthData] = useState(() => inputs.reduce((acc, input) => ({
+    ...acc,
+    [input.name]: ''
+  }), {}));
 
   const handleLoginSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    dispatch(login(authData));
+    dispatch(login(authData as AuthData));
   };
 
   const handleLoginInputChange = (evt: ChangeEvent<HTMLInputElement>) => setAuthData({
@@ -32,28 +33,19 @@ export function LoginForm() {
           method="post"
           onSubmit={handleLoginSubmit}
         >
-          <Input
-            wrapperClassName="login__input-wrapper form__input-wrapper"
-            labelClassName="visually-hidden"
-            inputClassName="login__input form__input"
-            labelText="E-mail"
-            type="email"
-            name="login"
-            placeholder="Email"
-            required
-            onChange={handleLoginInputChange}
-          />
-          <Input
-            wrapperClassName="login__input-wrapper form__input-wrapper"
-            labelClassName="visually-hidden"
-            inputClassName="login__input form__input"
-            labelText="Password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            onChange={handleLoginInputChange}
-          />
+          {inputs.map((input) => (
+            <div key={input.name} className="login__input-wrapper form__input-wrapper">
+              <label className="visually-hidden">{input.labelText}</label>
+              <Input
+                className='login__input form__input'
+                type={input.type}
+                name={input.name}
+                placeholder={input.placeholder}
+                required={input.required}
+                onChange={handleLoginInputChange}
+              />
+            </div>
+          ))}
           <Button
             className="login__submit form__submit"
             type="submit"
