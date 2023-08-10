@@ -1,16 +1,16 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { AuthStatus, resetState } from '@/shared/lib';
+import { AuthStatus } from '@/shared/lib';
 
 type initialStateType = {
   authStatus: AuthStatus;
   userData: UserType | Record<string, never>;
   isAuthInProgressStatus: boolean;
-}
+};
 
 const initialState: initialStateType = {
   authStatus: AuthStatus.Unknown,
   userData: {},
-  isAuthInProgressStatus: false
+  isAuthInProgressStatus: false,
 };
 
 export const authSlice = createSlice({
@@ -25,14 +25,17 @@ export const authSlice = createSlice({
     },
     changeIsAuthInProgressStatus(state, action: PayloadAction<{ status: boolean }>) {
       state.isAuthInProgressStatus = action.payload.status;
-    }
-  },
-  extraReducers: (builder) => {
-    builder.addCase(resetState, (state) => {
+    },
+    resetUser(state) {
       state.authStatus = AuthStatus.Unknown;
       state.userData = {};
-    });
-  }
+    },
+  },
 });
 
-export const { changeAuthStatus, changeUserData, changeIsAuthInProgressStatus } = authSlice.actions;
+export const {
+  changeAuthStatus,
+  changeUserData,
+  changeIsAuthInProgressStatus,
+  resetUser,
+} = authSlice.actions;

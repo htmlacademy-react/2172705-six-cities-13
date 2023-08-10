@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { resetUser } from '@/features/authorization';
 import { dropToken } from '@/shared/api';
-import { AuthStatus, resetState, useAppSelector } from '@/shared/lib';
+import { AuthStatus, useAppSelector, resetState } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
 import { AppRoute } from '@/const';
@@ -10,14 +11,17 @@ type HeaderProps = {
 }
 
 export function Header({ hasUserMenu = true }: HeaderProps) {
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.auth.userData);
   const authStatus = useAppSelector((state) => state.auth.authStatus);
 
   const handleSignOut = () => {
     dropToken();
-    dispatch(resetState());
+    dispatch(resetUser());
   };
+
+  const handleSignIn = () => dispatch(resetState());
 
   if (!hasUserMenu) {
     return (
@@ -45,7 +49,6 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
             <ul className="header__nav-list">
               {authStatus === AuthStatus.Auth
                 ? (
-
                   <>
                     <li className="header__nav-item user">
                       <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
@@ -57,7 +60,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
                     <li className="header__nav-item">
                       <Link
                         className="header__nav-link"
-                        to={AppRoute.Root}
+                        to={location.pathname}
                         onClick={handleSignOut}
                       >
                         <span className="header__signout">Sign out</span>
@@ -66,7 +69,11 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
                   </>)
                 : (
                   <li className="header__nav-item user">
-                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Login}>
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.Login}
+                      onClick={handleSignIn}
+                    >
                       <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                       <span className="header__login">Sign in</span>
                     </Link>

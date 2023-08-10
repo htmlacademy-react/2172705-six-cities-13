@@ -2,7 +2,8 @@ export {
   authSlice,
   changeAuthStatus,
   changeUserData,
-  changeIsAuthInProgressStatus
+  changeIsAuthInProgressStatus,
+  resetUser
 } from './model/authSlice';
 export { LoginForm } from './ui/loginForm';
 export { checkAuthStatus } from './api/checkAuthStatus';
