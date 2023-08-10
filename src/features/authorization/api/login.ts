@@ -12,13 +12,15 @@ export const login = createAsyncThunk<void, AuthData, {
 }>(
   'api/login',
   async ({ login: email, password }, { dispatch, extra: api }) => {
-    dispatch(changeIsAuthInProgressStatus({ status: true }));
-    const { data } = await api.post<UserType>(APIRoute.Login, { email, password });
-    saveToken(data.token);
-    dispatch(changeIsAuthInProgressStatus({ status: false }));
-
-    dispatch(changeAuthStatus({ authStatus: AuthStatus.Auth }));
-    dispatch(changeUserData({ userData: data }));
-    dispatch(redirectToRoute(AppRoute.Root));
+    try {
+      dispatch(changeIsAuthInProgressStatus({ status: true }));
+      const { data } = await api.post<UserType>(APIRoute.Login, { email, password });
+      saveToken(data.token);
+      dispatch(changeAuthStatus({ authStatus: AuthStatus.Auth }));
+      dispatch(changeUserData({ userData: data }));
+      dispatch(redirectToRoute(AppRoute.Root));
+    } finally {
+      dispatch(changeIsAuthInProgressStatus({ status: false }));
+    }
   }
 );

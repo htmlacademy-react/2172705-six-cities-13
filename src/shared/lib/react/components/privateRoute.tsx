@@ -1,9 +1,10 @@
-import { PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthStatus } from '../const';
 import { useAppSelector } from '../index';
 
-type PrivateRouteProps = PropsWithChildren;
+type PrivateRouteProps = {
+  children: JSX.Element;
+};
 
 export function PrivateRoute({ children }: PrivateRouteProps) {
   const authStatus = useAppSelector((state) => state.auth.authStatus);

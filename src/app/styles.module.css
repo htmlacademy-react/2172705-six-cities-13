@@ -2,3 +2,8 @@
   width: 100vw;
   overflow-x: hidden;
 }
+
+:global(:disabled) {
+  cursor: default;
+  pointer-events: none;
+}

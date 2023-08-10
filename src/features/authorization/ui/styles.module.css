@@ -1,0 +1,28 @@
+.error-text {
+  display: none;
+  position: absolute;
+  color: red;
+  font-size: 11px;
+  left: 0;
+  bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper--invalid input {
+  border-color: red;
+}
+
+.input-wrapper--invalid input:focus-visible {
+  outline-color: red;
+}
+
+.input-wrapper--invalid .error-text {
+  display: block;
+}
+
+.input-wrapper--valid input:focus-visible {
+  outline-color: green;
+}
