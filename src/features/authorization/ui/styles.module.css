@@ -1,5 +1,4 @@
 .error-text {
-  display: none;
   position: absolute;
   color: red;
   font-size: 11px;
@@ -11,18 +10,14 @@
   position: relative;
 }
 
-.input-wrapper--invalid input {
+.invalid input {
   border-color: red;
 }
 
-.input-wrapper--invalid input:focus-visible {
+.invalid input:focus-visible {
   outline-color: red;
 }
 
-.input-wrapper--invalid .error-text {
-  display: block;
-}
-
-.input-wrapper--valid input:focus-visible {
+.valid input:focus-visible {
   outline-color: green;
 }
