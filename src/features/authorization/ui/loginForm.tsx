@@ -71,12 +71,13 @@ export function LoginForm() {
                   'login__input-wrapper form__input-wrapper',
                   styles['input-wrapper'],
                   { [styles.invalid]: !formState[name].isValid },
-                  { [styles.valid]: formState[name].isValid }
+                  { [styles.valid]: formState[name].isValid && formState[name].value}
                 )}
               >
                 <label className="visually-hidden">{FieldData[name].labelText}</label>
                 <Input
                   className="login__input form__input"
+                  value={formState[name].value}
                   type={FieldData[name].type}
                   name={FieldData[name].name}
                   placeholder={FieldData[name].placeholder}
