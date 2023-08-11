@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
+import { StatusCodeMessage } from '../const';
 
 type ErrorMessage = {
   type: string;
@@ -8,7 +9,11 @@ type ErrorMessage = {
 
 export const handleError = (error: AxiosError<ErrorMessage>) => {
   if (error.response) {
-    toast.error(error.response.data.message);
+    if (StatusCodeMessage[error.response.status]) {
+      toast.error(StatusCodeMessage[error.response.status]);
+    } else {
+      toast.error(error.response.data.message);
+    }
   }
 
   throw error;
