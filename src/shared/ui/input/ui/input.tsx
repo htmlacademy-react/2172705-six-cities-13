@@ -1,24 +1,13 @@
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  wrapperClassName: string;
-  labelClassName: string;
-  inputClassName: string;
-  labelText: string;
+import clsx from 'clsx';
+import { InputHTMLAttributes } from 'react';
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className: string;
 }
 
 export function Input({
-  wrapperClassName,
-  labelClassName,
-  inputClassName,
-  labelText,
+  className,
   ...args
 }: InputProps) {
-  return (
-    <div className={wrapperClassName}>
-      <label className={labelClassName}>
-        {labelText}
-      </label>
-
-      <input className={inputClassName} {...args} />
-    </div>
-  );
+  return <input className={clsx('input', className)} {...args} />;
 }
