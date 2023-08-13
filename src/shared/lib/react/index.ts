@@ -8,5 +8,3 @@ export { useOutsideClick } from './hooks/useOutsideClick';
 
 export { resetState } from './actions/resetState';
 export { redirectToRoute } from './actions/redirectToRoute';
-
-export { AuthStatus } from './const';

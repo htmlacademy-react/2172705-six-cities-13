@@ -5,6 +5,7 @@ import { Map } from '@/features/map';
 import { Sort } from '@/features/sort';
 import { Card } from '@/entities/card';
 import { changeSortType, SortType } from '@/entities/offer';
+import { APIStatus } from '@/shared/api';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
 import { ClockLoader } from '@/shared/ui';
 import { getCurrentOffers } from '../model/selectors';
@@ -15,14 +16,14 @@ export function Cities() {
 
   const currentCity = useAppSelector((state) => state.city.currentCity);
   const offers = useAppSelector(getCurrentOffers);
-  const isOffersLoading = useAppSelector((state) => state.offer.isOffersLoadingStatus);
+  const previewOffersStatus = useAppSelector((state) => state.offer.previewOffersStatus);
 
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
   const handleSortTypeChange = (type: SortType) => dispatch(changeSortType({ sortType: type }));
 
-  if (isOffersLoading) {
+  if (previewOffersStatus === APIStatus.Pending) {
     return (
       <div className="cities">
         <div className="cities__places-container container">

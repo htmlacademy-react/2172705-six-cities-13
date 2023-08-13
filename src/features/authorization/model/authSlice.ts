@@ -1,17 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AuthStatus } from '@/shared/lib';
+import { APIStatus } from '@/shared/api';
 import { checkAuthStatus, login, logout } from '../index';
 
 type initialStateType = {
-  authStatus: AuthStatus;
+  authStatus: APIStatus;
   userData: UserType | Record<string, never>;
-  isAuthInProgressStatus: boolean;
 };
 
 const initialState: initialStateType = {
-  authStatus: AuthStatus.Unknown,
+  authStatus: APIStatus.Idle,
   userData: {},
-  isAuthInProgressStatus: false,
 };
 
 export const authSlice = createSlice({
@@ -21,26 +19,27 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
-        state.isAuthInProgressStatus = true;
+        state.authStatus = APIStatus.Pending;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.authStatus = AuthStatus.Auth;
-        state.isAuthInProgressStatus = false;
+        state.authStatus = APIStatus.Fulfilled;
         state.userData = action.payload;
       })
       .addCase(login.rejected, (state) => {
-        state.authStatus = AuthStatus.NoAuth;
-        state.isAuthInProgressStatus = false;
+        state.authStatus = APIStatus.Rejected;
+      })
+      .addCase(checkAuthStatus.pending, (state) => {
+        state.authStatus = APIStatus.Pending;
       })
       .addCase(checkAuthStatus.fulfilled, (state, action) => {
-        state.authStatus = AuthStatus.Auth;
+        state.authStatus = APIStatus.Fulfilled;
         state.userData = action.payload;
       })
       .addCase(checkAuthStatus.rejected, (state) => {
-        state.authStatus = AuthStatus.NoAuth;
+        state.authStatus = APIStatus.Rejected;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.authStatus = AuthStatus.NoAuth;
+        state.authStatus = APIStatus.Rejected;
         state.userData = {};
       });
   }

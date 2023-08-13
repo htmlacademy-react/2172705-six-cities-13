@@ -17,8 +17,8 @@ export const login = createAsyncThunk<UserType, AuthData, {
       dispatch(redirectToRoute(AppRoute.Root));
 
       return data;
-    } catch {
-      throw new Error;
+    } catch (err){
+      throw err;
     }
   }
 );

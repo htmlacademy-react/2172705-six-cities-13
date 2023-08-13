@@ -1,18 +1,19 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { APIStatus } from '@/shared/api';
 import { resetState } from '@/shared/lib';
 import { INITIAL_SORT_TYPE, SortType } from '../const';
 import { fetchPreviewOffers } from '../index';
 
 type initialStateType = {
   previewOffers: PreviewOfferType[];
+  previewOffersStatus: APIStatus;
   currentSortType: SortType;
-  isOffersLoadingStatus: boolean;
 }
 
 const initialState: initialStateType = {
   previewOffers: [],
+  previewOffersStatus: APIStatus.Idle,
   currentSortType: INITIAL_SORT_TYPE,
-  isOffersLoadingStatus: true
 };
 
 export const offerSlice = createSlice({
@@ -29,11 +30,14 @@ export const offerSlice = createSlice({
         state.currentSortType = INITIAL_SORT_TYPE;
       })
       .addCase(fetchPreviewOffers.pending, (state) => {
-        state.isOffersLoadingStatus = true;
+        state.previewOffersStatus = APIStatus.Pending;
       })
       .addCase(fetchPreviewOffers.fulfilled, (state, action) => {
-        state.isOffersLoadingStatus = false;
+        state.previewOffersStatus = APIStatus.Fulfilled;
         state.previewOffers = action.payload;
+      })
+      .addCase(fetchPreviewOffers.rejected, (state) => {
+        state.previewOffersStatus = APIStatus.Rejected;
       });
   }
 });

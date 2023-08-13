@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useState, FormEvent, ChangeEvent } from 'react';
+import { APIStatus } from '@/shared/api';
 import {
   capitalizeWord,
   useAppDispatch,
@@ -14,7 +15,7 @@ import { FormState } from './types';
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
-  const isAuthInProgressStatus = useAppSelector((state) => state.auth.isAuthInProgressStatus);
+  const authStatus = useAppSelector((state) => state.auth.authStatus);
 
   const [formState, setFormState] = useState(() => getObjectKeys(FieldData).reduce<FormState>((acc, name) => ({
     ...acc,
@@ -92,9 +93,9 @@ export function LoginForm() {
           <Button
             className="login__submit form__submit"
             type="submit"
-            disabled={isAuthInProgressStatus || !isFormValid}
+            disabled={authStatus === APIStatus.Pending || !isFormValid}
           >
-            {isAuthInProgressStatus ? <RingLoader /> : 'Sign in'}
+            {authStatus === APIStatus.Pending ? <RingLoader /> : 'Sign in'}
           </Button>
         </form>
       </section>

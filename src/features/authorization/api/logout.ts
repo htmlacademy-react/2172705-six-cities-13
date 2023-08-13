@@ -13,8 +13,8 @@ export const logout = createAsyncThunk<void, undefined, {
     try {
       await api.delete(APIRoute.Logout);
       dropToken();
-    } catch {
-      throw new Error;
+    } catch (err){
+      throw err;
     }
-  },
+  }
 );

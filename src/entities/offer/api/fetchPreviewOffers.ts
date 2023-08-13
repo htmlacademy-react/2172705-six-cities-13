@@ -9,12 +9,8 @@ export const fetchPreviewOffers = createAsyncThunk<PreviewOfferType[], AbortSign
 }>(
   'api/fetchPreviewOffers',
   async (signal, { extra: api }) => {
-    try {
-      const { data } = await api.get<PreviewOfferType[]>(APIRoute.Offers, { signal });
+    const { data } = await api.get<PreviewOfferType[]>(APIRoute.Offers, { signal });
 
-      return data;
-    } catch {
-      throw new Error;
-    }
+    return data;
   }
 );

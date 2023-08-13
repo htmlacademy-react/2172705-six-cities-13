@@ -7,3 +7,10 @@ export const REQUEST_TIMEOUT = 5000;
 export const StatusCodeMessage: Record<number, string> = {
   [StatusCodes.UNAUTHORIZED]: 'We are sorry but we are not able to authenticate you. You don\'t have access to all the features of the app',
 };
+
+export enum APIStatus {
+  Idle = 'idle',
+  Pending = 'pending',
+  Fulfilled = 'fulfilled',
+  Rejected = 'rejected'
+}

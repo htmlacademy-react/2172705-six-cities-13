@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '@/features/authorization';
-import { AuthStatus, useAppSelector, resetState } from '@/shared/lib';
-import { useAppDispatch } from '@/shared/lib';
+import { APIStatus } from '@/shared/api';
+import { resetState, useAppSelector, useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
 import { AppRoute } from '@/const';
 
@@ -45,7 +45,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
 
           <nav className="header__nav">
             <ul className="header__nav-list">
-              {authStatus === AuthStatus.Auth
+              {authStatus === APIStatus.Fulfilled
                 ? (
                   <>
                     <li className="header__nav-item user">

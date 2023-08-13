@@ -13,8 +13,8 @@ export const checkAuthStatus = createAsyncThunk<UserType, undefined, {
       const { data } = await api.get<UserType>(APIRoute.Login);
 
       return data;
-    } catch {
-      throw new Error;
+    } catch (err){
+      throw err;
     }
   }
 );
