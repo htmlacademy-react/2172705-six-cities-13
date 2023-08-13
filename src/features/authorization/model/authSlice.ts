@@ -1,5 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AuthStatus } from '@/shared/lib';
+import { checkAuthStatus, login, logout } from '../index';
 
 type initialStateType = {
   authStatus: AuthStatus;
@@ -16,26 +17,31 @@ const initialState: initialStateType = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    changeAuthStatus(state, action: PayloadAction<{ authStatus: AuthStatus }>) {
-      state.authStatus = action.payload.authStatus;
-    },
-    changeUserData(state, action: PayloadAction<{ userData: UserType }>) {
-      state.userData = action.payload.userData;
-    },
-    changeIsAuthInProgressStatus(state, action: PayloadAction<{ status: boolean }>) {
-      state.isAuthInProgressStatus = action.payload.status;
-    },
-    resetUser(state) {
-      state.authStatus = AuthStatus.Unknown;
-      state.userData = {};
-    },
-  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(login.pending, (state) => {
+        state.isAuthInProgressStatus = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.authStatus = AuthStatus.Auth;
+        state.isAuthInProgressStatus = false;
+        state.userData = action.payload;
+      })
+      .addCase(login.rejected, (state) => {
+        state.authStatus = AuthStatus.NoAuth;
+        state.isAuthInProgressStatus = false;
+      })
+      .addCase(checkAuthStatus.fulfilled, (state, action) => {
+        state.authStatus = AuthStatus.Auth;
+        state.userData = action.payload;
+      })
+      .addCase(checkAuthStatus.rejected, (state) => {
+        state.authStatus = AuthStatus.NoAuth;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.authStatus = AuthStatus.NoAuth;
+        state.userData = {};
+      });
+  }
 });
-
-export const {
-  changeAuthStatus,
-  changeUserData,
-  changeIsAuthInProgressStatus,
-  resetUser,
-} = authSlice.actions;

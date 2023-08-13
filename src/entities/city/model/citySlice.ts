@@ -20,9 +20,10 @@ export const citySlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(resetState, (state) => {
-      state.currentCity = INITIAL_CITY;
-    });
+    builder
+      .addCase(resetState, (state) => {
+        state.currentCity = INITIAL_CITY;
+      });
   }
 });
 

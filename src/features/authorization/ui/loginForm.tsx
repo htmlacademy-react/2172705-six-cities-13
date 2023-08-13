@@ -9,8 +9,8 @@ import {
 import { Input, Button, RingLoader } from '@/shared/ui';
 import { FieldData } from '../const';
 import { login } from '../index';
-import { FormState } from '../types';
 import styles from './styles.module.css';
+import { FormState } from './types';
 
 export function LoginForm() {
   const dispatch = useAppDispatch();

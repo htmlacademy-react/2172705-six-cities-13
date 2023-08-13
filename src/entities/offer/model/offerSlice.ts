@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { resetState } from '@/shared/lib';
 import { INITIAL_SORT_TYPE, SortType } from '../const';
+import { fetchPreviewOffers } from '../index';
 
 type initialStateType = {
   previewOffers: PreviewOfferType[];
@@ -20,23 +21,21 @@ export const offerSlice = createSlice({
   reducers: {
     changeSortType(state, action: PayloadAction<{ sortType: SortType }>) {
       state.currentSortType = action.payload.sortType;
-    },
-    loadPreviewOffers(state, action: PayloadAction<{ previewOffers: PreviewOfferType[] }>) {
-      state.previewOffers = action.payload.previewOffers;
-    },
-    changeIsOffersLoadingStatus(state, action: PayloadAction<{ status: boolean }>) {
-      state.isOffersLoadingStatus = action.payload.status;
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(resetState, (state) => {
-      state.currentSortType = INITIAL_SORT_TYPE;
-    });
+    builder
+      .addCase(resetState, (state) => {
+        state.currentSortType = INITIAL_SORT_TYPE;
+      })
+      .addCase(fetchPreviewOffers.pending, (state) => {
+        state.isOffersLoadingStatus = true;
+      })
+      .addCase(fetchPreviewOffers.fulfilled, (state, action) => {
+        state.isOffersLoadingStatus = false;
+        state.previewOffers = action.payload;
+      });
   }
 });
 
-export const {
-  changeSortType,
-  loadPreviewOffers,
-  changeIsOffersLoadingStatus
-} = offerSlice.actions;
+export const { changeSortType } = offerSlice.actions;

@@ -1,4 +1,4 @@
-import { FieldData } from './const';
+import { FieldData } from '../const';
 
 type FieldState = {
   value: string;
