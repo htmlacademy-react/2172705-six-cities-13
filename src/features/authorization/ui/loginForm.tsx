@@ -1,57 +1,33 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import {
-  capitalizeWord,
   useAppDispatch,
   useAppSelector,
-  getObjectKeys
+  getObjectKeys,
+  capitalizeWord
 } from '@/shared/lib';
-import { Input, Button, RingLoader } from '@/shared/ui';
-import { FieldData } from '../const';
+import { Button, RingLoader } from '@/shared/ui';
+import { formFields, validationSchema } from '../const';
 import { login, getAuthStatus } from '../index';
 import styles from './styles.module.css';
-import { FormState } from './types';
+
+type FormValues = {
+  email: string;
+  password: string;
+}
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
   const authStatus = useAppSelector(getAuthStatus);
 
-  const [formState, setFormState] = useState(() => getObjectKeys(FieldData).reduce<FormState>((acc, name) => ({
-    ...acc,
-    [name]: {
-      value: '',
-      isValid: true,
-      regex: FieldData[name].regex,
-      errorText: FieldData[name].errorText
-    }
-  }), {} as FormState));
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
+    resolver: yupResolver(validationSchema)
+  });
 
-  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-
-    dispatch(login({
-      login: formState.Email.value,
-      password: formState.Password.value
-    }));
+  const onSubmit: SubmitHandler<FormValues> = (values) => {
+    dispatch(login({ ...values, login: values.email }));
   };
-
-  const handleInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = evt.target;
-    const formattedName = capitalizeWord(name) as keyof typeof formState;
-    const rule = formState[formattedName].regex;
-    const isFieldValid = rule.test(value);
-
-    setFormState((prev) => ({
-      ...prev,
-      [formattedName]: {
-        ...prev[formattedName],
-        value: value,
-        isValid: isFieldValid
-      }
-    }));
-  };
-
-  const isFormValid = getObjectKeys(formState).every((name) => formState[name].isValid);
 
   return (
     <div className="page__login-container container">
@@ -61,37 +37,35 @@ export function LoginForm() {
           className="login__form form"
           action="#"
           method="post"
-          onSubmit={handleFormSubmit}
+          onSubmit={(...args) => void handleSubmit(onSubmit)(...args)}
         >
-          {getObjectKeys(formState).map((name) => (
+          {getObjectKeys(formFields).map((name) => (
             <div
               key={name}
               className={clsx(
                 'login__input-wrapper form__input-wrapper',
                 styles['input-wrapper'],
-                { [styles.invalid]: !formState[name].isValid },
-                { [styles.valid]: formState[name].isValid && formState[name].value}
+                { [styles.invalid]: errors?.[name] },
               )}
             >
-              <label className="visually-hidden">{FieldData[name].labelText}</label>
-              <Input
+              <label className="visually-hidden">{formFields[name]}</label>
+              <input
                 className="login__input form__input"
-                value={formState[name].value}
-                type={FieldData[name].type}
-                name={FieldData[name].name}
-                placeholder={FieldData[name].placeholder}
-                required={FieldData[name].required}
-                onChange={handleInputChange}
+                type={name}
+                placeholder={capitalizeWord(name)}
+                {...register(`${name}`)}
               />
-              {!formState[name].isValid && (
-                <span className={styles['error-text']}>{formState[name].errorText}</span>
+              {errors?.[name] && (
+                <span className={styles['error-text']}>
+                  {errors?.[name]?.message}
+                </span>
               )}
             </div>
           ))}
           <Button
             className="login__submit form__submit"
             type="submit"
-            disabled={authStatus.isNotCalculated || !isFormValid}
+            disabled={authStatus.isNotCalculated}
           >
             {authStatus.isNotCalculated ? <RingLoader /> : 'Sign in'}
           </Button>
