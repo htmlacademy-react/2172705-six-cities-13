@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { checkAuthStatus, getAuthStatus } from '@/features/authorization';
-import { ScrollToTop, useAppDispatch, useAppSelector } from '@/shared/lib';
+import { APIStatus } from '@/shared/api';
+import {
+  ScrollToTop,
+  useAppDispatch,
+  useAppSelector
+} from '@/shared/lib';
+import { ClockLoader } from '@/shared/ui';
 import { AppRouter } from './appRouter';
 import { withProviders } from './providers';
 import './styles.module.css';
@@ -14,6 +20,10 @@ function App() {
   useEffect(() => {
     dispatch(checkAuthStatus());
   }, []);
+
+  if ([APIStatus.Idle, APIStatus.Pending].includes(authStatus)) {
+    return <ClockLoader text="Checking your authorization status..." fullPage/>;
+  }
 
   return (
     <>
