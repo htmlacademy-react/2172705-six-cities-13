@@ -4,7 +4,12 @@ import { FavoriteButton } from '@/features/favoriteButton';
 import { Map } from '@/features/map';
 import { Sort } from '@/features/sort';
 import { Card } from '@/entities/card';
-import { changeSortType, SortType } from '@/entities/offer';
+import { getCurrentCity } from '@/entities/city';
+import {
+  changeSortType,
+  getPreviewOffersStatus,
+  SortType
+} from '@/entities/offer';
 import { APIStatus } from '@/shared/api';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
 import { ClockLoader } from '@/shared/ui';
@@ -14,9 +19,9 @@ import { CitiesNoPlaces } from './citiesNoPlaces';
 export function Cities() {
   const dispatch = useAppDispatch();
 
-  const currentCity = useAppSelector((state) => state.city.currentCity);
+  const currentCity = useAppSelector(getCurrentCity);
   const offers = useAppSelector(getCurrentOffers);
-  const previewOffersStatus = useAppSelector((state) => state.offer.previewOffersStatus);
+  const previewOffersStatus = useAppSelector(getPreviewOffersStatus);
 
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 

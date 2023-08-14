@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { resetState } from '@/shared/lib';
 import { INITIAL_CITY } from '../const';
 
-
 type initialStateType = {
   currentCity: CitiesType;
 }

@@ -3,19 +3,16 @@ import { useEffect } from 'react';
 import { Cities } from '@/widgets/cities';
 import { Header } from '@/widgets/header';
 import { Tabs } from '@/features/tabs';
-import { fetchPreviewOffers } from '@/entities/offer';
+import { fetchPreviewOffers, getPreviewOffers } from '@/entities/offer';
 import { Layout } from '@/shared/layouts';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
-  const offers = useAppSelector((state) => state.offer.previewOffers);
+  const offers = useAppSelector(getPreviewOffers);
 
   useEffect(() => {
-    const controller = new AbortController();
-    dispatch(fetchPreviewOffers(controller.signal));
-
-    return () => controller.abort();
+    dispatch(fetchPreviewOffers());
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { logout } from '@/features/authorization';
+import { logout, getAuthStatus, getUserData } from '@/features/authorization';
 import { APIStatus } from '@/shared/api';
 import { resetState, useAppSelector, useAppDispatch } from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
@@ -12,8 +12,9 @@ type HeaderProps = {
 export function Header({ hasUserMenu = true }: HeaderProps) {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const userData = useAppSelector((state) => state.auth.userData);
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
+
+  const userData = useAppSelector(getUserData);
+  const authStatus = useAppSelector(getAuthStatus);
 
   const handleSignOut = () => {
     dispatch(logout());

@@ -9,13 +9,13 @@ import {
 } from '@/shared/lib';
 import { Input, Button, RingLoader } from '@/shared/ui';
 import { FieldData } from '../const';
-import { login } from '../index';
+import { login, getAuthStatus } from '../index';
 import styles from './styles.module.css';
 import { FormState } from './types';
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
+  const authStatus = useAppSelector(getAuthStatus);
 
   const [formState, setFormState] = useState(() => getObjectKeys(FieldData).reduce<FormState>((acc, name) => ({
     ...acc,
