@@ -32,7 +32,7 @@ export function Cities() {
     return (
       <div className="cities">
         <div className="container">
-          <ClockLoader />
+          <ClockLoader text="Loading offers..." />
         </div>
       </div>
     );
