@@ -11,14 +11,14 @@ export const formFields = {
 export const validationSchema = yup.object({
   email: yup
     .string()
-    .required()
+    .required('E-mail is a required field')
     .matches(
       EMAIL_REGEXP,
       { message: 'E-mail must be correct' }
     ),
   password: yup
     .string()
-    .required()
+    .required('Password is a required field')
     .matches(
       PASSWORD_REGEXP,
       { message: 'Password must consist of at least one digit and one letter' }
