@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { useState, FormEvent, ChangeEvent } from 'react';
-import { APIStatus } from '@/shared/api';
 import {
   capitalizeWord,
   useAppDispatch,
@@ -64,38 +63,37 @@ export function LoginForm() {
           method="post"
           onSubmit={handleFormSubmit}
         >
-          {getObjectKeys(formState)
-            .map((name) => (
-              <div
-                key={name}
-                className={clsx(
-                  'login__input-wrapper form__input-wrapper',
-                  styles['input-wrapper'],
-                  { [styles.invalid]: !formState[name].isValid },
-                  { [styles.valid]: formState[name].isValid && formState[name].value}
-                )}
-              >
-                <label className="visually-hidden">{FieldData[name].labelText}</label>
-                <Input
-                  className="login__input form__input"
-                  value={formState[name].value}
-                  type={FieldData[name].type}
-                  name={FieldData[name].name}
-                  placeholder={FieldData[name].placeholder}
-                  required={FieldData[name].required}
-                  onChange={handleInputChange}
-                />
-                {!formState[name].isValid && (
-                  <span className={styles['error-text']}>{formState[name].errorText}</span>
-                )}
-              </div>
-            ))}
+          {getObjectKeys(formState).map((name) => (
+            <div
+              key={name}
+              className={clsx(
+                'login__input-wrapper form__input-wrapper',
+                styles['input-wrapper'],
+                { [styles.invalid]: !formState[name].isValid },
+                { [styles.valid]: formState[name].isValid && formState[name].value}
+              )}
+            >
+              <label className="visually-hidden">{FieldData[name].labelText}</label>
+              <Input
+                className="login__input form__input"
+                value={formState[name].value}
+                type={FieldData[name].type}
+                name={FieldData[name].name}
+                placeholder={FieldData[name].placeholder}
+                required={FieldData[name].required}
+                onChange={handleInputChange}
+              />
+              {!formState[name].isValid && (
+                <span className={styles['error-text']}>{formState[name].errorText}</span>
+              )}
+            </div>
+          ))}
           <Button
             className="login__submit form__submit"
             type="submit"
-            disabled={authStatus === APIStatus.Pending || !isFormValid}
+            disabled={authStatus.isNotCalculated || !isFormValid}
           >
-            {authStatus === APIStatus.Pending ? <RingLoader /> : 'Sign in'}
+            {authStatus.isNotCalculated ? <RingLoader /> : 'Sign in'}
           </Button>
         </form>
       </section>

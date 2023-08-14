@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
-  const offers = useAppSelector(getPreviewOffers);
+  const previewOffers = useAppSelector(getPreviewOffers);
 
   useEffect(() => {
     dispatch(fetchPreviewOffers());
@@ -19,7 +19,7 @@ export default function MainPage() {
     <Layout
       header={<Header />}
       content={
-        <main className={clsx('page__main page__main--index', { 'page__main--index-empty': !offers.length })}>
+        <main className={clsx('page__main page__main--index', { 'page__main--index-empty': !previewOffers.length })}>
           <h1 className="visually-hidden">Cities</h1>
           <Tabs />
           <Cities />

@@ -10,7 +10,6 @@ import {
   getPreviewOffersStatus,
   SortType
 } from '@/entities/offer';
-import { APIStatus } from '@/shared/api';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
 import { ClockLoader } from '@/shared/ui';
 import { getCurrentOffers } from '../model/selectors';
@@ -29,7 +28,7 @@ export function Cities() {
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
   const handleSortTypeChange = (type: SortType) => dispatch(changeSortType({ sortType: type }));
 
-  if (previewOffersStatus === APIStatus.Pending) {
+  if (previewOffersStatus.isPending) {
     return (
       <div className="cities">
         <div className="container">
@@ -39,7 +38,7 @@ export function Cities() {
     );
   }
 
-  if (previewOffersStatus === APIStatus.Rejected) {
+  if (previewOffersStatus.isRejected) {
     return (
       <div className="cities">
         <div className="container">
