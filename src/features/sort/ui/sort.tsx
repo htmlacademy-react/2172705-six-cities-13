@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import { SortType } from '@/entities/offer';
+import { SortType, getCurrentSortType } from '@/entities/offer';
 import { useAppSelector, useOutsideClick } from '@/shared/lib';
 
 type SortProps = {
@@ -8,7 +8,7 @@ type SortProps = {
 }
 
 export function Sort({ onSortTypeChange }: SortProps) {
-  const currentSortType = useAppSelector((state) => state.offer.currentSortType);
+  const currentSortType = useAppSelector(getCurrentSortType);
   const [isOpenedSortOptions, setIsOpenedSortOptions] = useState(false);
 
   const handleSortTypeClick = () => setIsOpenedSortOptions(true);

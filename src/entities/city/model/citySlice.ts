@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { resetState } from '@/shared/lib';
 import { INITIAL_CITY } from '../const';
 
-
 type initialStateType = {
   currentCity: CitiesType;
 }
@@ -20,9 +19,10 @@ export const citySlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(resetState, (state) => {
-      state.currentCity = INITIAL_CITY;
-    });
+    builder
+      .addCase(resetState, (state) => {
+        state.currentCity = INITIAL_CITY;
+      });
   }
 });
 

@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { AuthStatus } from '../const';
+import { APIStatus } from '../../../api/index';
 import { useAppSelector } from '../index';
 
 type PrivateRouteProps = {
@@ -7,10 +7,11 @@ type PrivateRouteProps = {
 };
 
 export function PrivateRoute({ children }: PrivateRouteProps) {
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
+  const meAuthStatus = useAppSelector((state) => state.auth.meAuthStatus);
+  const loginAuthStatus = useAppSelector((state) => state.auth.loginAuthStatus);
 
   return (
-    authStatus === AuthStatus.Auth
+    (meAuthStatus === APIStatus.Fulfilled || loginAuthStatus === APIStatus.Fulfilled)
       ? children
       : <Navigate to="/login" />
   );

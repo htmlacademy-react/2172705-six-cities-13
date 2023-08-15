@@ -1,10 +1,10 @@
+export { authSlice} from './model/authSlice';
 export {
-  authSlice,
-  changeAuthStatus,
-  changeUserData,
-  changeIsAuthInProgressStatus,
-  resetUser
-} from './model/authSlice';
+  getMeAuthStatus,
+  getLoginAuthStatus,
+  getUserData
+} from './model/selectors';
 export { LoginForm } from './ui/loginForm';
-export { checkAuthStatus } from './api/checkAuthStatus';
+export { me } from './api/me';
 export { login } from './api/login';
+export { logout } from './api/logout';

@@ -1,11 +1,14 @@
 import clsx from 'clsx';
-import { changeCity } from '@/entities/city';
-import { cities } from '@/entities/city/const';
+import {
+  changeCity,
+  getCurrentCity,
+  cities
+} from '@/entities/city';
 import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export function Tabs() {
   const dispatch = useAppDispatch();
-  const currentCity = useAppSelector((state) => state.city.currentCity);
+  const currentCity = useAppSelector(getCurrentCity);
 
   const handleTabItemClick = (city: CitiesType) => dispatch(changeCity({ city }));
 

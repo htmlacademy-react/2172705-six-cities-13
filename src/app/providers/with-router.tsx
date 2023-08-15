@@ -7,7 +7,7 @@ import { browserHistory } from '../browser-history';
 export const withRouter = (Component: Component) => {
   const DecoratedComponent = () => (
     <HistoryRouter history={browserHistory}>
-      <Suspense fallback={<ClockLoader fullPage />}>
+      <Suspense fallback={<ClockLoader text="Loading page..." fullPage />}>
         <Component />
       </Suspense>
     </HistoryRouter>

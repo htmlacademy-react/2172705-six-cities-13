@@ -1,8 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
-import { resetUser } from '@/features/authorization';
-import { dropToken } from '@/shared/api';
-import { AuthStatus, useAppSelector, resetState } from '@/shared/lib';
-import { useAppDispatch } from '@/shared/lib';
+import {
+  logout,
+  getUserData,
+  getMeAuthStatus,
+  getLoginAuthStatus
+} from '@/features/authorization';
+import {
+  resetState,
+  useAppSelector,
+  useAppDispatch
+} from '@/shared/lib';
 import { LogoLink } from '@/shared/ui';
 import { AppRoute } from '@/const';
 
@@ -13,12 +20,13 @@ type HeaderProps = {
 export function Header({ hasUserMenu = true }: HeaderProps) {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const userData = useAppSelector((state) => state.auth.userData);
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
+
+  const userData = useAppSelector(getUserData);
+  const meAuthStatus = useAppSelector(getMeAuthStatus);
+  const loginAuthStatus = useAppSelector(getLoginAuthStatus);
 
   const handleSignOut = () => {
-    dropToken();
-    dispatch(resetUser());
+    dispatch(logout());
   };
 
   const handleSignIn = () => dispatch(resetState());
@@ -47,7 +55,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
 
           <nav className="header__nav">
             <ul className="header__nav-list">
-              {authStatus === AuthStatus.Auth
+              {(meAuthStatus.isFulfilled || loginAuthStatus.isFulfilled)
                 ? (
                   <>
                     <li className="header__nav-item user">
