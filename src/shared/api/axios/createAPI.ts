@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { API_URL, REQUEST_TIMEOUT } from '../const';
 import { getToken } from '../token/getToken';
-import { handleError } from './handleError';
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
@@ -18,13 +17,7 @@ export const createAPI = (): AxiosInstance => {
       }
 
       return config;
-    },
-    handleError
-  );
-
-  api.interceptors.response.use(
-    (response) => response,
-    handleError
+    }
   );
 
   return api;

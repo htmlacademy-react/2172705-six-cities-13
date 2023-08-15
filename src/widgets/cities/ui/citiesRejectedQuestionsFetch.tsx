@@ -25,7 +25,7 @@ export function CitiesRejectedQuestionsFetch() {
         type="button"
         onClick={handleRepeatButtonClick}
       >
-        Repeat
+        Try again
       </Button>
     </div>
   );

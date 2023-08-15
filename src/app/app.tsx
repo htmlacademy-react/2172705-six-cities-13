@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import { me, getMeAuthStatus } from '@/features/authorization';
 import {
   ScrollToTop,
+  Notification,
   useAppDispatch,
   useAppSelector
 } from '@/shared/lib';
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
       <ToastContainer />
+      <Notification />
       <ScrollToTop />
       <AppRouter />
     </>

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { saveToken } from '@/shared/api';
-import { redirectToRoute } from '@/shared/lib';
+import { pushNotification, redirectToRoute } from '@/shared/lib';
 import { APIRoute, AppRoute } from '@/const';
 
 export const login = createAsyncThunk<UserType, AuthData, {
@@ -17,7 +17,12 @@ export const login = createAsyncThunk<UserType, AuthData, {
       dispatch(redirectToRoute(AppRoute.Root));
 
       return data;
-    } catch (err){
+    } catch (err) {
+      dispatch(pushNotification({
+        type: 'error',
+        message: 'Failed to sign in'
+      }));
+
       throw err;
     }
   }

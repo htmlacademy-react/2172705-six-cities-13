@@ -9,12 +9,8 @@ export const me = createAsyncThunk<UserType, undefined, {
 }>(
   'api/me',
   async (_arg, { extra: api }) => {
-    try {
-      const { data } = await api.get<UserType>(APIRoute.Login);
+    const { data } = await api.get<UserType>(APIRoute.Login);
 
-      return data;
-    } catch (err){
-      throw err;
-    }
+    return data;
   }
 );
