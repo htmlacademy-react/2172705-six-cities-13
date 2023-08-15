@@ -9,7 +9,7 @@ import {
 } from '@/shared/lib';
 import { Button, RingLoader } from '@/shared/ui';
 import { formFields, validationSchema } from '../const';
-import { login, getAuthStatus } from '../index';
+import { login, getLoginAuthStatus } from '../index';
 import styles from './styles.module.css';
 
 type FormValues = {
@@ -19,7 +19,7 @@ type FormValues = {
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
-  const authStatus = useAppSelector(getAuthStatus);
+  const loginAuthStatus = useAppSelector(getLoginAuthStatus);
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(validationSchema)
@@ -65,9 +65,9 @@ export function LoginForm() {
           <Button
             className="login__submit form__submit"
             type="submit"
-            disabled={authStatus.isNotCalculated}
+            disabled={loginAuthStatus.isPending}
           >
-            {authStatus.isNotCalculated ? <RingLoader /> : 'Sign in'}
+            {loginAuthStatus.isPending ? <RingLoader /> : 'Sign in'}
           </Button>
         </form>
       </section>

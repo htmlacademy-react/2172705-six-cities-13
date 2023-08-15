@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { APIStatus } from '@/shared/api';
-import { checkAuthStatus, login, logout } from '../index';
+import { me, login, logout } from '../index';
 
 type initialStateType = {
-  authStatus: APIStatus;
+  meAuthStatus: APIStatus;
+  loginAuthStatus: APIStatus;
   userData: UserType | Record<string, never>;
 };
 
 const initialState: initialStateType = {
-  authStatus: APIStatus.Idle,
+  meAuthStatus: APIStatus.Idle,
+  loginAuthStatus: APIStatus.Idle,
   userData: {},
 };
 
@@ -18,28 +20,29 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(me.pending, (state) => {
+        state.meAuthStatus = APIStatus.Pending;
+      })
+      .addCase(me.fulfilled, (state, action) => {
+        state.meAuthStatus = APIStatus.Fulfilled;
+        state.userData = action.payload;
+      })
+      .addCase(me.rejected, (state) => {
+        state.meAuthStatus = APIStatus.Rejected;
+      })
       .addCase(login.pending, (state) => {
-        state.authStatus = APIStatus.Pending;
+        state.loginAuthStatus = APIStatus.Pending;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.authStatus = APIStatus.Fulfilled;
+        state.loginAuthStatus = APIStatus.Fulfilled;
         state.userData = action.payload;
       })
       .addCase(login.rejected, (state) => {
-        state.authStatus = APIStatus.Rejected;
-      })
-      .addCase(checkAuthStatus.pending, (state) => {
-        state.authStatus = APIStatus.Pending;
-      })
-      .addCase(checkAuthStatus.fulfilled, (state, action) => {
-        state.authStatus = APIStatus.Fulfilled;
-        state.userData = action.payload;
-      })
-      .addCase(checkAuthStatus.rejected, (state) => {
-        state.authStatus = APIStatus.Rejected;
+        state.loginAuthStatus = APIStatus.Rejected;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.authStatus = APIStatus.Rejected;
+        state.meAuthStatus = APIStatus.Rejected;
+        state.loginAuthStatus = APIStatus.Rejected;
         state.userData = {};
       });
   }
