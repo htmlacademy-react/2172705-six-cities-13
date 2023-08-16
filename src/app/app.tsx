@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { ToastContainer } from 'react-toastify';
-import { me, getMeAuthStatus } from '@/features/authorization';
+import { getCurrentUser, getCurrentUserStatus } from '@/features/authorization';
 import {
   ScrollToTop,
   Notification,
@@ -15,19 +14,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const dispatch = useAppDispatch();
-  const meAuthStatus = useAppSelector(getMeAuthStatus);
+  const currentUserStatus = useAppSelector(getCurrentUserStatus);
 
   useEffect(() => {
-    dispatch(me());
+    dispatch(getCurrentUser());
   }, []);
 
-  if (meAuthStatus.isNotCalculated) {
+  if (currentUserStatus.isUncompleted) {
     return <ClockLoader text="Checking your authorization status..." fullPage/>;
   }
 
   return (
     <>
-      <ToastContainer />
       <Notification />
       <ScrollToTop />
       <AppRouter />

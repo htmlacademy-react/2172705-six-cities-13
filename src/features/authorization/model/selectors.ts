@@ -1,8 +1,8 @@
 import { createStatusObj } from '@/shared/lib';
 
-const getMeStatus = (state: State) => state.auth.meAuthStatus;
+const getUserStatus = (state: State) => state.auth.currentUserStatus;
 const getLoginStatus = (state: State) => state.auth.loginAuthStatus;
 export const getUserData = (state: State) => state.auth.userData;
 
-export const getMeAuthStatus = createStatusObj(getMeStatus);
+export const getCurrentUserStatus = createStatusObj(getUserStatus);
 export const getLoginAuthStatus = createStatusObj(getLoginStatus);

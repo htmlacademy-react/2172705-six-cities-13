@@ -7,11 +7,11 @@ type PrivateRouteProps = {
 };
 
 export function PrivateRoute({ children }: PrivateRouteProps) {
-  const meAuthStatus = useAppSelector((state) => state.auth.meAuthStatus);
+  const currentUserStatus = useAppSelector((state) => state.auth.currentUserStatus);
   const loginAuthStatus = useAppSelector((state) => state.auth.loginAuthStatus);
 
   return (
-    (meAuthStatus === APIStatus.Fulfilled || loginAuthStatus === APIStatus.Fulfilled)
+    (currentUserStatus === APIStatus.Fulfilled || loginAuthStatus === APIStatus.Fulfilled)
       ? children
       : <Navigate to="/login" />
   );

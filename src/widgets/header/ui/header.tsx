@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   logout,
   getUserData,
-  getMeAuthStatus,
+  getCurrentUserStatus,
   getLoginAuthStatus
 } from '@/features/authorization';
 import {
@@ -22,7 +22,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
   const dispatch = useAppDispatch();
 
   const userData = useAppSelector(getUserData);
-  const meAuthStatus = useAppSelector(getMeAuthStatus);
+  const userStatus = useAppSelector(getCurrentUserStatus);
   const loginAuthStatus = useAppSelector(getLoginAuthStatus);
 
   const handleSignOut = () => {
@@ -55,7 +55,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
 
           <nav className="header__nav">
             <ul className="header__nav-list">
-              {(meAuthStatus.isFulfilled || loginAuthStatus.isFulfilled)
+              {(userStatus.isFulfilled || loginAuthStatus.isFulfilled)
                 ? (
                   <>
                     <li className="header__nav-item user">

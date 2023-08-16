@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { APIStatus } from '@/shared/api';
-import { me, login, logout } from '../index';
+import {
+  getCurrentUser,
+  login,
+  logout
+} from '../index';
 
 type initialStateType = {
-  meAuthStatus: APIStatus;
+  currentUserStatus: APIStatus;
   loginAuthStatus: APIStatus;
   userData: UserType | Record<string, never>;
 };
 
 const initialState: initialStateType = {
-  meAuthStatus: APIStatus.Idle,
+  currentUserStatus: APIStatus.Idle,
   loginAuthStatus: APIStatus.Idle,
   userData: {},
 };
@@ -20,15 +24,15 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(me.pending, (state) => {
-        state.meAuthStatus = APIStatus.Pending;
+      .addCase(getCurrentUser.pending, (state) => {
+        state.currentUserStatus = APIStatus.Pending;
       })
-      .addCase(me.fulfilled, (state, action) => {
-        state.meAuthStatus = APIStatus.Fulfilled;
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.currentUserStatus = APIStatus.Fulfilled;
         state.userData = action.payload;
       })
-      .addCase(me.rejected, (state) => {
-        state.meAuthStatus = APIStatus.Rejected;
+      .addCase(getCurrentUser.rejected, (state) => {
+        state.currentUserStatus = APIStatus.Rejected;
       })
       .addCase(login.pending, (state) => {
         state.loginAuthStatus = APIStatus.Pending;
@@ -41,7 +45,7 @@ export const authSlice = createSlice({
         state.loginAuthStatus = APIStatus.Rejected;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.meAuthStatus = APIStatus.Rejected;
+        state.currentUserStatus = APIStatus.Rejected;
         state.loginAuthStatus = APIStatus.Rejected;
         state.userData = {};
       });

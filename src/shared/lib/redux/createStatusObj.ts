@@ -6,7 +6,7 @@ export const createStatusObj = (getStatusSelector: (state: State) => APIStatus) 
   (state) => ({
     isIdle: APIStatus.Idle === state,
     isPending: APIStatus.Pending === state,
-    isNotCalculated: APIStatus.Idle === state || APIStatus.Pending === state,
+    isUncompleted: APIStatus.Idle === state || APIStatus.Pending === state,
     isFulfilled: APIStatus.Fulfilled === state,
     isRejected: APIStatus.Rejected === state,
   })

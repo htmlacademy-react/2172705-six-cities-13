@@ -1,4 +1,8 @@
-import { toast, ToastOptions } from 'react-toastify';
+import {
+  toast,
+  ToastOptions,
+  ToastContainer
+} from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../react';
 import { clearNotification } from '../index';
 import { getNotifications } from '../model/selectors';
@@ -36,7 +40,9 @@ export function Notification() {
     });
   };
 
-  renderNotifications();
-
-  return null;
+  return (
+    <>
+      <ToastContainer />
+      {void renderNotifications()}
+    </>);
 }
