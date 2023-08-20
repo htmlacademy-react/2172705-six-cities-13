@@ -1,17 +1,20 @@
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
-import { NEAR_PLACES_COUNT } from '../const';
+import { getNearbyOffers } from '@/entities/offer';
+import { useAppSelector } from '@/shared/lib';
 
-type NearPlacesProps = {
-  offers: PreviewOfferType[];
-}
+export function NearbyOffers() {
+  const nearbyOffers = useAppSelector(getNearbyOffers);
 
-export function NearPlaces({ offers }: NearPlacesProps) {
+  if (!nearbyOffers.length) {
+    return null;
+  }
+
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {Array.from({length: NEAR_PLACES_COUNT}, (_, index) => offers[index]).map((offer) => (
+        {nearbyOffers.map((offer) => (
           <Card
             key={offer.id}
             offer={offer}

@@ -13,19 +13,26 @@ export function useCreateMapPins(
       const markerLayer = layerGroup().addTo(map);
 
       offers.forEach((offer) => {
-        const marker = new Marker({
+        const defaultMarker = new Marker({
           lat: offer.location.latitude,
           lng: offer.location.longitude
         });
 
-        marker
-          .setIcon(
-            activeOffer?.id === offer.id
-              ? new Icon(IconSetup.Active as BaseIconOptions)
-              : new Icon(IconSetup.Default as BaseIconOptions)
-          )
+        defaultMarker
+          .setIcon(new Icon(IconSetup.Default as BaseIconOptions))
           .addTo(markerLayer);
       });
+
+      if (activeOffer) {
+        const activeMarker = new Marker({
+          lat: activeOffer.location.latitude,
+          lng: activeOffer.location.longitude
+        });
+
+        activeMarker
+          .setIcon(new Icon(IconSetup.Active as BaseIconOptions))
+          .addTo(markerLayer);
+      }
 
       return () => {
         map.removeLayer(markerLayer);

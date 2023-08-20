@@ -1,7 +1,7 @@
 export { authSlice} from './model/authSlice';
 export {
-  getCurrentUserStatus,
-  getLoginAuthStatus,
+  getCurrentUserStatusObj,
+  getLoginStatusObj,
   getUserData
 } from './model/selectors';
 export { LoginForm } from './ui/loginForm';

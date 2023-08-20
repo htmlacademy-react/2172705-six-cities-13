@@ -7,7 +7,7 @@ import { Card } from '@/entities/card';
 import { getCurrentCity } from '@/entities/city';
 import {
   changeSortType,
-  getPreviewOffersStatus,
+  getPreviewOffersStatusObj,
   SortType
 } from '@/entities/offer';
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
@@ -21,7 +21,7 @@ export function Cities() {
 
   const currentCity = useAppSelector(getCurrentCity);
   const previewOffers = useAppSelector(getCurrentOffers);
-  const previewOffersStatus = useAppSelector(getPreviewOffersStatus);
+  const previewOffersStatus = useAppSelector(getPreviewOffersStatusObj);
 
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 

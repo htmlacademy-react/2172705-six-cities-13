@@ -6,3 +6,5 @@ export enum SortType {
 }
 
 export const INITIAL_SORT_TYPE = SortType.Popular;
+
+export const NEARBY_OFFERS_COUNT = 3;

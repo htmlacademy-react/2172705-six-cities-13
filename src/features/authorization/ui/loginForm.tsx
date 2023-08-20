@@ -9,7 +9,7 @@ import {
 } from '@/shared/lib';
 import { Button, RingLoader } from '@/shared/ui';
 import { formFields, validationSchema } from '../const';
-import { login, getLoginAuthStatus } from '../index';
+import { login, getLoginStatusObj } from '../index';
 import styles from './styles.module.css';
 
 type FormValues = {
@@ -19,7 +19,7 @@ type FormValues = {
 
 export function LoginForm() {
   const dispatch = useAppDispatch();
-  const loginAuthStatus = useAppSelector(getLoginAuthStatus);
+  const loginAuthStatus = useAppSelector(getLoginStatusObj);
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(validationSchema)
