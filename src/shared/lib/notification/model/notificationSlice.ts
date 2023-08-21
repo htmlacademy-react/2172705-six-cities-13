@@ -1,4 +1,8 @@
-import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
+import {
+  PayloadAction,
+  createSlice,
+  nanoid
+} from '@reduxjs/toolkit';
 import { Notification } from '../types';
 
 type initialStateType = {

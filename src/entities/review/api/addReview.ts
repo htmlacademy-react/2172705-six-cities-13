@@ -17,6 +17,11 @@ export const addReview = createAsyncThunk<ReviewType, ReviewData, {
         callback();
       }
 
+      dispatch(pushNotification({
+        type: 'success',
+        message: 'Adding a comment was successful'
+      }));
+
       return data;
     } catch (err) {
       dispatch(pushNotification({
