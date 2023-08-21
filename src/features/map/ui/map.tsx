@@ -13,8 +13,8 @@ export function Map({ sectionName, activeOffer, offers }: MapProps) {
   const mapRef = useRef(null);
 
   const city = {
-    name: offers[0].city.name,
-    location: offers[0].city.location
+    name: offers[0]?.city.name ?? activeOffer?.city.name,
+    location: offers[0]?.city.location ?? activeOffer?.city.location
   };
 
   const map = useCreateMap(mapRef, city);

@@ -10,7 +10,7 @@ export function useCreateMap(
   const isRenderedRef = useRef<boolean>(false);
 
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
+    if (mapRef.current !== null && !isRenderedRef.current && city.location) {
       const instance = new Map(mapRef.current, {
         center: {
           lat: city.location.latitude,
