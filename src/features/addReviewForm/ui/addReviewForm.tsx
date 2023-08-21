@@ -1,20 +1,58 @@
-import { ChangeEvent, useState } from 'react';
-import { Button, RatingFormStarItem } from '@/shared/ui';
+import {
+  ChangeEvent,
+  FormEvent,
+  useState
+} from 'react';
+import { addReview, getAddReviewStatusObj } from '@/entities/review';
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import {
+  Button,
+  RatingFormStarItem,
+  RingLoader
+} from '@/shared/ui';
 import { ratings } from '../const';
 
-export function AddReviewForm() {
+type AddReviewFormProps = {
+  offerId: string;
+}
+
+export function AddReviewForm({ offerId }: AddReviewFormProps) {
+  const dispatch = useAppDispatch();
+  const addReviewStatus = useAppSelector(getAddReviewStatusObj);
+
   const [reviewData, setReviewData] = useState({
-    review: '',
+    comment: '',
     rating: '0'
   });
+
+  const handleFormSubmit = (evt: FormEvent) => {
+    evt.preventDefault();
+
+    dispatch(addReview({
+      comment: reviewData.comment,
+      rating: Number(reviewData.rating),
+      offerId,
+      callback: () => setReviewData({
+        comment: '',
+        rating: '0'
+      })
+    }));
+  };
 
   const handleReviewDataChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setReviewData({
     ...reviewData,
     [evt.target.name]: evt.target.value
   });
 
+  const isFormValid = Number(reviewData.rating) > 0 && reviewData.comment.length >= 50;
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleFormSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
       <div className="reviews__rating-form form__rating">
@@ -22,8 +60,10 @@ export function AddReviewForm() {
           <RatingFormStarItem
             key={status}
             value={value}
+            required
+            disabled={addReviewStatus.isPending}
+            checked={value === reviewData.rating}
             status={status}
-            isChecked={value === reviewData.rating}
             onChange={handleReviewDataChange}
           />))}
       </div>
@@ -31,10 +71,13 @@ export function AddReviewForm() {
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
-        name="review"
+        name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={reviewData.review}
+        value={reviewData.comment}
+        disabled={addReviewStatus.isPending}
         onChange={handleReviewDataChange}
+        required
+        maxLength={300}
       >
       </textarea>
 
@@ -45,7 +88,14 @@ export function AddReviewForm() {
           {' '}and describe your stay with at least{' '}
           <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <Button className="reviews__submit form__submit" type="submit" disabled>Submit</Button>
+
+        <Button
+          className="reviews__submit form__submit"
+          type="submit"
+          disabled={addReviewStatus.isPending || !isFormValid}
+        >
+          {addReviewStatus.isPending ? <RingLoader /> : 'Submit'}
+        </Button>
       </div>
     </form>
   );

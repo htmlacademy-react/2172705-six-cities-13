@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
-export const EMAIL_REGEXP = /^\w+@[a-z]+\.[a-z]{2,}$/;
-export const PASSWORD_REGEXP = /^(?=.*\d)(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
+const EMAIL_REGEXP = /^\w+@[a-z]+\.[a-z]{2,}$/;
+const PASSWORD_REGEXP = /^(?=.*\d)(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
 
 export const formFields = {
   email: 'E-mail',

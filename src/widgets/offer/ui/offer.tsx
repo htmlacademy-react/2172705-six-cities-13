@@ -127,12 +127,14 @@ export function Offer() {
 
             {!!reviews.length && (
               <ul className="reviews__list">
-                {reviews.map((review) => <Review key={review.id} review={review} />)}
+                {reviews
+                  .slice(0, 10)
+                  .map((review) => <Review key={review.id} review={review} />)}
               </ul>
             )}
 
             {!!(loginStatus.isFulfilled || currentUserStatus.isFulfilled) && (
-              <AddReviewForm />
+              <AddReviewForm offerId={offer.id} />
             )}
           </section>
         </div>

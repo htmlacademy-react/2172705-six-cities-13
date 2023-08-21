@@ -53,6 +53,7 @@ export function LoginForm() {
                 className="login__input form__input"
                 type={name}
                 placeholder={capitalizeWord(name)}
+                disabled={loginAuthStatus.isPending}
                 {...register(`${name}`)}
               />
               {errors?.[name] && (
