@@ -26,13 +26,13 @@ export function Notification() {
           toast.error(notification.message, notificationOptions);
           break;
         case 'warning':
-          toast.error(notification.message, notificationOptions);
+          toast.warn(notification.message, notificationOptions);
           break;
         case 'success':
-          toast.error(notification.message, notificationOptions);
+          toast.success(notification.message, notificationOptions);
           break;
         case 'info':
-          toast.error(notification.message, notificationOptions);
+          toast.info(notification.message, notificationOptions);
           break;
         default:
           toast(notification.message, notificationOptions);
