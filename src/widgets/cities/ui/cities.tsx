@@ -26,7 +26,7 @@ export function Cities() {
   const [hoveredCard, setHoveredCard] = useState<Nullable<PreviewOfferType>>(null);
 
   const handleCardActive = (offer: Nullable<PreviewOfferType>) => setHoveredCard(offer);
-  const handleSortTypeChange = (type: SortType) => dispatch(changeSortType({ sortType: type }));
+  const handleSortTypeChange = (type: SortType) => dispatch(changeSortType(type));
 
   if (previewOffersStatus.isPending) {
     return (

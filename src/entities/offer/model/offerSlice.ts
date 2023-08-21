@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { APIStatus } from '@/shared/api';
-import { getRandomItemsArray, resetState } from '@/shared/lib';
+import { getRandomItemsFromArray, resetState } from '@/shared/lib';
 import {
   INITIAL_SORT_TYPE,
   NEARBY_OFFERS_COUNT,
@@ -36,8 +36,8 @@ export const offerSlice = createSlice({
   name: 'offer',
   initialState,
   reducers: {
-    changeSortType(state, action: PayloadAction<{ sortType: SortType }>) {
-      state.currentSortType = action.payload.sortType;
+    changeSortType(state, action: PayloadAction<SortType>) {
+      state.currentSortType = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -71,7 +71,7 @@ export const offerSlice = createSlice({
       })
       .addCase(fetchNearbyOffers.fulfilled, (state, action) => {
         state.nearbyOffersStatus = APIStatus.Fulfilled;
-        state.nearbyOffers = getRandomItemsArray(action.payload, NEARBY_OFFERS_COUNT);
+        state.nearbyOffers = getRandomItemsFromArray(action.payload, NEARBY_OFFERS_COUNT);
       })
       .addCase(fetchNearbyOffers.rejected, (state) => {
         state.nearbyOffersStatus = APIStatus.Rejected;

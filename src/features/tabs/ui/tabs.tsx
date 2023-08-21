@@ -10,7 +10,7 @@ export function Tabs() {
   const dispatch = useAppDispatch();
   const currentCity = useAppSelector(getCurrentCity);
 
-  const handleTabItemClick = (city: CitiesType) => dispatch(changeCity({ city }));
+  const handleTabItemClick = (city: CitiesType) => dispatch(changeCity(city));
 
   return (
     <div className="tabs">
