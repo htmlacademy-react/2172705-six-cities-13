@@ -30,7 +30,13 @@ export function Favorites({ offers }: FavoritesProps) {
                     key={offer.id}
                     offer={offer}
                     sectionName="favorites"
-                    actionSlot={<FavoriteButton sectionName="place-card" isFavorite={offer.isFavorite} />}
+                    actionSlot={
+                      <FavoriteButton
+                        sectionName="place-card"
+                        offerId={offer.id}
+                        isFavorite={offer.isFavorite}
+                      />
+                    }
                   />
                 ))}
               </div>

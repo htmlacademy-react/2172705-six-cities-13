@@ -66,13 +66,23 @@ export function Cities() {
                       offer={offer}
                       sectionName="cities"
                       onCardActive={handleCardActive}
-                      actionSlot={<FavoriteButton sectionName="place-card" isFavorite={false} />}
+                      actionSlot={
+                        <FavoriteButton
+                          sectionName="place-card"
+                          offerId={offer.id}
+                          isFavorite={offer.isFavorite}
+                        />
+                      }
                     />
                   ))}
                 </div>
               </section>
               <div className="cities__right-section">
-                <Map sectionName="cities" activeOffer={hoveredCard} offers={previewOffers} />
+                <Map
+                  sectionName="cities"
+                  activeOffer={hoveredCard}
+                  offers={previewOffers}
+                />
               </div>
             </>
           )

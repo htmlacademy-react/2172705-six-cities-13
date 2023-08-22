@@ -1,5 +1,5 @@
 export const getIconSize = (sectionName: string) => {
-  switch(sectionName) {
+  switch (sectionName) {
     case 'place-card':
       return {
         width: 18,
