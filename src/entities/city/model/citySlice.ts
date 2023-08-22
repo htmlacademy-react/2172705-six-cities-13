@@ -14,8 +14,8 @@ export const citySlice = createSlice({
   name: 'city',
   initialState,
   reducers: {
-    changeCity(state, action: PayloadAction<{ city: CitiesType }>) {
-      state.currentCity = action.payload.city;
+    changeCity(state, action: PayloadAction<CitiesType>) {
+      state.currentCity = action.payload;
     }
   },
   extraReducers: (builder) => {

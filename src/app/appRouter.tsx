@@ -20,7 +20,7 @@ export function AppRouter() {
         </PrivateRoute>
       }
       />
-      <Route path={AppRoute.Offer} element={<OfferPage openedOffers={[]} previewOffers={[]} />} />
+      <Route path={AppRoute.Offer} element={<OfferPage />} />
       <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
     </Routes>
   );

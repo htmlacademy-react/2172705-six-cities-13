@@ -9,3 +9,9 @@ type ReviewType = {
   comment: string;
   rating: number;
 }
+
+type ReviewData = {
+  comment: string;
+  rating: number;
+  offerId: string;
+}

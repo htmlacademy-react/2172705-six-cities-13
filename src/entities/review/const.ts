@@ -1,0 +1,1 @@
+export const MAX_COMMENTS_VIEW_COUNT = 10;

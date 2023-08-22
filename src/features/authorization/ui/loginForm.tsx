@@ -1,16 +1,20 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { changeCity, cities } from '@/entities/city';
 import {
   useAppDispatch,
   useAppSelector,
   getObjectKeys,
-  capitalizeWord
+  capitalizeWord,
+  getRandomItemFromArray
 } from '@/shared/lib';
 import { Button, RingLoader } from '@/shared/ui';
 import { formFields, validationSchema } from '../const';
-import { login, getLoginAuthStatus } from '../index';
+import { login, getLoginStatusObj } from '../index';
 import styles from './styles.module.css';
+import { AppRoute } from '@/const';
 
 type FormValues = {
   email: string;
@@ -18,8 +22,10 @@ type FormValues = {
 }
 
 export function LoginForm() {
+  const randomCity = getRandomItemFromArray(cities);
+
   const dispatch = useAppDispatch();
-  const loginAuthStatus = useAppSelector(getLoginAuthStatus);
+  const loginAuthStatus = useAppSelector(getLoginStatusObj);
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(validationSchema)
@@ -27,6 +33,10 @@ export function LoginForm() {
 
   const onSubmit: SubmitHandler<FormValues> = (values) => {
     dispatch(login({ ...values, login: values.email }));
+  };
+
+  const onCityLinkClick = () => {
+    dispatch(changeCity(randomCity));
   };
 
   return (
@@ -53,6 +63,7 @@ export function LoginForm() {
                 className="login__input form__input"
                 type={name}
                 placeholder={capitalizeWord(name)}
+                disabled={loginAuthStatus.isPending}
                 {...register(`${name}`)}
               />
               {errors?.[name] && (
@@ -71,11 +82,16 @@ export function LoginForm() {
           </Button>
         </form>
       </section>
+
       <section className="locations locations--login locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
-            <span>Amsterdam</span>
-          </a>
+          <Link
+            className="locations__item-link"
+            to={AppRoute.Root}
+            onClick={onCityLinkClick}
+          >
+            <span>{randomCity}</span>
+          </Link>
         </div>
       </section>
     </div>
