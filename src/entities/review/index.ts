@@ -3,7 +3,8 @@ export { fetchReviews } from './api/fetchReviews';
 export { addReview } from './api/addReview';
 export { reviewSlice } from './model/reviewSlice';
 export {
-  getReviews,
   getReviewStatusObj,
   getAddReviewStatusObj,
+  getReviews,
+  getCurrentReviews
 } from './model/selectors';

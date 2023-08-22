@@ -25,6 +25,11 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
     rating: '0'
   });
 
+  const clearForm = () => setReviewData({
+    comment: '',
+    rating: '0'
+  });
+
   const handleFormSubmit = (evt: FormEvent) => {
     evt.preventDefault();
 
@@ -32,11 +37,9 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
       comment: reviewData.comment,
       rating: Number(reviewData.rating),
       offerId,
-      callback: () => setReviewData({
-        comment: '',
-        rating: '0'
-      })
-    }));
+    }))
+      .unwrap()
+      .then(clearForm);
   };
 
   const handleReviewDataChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setReviewData({

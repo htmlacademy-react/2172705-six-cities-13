@@ -13,7 +13,8 @@ import {
 import {
   Review,
   getReviewStatusObj,
-  getReviews
+  getReviews,
+  getCurrentReviews
 } from '@/entities/review';
 import { capitalizeWord, useAppSelector } from '@/shared/lib';
 import {
@@ -30,7 +31,8 @@ export function Offer() {
   const offer = useAppSelector(getCurrentOffer);
   const offerStatus = useAppSelector(getCurrentOfferStatusObj);
 
-  const reviews = useAppSelector(getReviews);
+  const reviewsTotalCount = useAppSelector(getReviews).length;
+  const currentReviews = useAppSelector(getCurrentReviews);
   const reviewStatus = useAppSelector(getReviewStatusObj);
 
   const nearbyOffers = useAppSelector(getNearbyOffers);
@@ -122,14 +124,12 @@ export function Offer() {
           <section className="offer__reviews reviews">
             <h2 className="reviews__title">
               Reviews &middot;
-              <span className="reviews__amount">{reviews.length}</span>
+              <span className="reviews__amount">{reviewsTotalCount}</span>
             </h2>
 
-            {!!reviews.length && (
+            {!!reviewsTotalCount && (
               <ul className="reviews__list">
-                {reviews
-                  .slice(0, 10)
-                  .map((review) => <Review key={review.id} review={review} />)}
+                {currentReviews.map((review) => <Review key={review.id} review={review} />)}
               </ul>
             )}
 
