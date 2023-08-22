@@ -16,7 +16,7 @@ export function AppRouter() {
       <Route path={AppRoute.Login} element={<LoginPage />} />
       <Route path={AppRoute.Favorites} element={
         <PrivateRoute>
-          <FavoritesPage offers={[]} />
+          <FavoritesPage />
         </PrivateRoute>
       }
       />

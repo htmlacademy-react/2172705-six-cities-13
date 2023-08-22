@@ -1,20 +1,20 @@
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
-import { getFavoritePlacesByCity } from '../lib/getFavoritePlacesByCity';
+import { getSortedOffersByCity } from '../lib/getSortedOffersByCity';
 
 type FavoritesProps = {
   offers: PreviewOfferType[];
 }
 
 export function Favorites({ offers }: FavoritesProps) {
-  const favoritePlacesByCity = getFavoritePlacesByCity(offers);
+  const favoriteOffers = getSortedOffersByCity(offers);
 
   return (
     <section className="favorites">
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
         {Object
-          .entries(favoritePlacesByCity)
+          .entries(favoriteOffers)
           .map(([name, offersList]) => (
             <li key={name} className="favorites__locations-items">
               <div className="favorites__locations locations locations--current">
@@ -30,7 +30,13 @@ export function Favorites({ offers }: FavoritesProps) {
                     key={offer.id}
                     offer={offer}
                     sectionName="favorites"
-                    actionSlot={<FavoriteButton sectionName="place-card" isFavorite={offer.isFavorite} />}
+                    actionSlot={
+                      <FavoriteButton
+                        sectionName="place-card"
+                        offerId={offer.id}
+                        isFavorite={offer.isFavorite}
+                      />
+                    }
                   />
                 ))}
               </div>

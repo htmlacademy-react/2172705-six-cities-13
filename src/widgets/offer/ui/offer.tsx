@@ -28,6 +28,7 @@ import { AppRoute } from '@/const';
 export function Offer() {
   const loginStatus = useAppSelector(getLoginStatusObj);
   const currentUserStatus = useAppSelector(getCurrentUserStatusObj);
+
   const offer = useAppSelector(getCurrentOffer);
   const offerStatus = useAppSelector(getCurrentOfferStatusObj);
 
@@ -52,7 +53,11 @@ export function Offer() {
         <div className="offer__gallery">
           {offer.images.slice(0, MAX_IMAGES_COUNT).map((image) => (
             <div key={image} className="offer__image-wrapper">
-              <img className="offer__image" src={image} alt="Photo studio" />
+              <img
+                className="offer__image"
+                src={image}
+                alt="Photo studio"
+              />
             </div>
           ))}
         </div>
@@ -66,7 +71,11 @@ export function Offer() {
             <h1 className="offer__name">
               {offer.title}
             </h1>
-            <FavoriteButton sectionName="offer" isFavorite={offer.isFavorite} />
+            <FavoriteButton
+              sectionName="offer"
+              offerId={offer.id}
+              isFavorite={offer.isFavorite}
+            />
           </div>
 
           <StarsRatingInfo
@@ -107,7 +116,13 @@ export function Offer() {
             <h2 className="offer__host-title">Meet the host</h2>
             <div className="offer__host-user user">
               <div className={clsx('offer__avatar-wrapper user__avatar-wrapper', { 'offer__avatar-wrapper--pro': offer.host.isPro })}>
-                <img className="offer__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
+                <img
+                  className="offer__avatar user__avatar"
+                  src={offer.host.avatarUrl}
+                  width="74"
+                  height="74"
+                  alt="Host avatar"
+                />
               </div>
               <span className="offer__user-name">
                 {offer.host.name}
@@ -140,7 +155,11 @@ export function Offer() {
         </div>
       </div>
 
-      <Map sectionName="offer" activeOffer={offer} offers={nearbyOffers} />
+      <Map
+        sectionName="offer"
+        activeOffer={offer}
+        offers={nearbyOffers}
+      />
     </section>
   );
 }

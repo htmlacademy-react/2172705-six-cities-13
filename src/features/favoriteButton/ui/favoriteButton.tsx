@@ -1,25 +1,37 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import {
+  ChangeFavoriteStatusAction,
+  changeFavoriteStatus,
+  getChangeFavoriteStatusObj
+} from '@/entities/offer';
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
 import { getIconSize } from '../lib/getIconSize';
 
 type FavoriteButtonProps = {
   sectionName: string;
+  offerId: string;
   isFavorite: boolean;
 }
 
-export function FavoriteButton({ sectionName, isFavorite }: FavoriteButtonProps) {
-  const [favoriteStatus, setFavoriteStatus] = useState(isFavorite);
-
+export function FavoriteButton({ sectionName, offerId, isFavorite }: FavoriteButtonProps) {
+  const dispatch = useAppDispatch();
   const iconSize = getIconSize(sectionName);
+
+  const changeOfferFavoriteStatus = useAppSelector(getChangeFavoriteStatusObj);
+
+  const handleFavoriteButtonClick = () => {
+    dispatch(changeFavoriteStatus({ offerId, status: isFavorite ? ChangeFavoriteStatusAction.Delete : ChangeFavoriteStatusAction.Add}));
+  };
 
   return (
     <button
       className={clsx(
         `${sectionName}__bookmark-button button`,
-        { [`${sectionName}__bookmark-button--active`]: favoriteStatus }
+        { [`${sectionName}__bookmark-button--active`]: isFavorite }
       )}
       type="button"
-      onClick={() => setFavoriteStatus((f) => !f)}
+      onClick={handleFavoriteButtonClick}
+      disabled={changeOfferFavoriteStatus.isPending}
     >
       <svg
         className={`${sectionName}__bookmark-icon`}

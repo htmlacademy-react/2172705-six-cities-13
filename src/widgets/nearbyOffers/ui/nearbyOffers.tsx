@@ -19,7 +19,13 @@ export function NearbyOffers() {
             key={offer.id}
             offer={offer}
             sectionName="near-places"
-            actionSlot={<FavoriteButton sectionName="place-card" isFavorite />}
+            actionSlot={
+              <FavoriteButton
+                sectionName="place-card"
+                offerId={offer.id}
+                isFavorite={offer.isFavorite}
+              />
+            }
           />
         ))}
       </div>

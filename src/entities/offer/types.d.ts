@@ -37,3 +37,10 @@ type OpenedOfferType = BaseOfferType & {
   images: string[];
   maxAdults: number;
 }
+
+type FullOfferType = PreviewOfferType & OpenedOfferType;
+
+type ChangeFavoriteStatusData = {
+  offerId: string;
+  status: import('./const').ChangeFavoriteStatusAction;
+}
