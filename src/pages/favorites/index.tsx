@@ -2,16 +2,13 @@ import clsx from 'clsx';
 import { Favorites, EmptyFavorites } from '@/widgets/favorites';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
+import { getFavoriteOffers } from '@/entities/offer';
 import { Layout } from '@/shared/layouts';
-import { calcFavoritesCount } from './lib/calcFavoritesCount';
+import { useAppSelector } from '@/shared/lib';
 
-type FavoritesPageProps = {
-  offers: PreviewOfferType[];
-}
-
-export default function FavoritesPage({ offers }: FavoritesPageProps) {
-  const favoritesCount = calcFavoritesCount(offers);
-  const isEmpty = favoritesCount === 0;
+export default function FavoritesPage() {
+  const favoriteOffers = useAppSelector(getFavoriteOffers);
+  const isEmpty = favoriteOffers.length === 0;
 
   return (
     <Layout
@@ -21,7 +18,7 @@ export default function FavoritesPage({ offers }: FavoritesPageProps) {
           <div className="page__favorites-container container">
             {isEmpty
               ? <EmptyFavorites />
-              : <Favorites offers={offers} />}
+              : <Favorites offers={favoriteOffers} />}
           </div>
         </main>
       }

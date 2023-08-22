@@ -3,6 +3,7 @@ export {
   getPreviewOffers,
   getCurrentOffer,
   getNearbyOffers,
+  getFavoriteOffers,
   getCurrentSortType,
   getPreviewOffersStatusObj,
   getCurrentOfferStatusObj,
@@ -11,6 +12,7 @@ export {
 export { fetchPreviewOffers } from './api/fetchPreviewOffers';
 export { fetchCurrentOffer } from './api/fetchCurrentOffer';
 export { fetchNearbyOffers } from './api/fetchNearbyOffers';
+export { fetchFavoriteOffers } from './api/fetchFavoriteOffers';
 export {
   SortType,
   INITIAL_SORT_TYPE,

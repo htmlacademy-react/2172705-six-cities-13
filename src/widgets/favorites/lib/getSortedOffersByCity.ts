@@ -1,4 +1,4 @@
-export const getFavoritePlacesByCity = (offers: PreviewOfferType[]) => offers.reduce((acc: { [key: string]: PreviewOfferType[] }, offer) => {
+export const getSortedOffersByCity = (offers: PreviewOfferType[]) => offers.reduce((acc: { [key: string]: PreviewOfferType[] }, offer) => {
   if (!offer.isFavorite) {
     return acc;
   }

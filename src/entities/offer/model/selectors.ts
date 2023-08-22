@@ -9,6 +9,8 @@ const getCurrentOfferStatus = (state: State) => state.offer.currentOfferStatus;
 export const getNearbyOffers = (state: State) => state.offer.nearbyOffers;
 const getNearby0ffersStatus = (state: State) => state.offer.nearbyOffersStatus;
 
+export const getFavoriteOffers = (state: State) => state.offer.favoriteOffers;
+
 export const getCurrentSortType = (state: State) => state.offer.currentSortType;
 
 export const getPreviewOffersStatusObj = createStatusObj(getPreview0ffersStatus);

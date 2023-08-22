@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   logout,
@@ -5,6 +6,7 @@ import {
   getCurrentUserStatusObj,
   getLoginStatusObj
 } from '@/features/authorization';
+import { fetchFavoriteOffers, getFavoriteOffers } from '@/entities/offer';
 import {
   resetState,
   useAppSelector,
@@ -21,6 +23,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
   const location = useLocation();
   const dispatch = useAppDispatch();
 
+  const favoriteOffers = useAppSelector(getFavoriteOffers);
   const userData = useAppSelector(getUserData);
   const currentUserStatus = useAppSelector(getCurrentUserStatusObj);
   const loginStatus = useAppSelector(getLoginStatusObj);
@@ -30,6 +33,12 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
   };
 
   const handleSignIn = () => dispatch(resetState());
+
+  useEffect(() => {
+    if (loginStatus.isFulfilled || currentUserStatus.isFulfilled) {
+      dispatch(fetchFavoriteOffers());
+    }
+  }, [loginStatus, currentUserStatus]);
 
   if (!hasUserMenu) {
     return (
@@ -62,7 +71,7 @@ export function Header({ hasUserMenu = true }: HeaderProps) {
                       <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                         <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                         <span className="header__user-name user__name">{userData.email}</span>
-                        <span className="header__favorite-count">3</span>
+                        <span className="header__favorite-count">{favoriteOffers.length}</span>
                       </Link>
                     </li>
                     <li className="header__nav-item">
