@@ -37,9 +37,8 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
       comment: reviewData.comment,
       rating: Number(reviewData.rating),
       offerId,
-    }))
-      .unwrap()
-      .then(clearForm);
+      callback: clearForm
+    }));
   };
 
   const handleReviewDataChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setReviewData({
