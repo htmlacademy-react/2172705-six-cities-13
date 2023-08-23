@@ -25,4 +25,4 @@ Cервис для путешественников, не желающих пе�
 
 ---
 
-Ссылка на проект: https://cendreschaudes.github.io/HTMLAcademy__JS3-SixCities/
+Ссылка на проект: https://html-academy-js-3-six-cities.vercel.app/
