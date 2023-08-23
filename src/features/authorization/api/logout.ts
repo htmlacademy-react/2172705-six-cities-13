@@ -1,14 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
-import { dropToken } from '@/shared/api';
+import { AxiosThunkAPI, dropToken } from '@/shared/api';
 import { pushNotification } from '@/shared/lib';
 import { APIRoute } from '@/const';
 
-export const logout = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const logout = createAsyncThunk<void, undefined, AxiosThunkAPI>(
   'api/logout',
   async (_arg, { dispatch, extra: api }) => {
     try {

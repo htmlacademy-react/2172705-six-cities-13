@@ -20,7 +20,7 @@ export function FavoriteButton({ sectionName, offerId, isFavorite }: FavoriteBut
   const changeOfferFavoriteStatus = useAppSelector(getChangeFavoriteStatusObj);
 
   const handleFavoriteButtonClick = () => {
-    dispatch(changeFavoriteStatus({ offerId, status: isFavorite ? ChangeFavoriteStatusAction.Delete : ChangeFavoriteStatusAction.Add}));
+    dispatch(changeFavoriteStatus({ offerId, status: isFavorite ? ChangeFavoriteStatusAction.Delete : ChangeFavoriteStatusAction.Add }));
   };
 
   return (

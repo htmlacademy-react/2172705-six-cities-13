@@ -1,13 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import { AxiosThunkAPI } from '@/shared/api';
 import { pushNotification } from '@/shared/lib';
 import { APIRoute } from '@/const';
 
-export const fetchReviews = createAsyncThunk<ReviewType[], string, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchReviews = createAsyncThunk<ReviewType[], string, AxiosThunkAPI>(
   'api/fetchReviews',
   async (offerId, { dispatch, extra: api }) => {
     try {

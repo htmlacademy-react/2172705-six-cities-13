@@ -1,13 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import { AxiosThunkAPI } from '@/shared/api';
 import { pushNotification } from '@/shared/lib';
 import { APIRoute } from '@/const';
 
-export const fetchFavoriteOffers = createAsyncThunk<PreviewOfferType[], undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchFavoriteOffers = createAsyncThunk<PreviewOfferType[], undefined, AxiosThunkAPI>(
   'api/fetchFavoriteOffers',
   async (_arg, { dispatch, extra: api }) => {
     try {

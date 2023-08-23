@@ -1,13 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import { AxiosThunkAPI } from '@/shared/api';
 import { pushNotification } from '@/shared/lib';
 import { APIRoute } from '@/const';
 
-export const fetchNearbyOffers = createAsyncThunk<PreviewOfferType[], string, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchNearbyOffers = createAsyncThunk<PreviewOfferType[], string, AxiosThunkAPI>(
   'api/fetchNearbyOffers',
   async (offerId, { dispatch, extra: api }) => {
     try {

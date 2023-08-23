@@ -1,4 +1,10 @@
-import { Icon, Marker, layerGroup, Map, BaseIconOptions } from 'leaflet';
+import {
+  Icon,
+  Marker,
+  layerGroup,
+  Map,
+  BaseIconOptions
+} from 'leaflet';
 import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { IconSetup } from '../const';
