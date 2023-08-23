@@ -1,10 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { Header } from '@/widgets/header';
-import {
-  LoginForm,
-  getCurrentUserStatusObj,
-  getLoginStatusObj
-} from '@/features/authorization';
+import { LoginForm } from '@/features/authorization';
+import { getCurrentUserStatusObj, getLoginStatusObj } from '@/entities/user';
 import { Layout } from '@/shared/layouts';
 import { useAppSelector } from '@/shared/lib';
 import { AppRoute } from '@/const';

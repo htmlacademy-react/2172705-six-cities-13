@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosThunkAPI, saveToken } from '@/shared/api';
+import { saveToken } from '@/shared/api';
 import { pushNotification, redirectToRoute } from '@/shared/lib';
 import { APIRoute, AppRoute } from '@/const';
 

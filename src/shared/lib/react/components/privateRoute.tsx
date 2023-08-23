@@ -7,8 +7,8 @@ type PrivateRouteProps = {
 };
 
 export function PrivateRoute({ children }: PrivateRouteProps) {
-  const currentUserStatus = useAppSelector((state) => state.auth.currentUserStatus);
-  const loginAuthStatus = useAppSelector((state) => state.auth.loginAuthStatus);
+  const currentUserStatus = useAppSelector((state) => state.user.currentUserStatus);
+  const loginAuthStatus = useAppSelector((state) => state.user.loginAuthStatus);
 
   return (
     (currentUserStatus === APIStatus.Fulfilled || loginAuthStatus === APIStatus.Fulfilled)

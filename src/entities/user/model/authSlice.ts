@@ -18,8 +18,8 @@ const initialState: initialStateType = {
   userData: {},
 };
 
-export const authSlice = createSlice({
-  name: 'auth',
+export const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

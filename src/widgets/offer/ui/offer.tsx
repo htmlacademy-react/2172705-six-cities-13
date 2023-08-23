@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { Navigate } from 'react-router-dom';
 import { AddReviewForm } from '@/features/addReviewForm';
-import { getLoginStatusObj, getCurrentUserStatusObj } from '@/features/authorization';
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Map } from '@/features/map';
 import {
@@ -16,6 +15,7 @@ import {
   getReviews,
   getCurrentReviews
 } from '@/entities/review';
+import { getLoginStatusObj, getCurrentUserStatusObj } from '@/entities/user';
 import { capitalizeWord, useAppSelector } from '@/shared/lib';
 import {
   Badge,
@@ -126,12 +126,14 @@ export function Offer() {
                   alt="Host avatar"
                 />
               </div>
+
               <span className="offer__user-name">
                 {offer.host.name}
               </span>
-              <span className="offer__user-status">
-                {offer.host.isPro && 'Pro'}
-              </span>
+
+              {offer.host.isPro && (
+                <span className="offer__user-status">Pro</span>
+              )}
             </div>
             <div className="offer__description">
               {offer.description}

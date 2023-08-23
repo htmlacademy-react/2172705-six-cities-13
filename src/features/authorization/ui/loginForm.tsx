@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { changeCity, cities } from '@/entities/city';
+import { login, getLoginStatusObj } from '@/entities/user';
 import {
   useAppDispatch,
   useAppSelector,
@@ -12,7 +13,6 @@ import {
 } from '@/shared/lib';
 import { Button, RingLoader } from '@/shared/ui';
 import { formFields, validationSchema } from '../const';
-import { login, getLoginStatusObj } from '../index';
 import styles from './styles.module.css';
 import { AppRoute } from '@/const';
 

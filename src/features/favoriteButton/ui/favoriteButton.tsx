@@ -4,8 +4,14 @@ import {
   changeFavoriteStatus,
   getChangeFavoriteStatusObj
 } from '@/entities/offer';
-import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import { getCurrentUserStatusObj, getLoginStatusObj } from '@/entities/user';
+import {
+  redirectToRoute,
+  useAppDispatch,
+  useAppSelector
+} from '@/shared/lib';
 import { getIconSize } from '../lib/getIconSize';
+import { AppRoute } from '@/const';
 
 type FavoriteButtonProps = {
   sectionName: string;
@@ -18,9 +24,16 @@ export function FavoriteButton({ sectionName, offerId, isFavorite }: FavoriteBut
   const iconSize = getIconSize(sectionName);
 
   const changeOfferFavoriteStatus = useAppSelector(getChangeFavoriteStatusObj);
+  const loginStatus = useAppSelector(getLoginStatusObj);
+  const currentUserStatus = useAppSelector(getCurrentUserStatusObj);
 
   const handleFavoriteButtonClick = () => {
-    dispatch(changeFavoriteStatus({ offerId, status: isFavorite ? ChangeFavoriteStatusAction.Delete : ChangeFavoriteStatusAction.Add }));
+    if (loginStatus.isFulfilled || currentUserStatus.isFulfilled) {
+      dispatch(changeFavoriteStatus({ offerId, status: isFavorite ? ChangeFavoriteStatusAction.Delete : ChangeFavoriteStatusAction.Add }));
+      return;
+    }
+
+    dispatch(redirectToRoute(AppRoute.Login));
   };
 
   return (

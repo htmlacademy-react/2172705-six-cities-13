@@ -3,4 +3,3 @@ export { saveToken } from './token/saveToken';
 export { getToken } from './token/getToken';
 export { dropToken } from './token/dropToken';
 export { APIStatus } from './const';
-export type { AxiosThunkAPI } from './types';

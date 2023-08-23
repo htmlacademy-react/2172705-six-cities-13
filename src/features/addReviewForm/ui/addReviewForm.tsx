@@ -47,7 +47,7 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
     [evt.target.name]: evt.target.value
   });
 
-  const isFormValid = Number(reviewData.rating) > 0 && reviewData.comment.length >= 50;
+  const isFormValid = Number(reviewData.rating) > 0 && (reviewData.comment.length >= 50 && reviewData.comment.length <= 300);
 
   return (
     <form
@@ -79,7 +79,6 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
         value={reviewData.comment}
         disabled={addReviewStatus.isPending}
         required
-        maxLength={300}
         onChange={handleReviewDataChange}
       >
       </textarea>
@@ -89,7 +88,9 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
           To submit review please make sure to set{' '}
           <span className="reviews__star">rating</span>
           {' '}and describe your stay with at least{' '}
-          <b className="reviews__text-amount">50 characters</b>.
+          <b className="reviews__text-amount">50 characters</b>
+          {' '}and maximum{' '}
+          <b className="reviews__text-amount">300 characters</b>.
         </p>
 
         <Button

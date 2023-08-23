@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getCurrentUser, getCurrentUserStatusObj } from '@/features/authorization';
+import { getCurrentUser, getCurrentUserStatusObj } from '@/entities/user';
 import {
   ScrollToTop,
   Notification,

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { fetchFavoriteOffers, getFavoriteOffers } from '@/entities/offer';
 import {
   logout,
   getUserData,
   getCurrentUserStatusObj,
   getLoginStatusObj
-} from '@/features/authorization';
-import { fetchFavoriteOffers, getFavoriteOffers } from '@/entities/offer';
+} from '@/entities/user';
 import {
   resetState,
   useAppSelector,

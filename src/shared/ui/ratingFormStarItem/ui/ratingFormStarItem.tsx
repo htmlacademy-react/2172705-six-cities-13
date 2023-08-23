@@ -17,7 +17,7 @@ export function RatingFormStarItem({
   disabled,
   required
 }: RatingFormStarItemProps) {
-  const starsCountString = Number(value) > 1 ? `${value}-stars` : '1-star';
+  const starsCountString = `${value}-stars`;
 
   return (
     <>
@@ -25,7 +25,7 @@ export function RatingFormStarItem({
         className="form__rating-input visually-hidden"
         name="rating"
         value={value}
-        id={starsCountString}
+        id={`${value}-stars`}
         type="radio"
         checked={checked}
         required={required}
