@@ -9,7 +9,13 @@ type LayoutProps = {
   wrapperClassName?: string;
 }
 
-export function Layout({ header, content, footer, title, wrapperClassName }: LayoutProps) {
+export function Layout({
+  header,
+  content,
+  footer,
+  title,
+  wrapperClassName
+}: LayoutProps) {
   return (
     <div className={wrapperClassName}>
       <Helmet>

@@ -65,7 +65,9 @@ export function Offer() {
 
       <div className="offer__container container">
         <div className="offer__wrapper">
-          {offer.isPremium && <Badge className="offer__mark" text="Premium" />}
+          {offer.isPremium && (
+            <Badge className="offer__mark" text="Premium" />
+          )}
 
           <div className="offer__name-wrapper">
             <h1 className="offer__name">

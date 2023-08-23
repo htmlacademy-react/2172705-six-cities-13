@@ -9,7 +9,14 @@ type RatingFormStarItemProps = {
   onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function RatingFormStarItem({ value, status, checked, onChange, disabled, required }: RatingFormStarItemProps) {
+export function RatingFormStarItem({
+  value,
+  status,
+  checked,
+  onChange,
+  disabled,
+  required
+}: RatingFormStarItemProps) {
   const starsCountString = Number(value) > 1 ? `${value}-stars` : '1-star';
 
   return (
@@ -30,7 +37,11 @@ export function RatingFormStarItem({ value, status, checked, onChange, disabled,
         className="reviews__rating-label form__rating-label"
         title={status}
       >
-        <svg className="form__star-image" width="37" height="33">
+        <svg
+          className="form__star-image"
+          width="37"
+          height="33"
+        >
           <use xlinkHref="#icon-star"></use>
         </svg>
       </label>

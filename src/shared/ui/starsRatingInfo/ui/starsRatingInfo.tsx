@@ -8,7 +8,12 @@ type StarsRatingInfoProps = {
   hasAvgRating?: boolean;
 }
 
-export function StarsRatingInfo({ sectionName, rating, isStarsRatingRounded = true, hasAvgRating = false }: StarsRatingInfoProps) {
+export function StarsRatingInfo({
+  sectionName,
+  rating,
+  isStarsRatingRounded = true,
+  hasAvgRating = false
+}: StarsRatingInfoProps) {
   const avgRating = rating;
 
   if (isStarsRatingRounded) {

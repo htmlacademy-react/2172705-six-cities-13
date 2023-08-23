@@ -1,14 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
-import { saveToken } from '@/shared/api';
+import { AxiosThunkAPI, saveToken } from '@/shared/api';
 import { pushNotification, redirectToRoute } from '@/shared/lib';
 import { APIRoute, AppRoute } from '@/const';
 
-export const login = createAsyncThunk<UserType, AuthData, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const login = createAsyncThunk<UserType, AuthData, AxiosThunkAPI>(
   'api/login',
   async ({ login: email, password }, { dispatch, extra: api }) => {
     try {

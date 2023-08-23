@@ -1,4 +1,4 @@
-export { authSlice} from './model/authSlice';
+export { authSlice } from './model/authSlice';
 export {
   getCurrentUserStatusObj,
   getLoginStatusObj,

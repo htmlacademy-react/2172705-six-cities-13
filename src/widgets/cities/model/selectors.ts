@@ -1,5 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { sortByPriceAsc, sortByPriceDesc, sortByRatingDesc } from '@/features/sort';
+import {
+  sortByPriceAsc,
+  sortByPriceDesc,
+  sortByRatingDesc
+} from '@/features/sort';
 import { SortType } from '@/entities/offer';
 
 const selectPreviewOffers = (state: State) => state.offer.previewOffers;

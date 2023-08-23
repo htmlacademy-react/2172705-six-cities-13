@@ -78,9 +78,9 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={reviewData.comment}
         disabled={addReviewStatus.isPending}
-        onChange={handleReviewDataChange}
         required
         maxLength={300}
+        onChange={handleReviewDataChange}
       >
       </textarea>
 
