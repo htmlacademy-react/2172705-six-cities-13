@@ -5,7 +5,7 @@ import {
   MutableRefObject,
   useRef
 } from 'react';
-import { MAP_ZOOM, TileLayerSetup } from '../const';
+import { TileLayerSetup } from '../const';
 
 export function useCreateMap(
   mapRef: MutableRefObject<HTMLElement | null>,
@@ -21,7 +21,7 @@ export function useCreateMap(
           lat: city.location.latitude,
           lng: city.location.longitude
         },
-        zoom: MAP_ZOOM
+        zoom: city.location.zoom
       });
 
       const layer = new TileLayer(TileLayerSetup.URL, {

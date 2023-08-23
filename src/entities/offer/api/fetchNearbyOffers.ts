@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosThunkAPI } from '@/shared/api';
 import { pushNotification } from '@/shared/lib';
 import { APIRoute } from '@/const';
 

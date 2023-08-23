@@ -1,5 +1,3 @@
-export const MAP_ZOOM = 13;
-
 export const IconSetup = {
   Default: {
     iconUrl: 'img/pin.svg',
