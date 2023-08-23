@@ -4,9 +4,13 @@ import { APIRoute } from '@/const';
 
 export const addReview = createAsyncThunk<ReviewType, ReviewData, AxiosThunkAPI>(
   'api/addReview',
-  async ({ comment, rating, offerId }, { dispatch, extra: api }) => {
+  async ({ comment, rating, offerId, callback }, { dispatch, extra: api }) => {
     try {
       const { data } = await api.post<ReviewType>(`${APIRoute.Reviews}/${offerId}`, { comment, rating });
+
+      if (callback) {
+        callback();
+      }
 
       dispatch(pushNotification({
         type: 'success',

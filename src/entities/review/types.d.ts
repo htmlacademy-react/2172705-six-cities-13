@@ -14,4 +14,5 @@ type ReviewData = {
   comment: string;
   rating: number;
   offerId: string;
+  callback?: () => void;
 }
