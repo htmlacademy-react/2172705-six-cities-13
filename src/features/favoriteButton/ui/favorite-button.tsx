@@ -10,7 +10,7 @@ import {
   useAppDispatch,
   useAppSelector
 } from '@/shared/lib';
-import { getIconSize } from '../lib/getIconSize';
+import { getIconSize } from '../lib/get-icon-size';
 import { AppRoute } from '@/const';
 
 type FavoriteButtonProps = {

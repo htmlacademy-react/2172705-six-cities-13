@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { API_URL, REQUEST_TIMEOUT } from '../const';
-import { getToken } from '../token/getToken';
+import { getToken } from '../token/get-token';
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({

@@ -1,6 +1,6 @@
 import { FavoriteButton } from '@/features/favoriteButton';
 import { Card } from '@/entities/card';
-import { getSortedOffersByCity } from '../lib/getSortedOffersByCity';
+import { getSortedOffersByCity } from '../lib/get-sorted-offers-by-city';
 
 type FavoritesProps = {
   offers: PreviewOfferType[];

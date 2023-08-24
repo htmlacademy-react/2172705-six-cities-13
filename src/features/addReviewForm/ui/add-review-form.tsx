@@ -10,7 +10,7 @@ import {
   RatingFormStarItem,
   RingLoader
 } from '@/shared/ui';
-import { ratings } from '../const';
+import { MAX_COMMENT_LENGTH, MIN_COMMENT_LENGTH, ratings } from '../const';
 
 type AddReviewFormProps = {
   offerId: string;
@@ -46,7 +46,7 @@ export function AddReviewForm({ offerId }: AddReviewFormProps) {
     [evt.target.name]: evt.target.value
   });
 
-  const isFormValid = Number(reviewData.rating) > 0 && (reviewData.comment.length >= 50 && reviewData.comment.length <= 300);
+  const isFormValid = Number(reviewData.rating) > 0 && (reviewData.comment.length >= MIN_COMMENT_LENGTH && reviewData.comment.length <= MAX_COMMENT_LENGTH);
 
   return (
     <form

@@ -1,5 +1,5 @@
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
-import FallbackPage from '@/pages/errors/fallback/fallbackPage';
+import FallbackPage from '@/pages/errors/fallback';
 import { rollbarConfig } from '../config/rollbar';
 
 export const withRollbar = (Component: Component) => {

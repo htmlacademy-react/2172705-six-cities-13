@@ -7,7 +7,7 @@ import {
   useAppSelector
 } from '@/shared/lib';
 import { ClockLoader } from '@/shared/ui';
-import { AppRouter } from './appRouter';
+import { AppRouter } from './app-router';
 import { withProviders } from './providers';
 import './styles.module.css';
 import 'react-toastify/dist/ReactToastify.css';

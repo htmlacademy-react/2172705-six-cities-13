@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { createStatusObj } from '@/shared/lib';
 import { MAX_COMMENTS_VIEW_COUNT } from '../const';
-import { sortByDateDesc } from '../lib/sortByDate';
+import { sortByDateDesc } from '../lib/sort-by-date';
 
 export const getReviews = (state: State) => state.review.reviews;
 const getReviewStatus = (state: State) => state.review.reviewsStatus;

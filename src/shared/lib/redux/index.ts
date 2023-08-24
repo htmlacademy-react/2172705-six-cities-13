@@ -1,1 +1,1 @@
-export { createStatusObj } from './createStatusObj';
+export { createStatusObj } from './create-status-obj';

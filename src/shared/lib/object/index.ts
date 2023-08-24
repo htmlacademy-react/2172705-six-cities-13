@@ -1,1 +1,1 @@
-export { getObjectKeys } from './getObjectKeys';
+export { getObjectKeys } from './get-object-keys';

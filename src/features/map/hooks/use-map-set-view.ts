@@ -1,7 +1,7 @@
 import { Map } from 'leaflet';
 import { useEffect } from 'react';
 
-export const useMapFlyTo = (
+export const useMapSetView = (
   map: Nullable<Map>,
   city: CityType
 ) => {

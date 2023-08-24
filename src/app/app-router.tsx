@@ -7,7 +7,7 @@ import { AppRoute } from '@/const';
 
 const LoginPage = lazy(() => import('@/pages/login'));
 const FavoritesPage = lazy(() => import('@/pages/favorites'));
-const NotFoundPage = lazy(() => import('@/pages/errors/notFound/notFoundPage'));
+const NotFoundPage = lazy(() => import('@/pages/errors/notFound'));
 
 export function AppRouter() {
   return (

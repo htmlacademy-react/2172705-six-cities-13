@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import { capitalizeWord } from '@/shared/lib';
 import { Badge, StarsRatingInfo } from '@/shared/ui';
-import { getImageSize } from '../lib/getImageSize';
+import { getImageSize } from '../lib/get-image-size';
 import { AppRoute } from '@/const';
 
 type CardProps = {

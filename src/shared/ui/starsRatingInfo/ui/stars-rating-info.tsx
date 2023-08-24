@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { getWidthByStarsCount } from '../lib/getWidthByStarsCount';
+import { getWidthByStarsCount } from '../lib/get-width-by-stars-count';
 
 type StarsRatingInfoProps = {
   sectionName: string;

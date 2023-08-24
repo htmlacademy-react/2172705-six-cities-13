@@ -2,5 +2,5 @@ export {
   notificationSlice,
   pushNotification,
   clearNotification
-} from './model/notificationSlice';
+} from './model/notification-slice';
 export { Notification } from './ui/notification';
