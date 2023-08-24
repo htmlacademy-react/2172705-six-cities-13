@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { useCreateMap } from '../hooks/useCreateMap';
-import { useCreateMapPins } from '../hooks/useCreateMapPins';
-import { useMapFlyTo } from '../hooks/useMapFlyTo';
+import { useCreateMap } from '../hooks/use-create-map';
+import { useCreateMapPins } from '../hooks/use-create-map-pins';
+import { useMapSetView } from '../hooks/use-map-set-view';
 
 type MapProps = {
   sectionName: string;
@@ -19,7 +19,7 @@ export function Map({ sectionName, activeOffer, offers }: MapProps) {
 
   const map = useCreateMap(mapRef, city);
   useCreateMapPins(map, activeOffer, offers);
-  useMapFlyTo(map, city);
+  useMapSetView(map, city);
 
   return (
     <section className={`${sectionName}__map map`} ref={mapRef}></section>

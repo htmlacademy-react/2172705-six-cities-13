@@ -1,1 +1,1 @@
-export { NearbyOffers } from './ui/nearbyOffers';
+export { NearbyOffers } from './ui/nearby-offers';

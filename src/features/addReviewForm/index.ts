@@ -1,1 +1,1 @@
-export { AddReviewForm } from './ui/addReviewForm';
+export { AddReviewForm } from './ui/add-review-form';

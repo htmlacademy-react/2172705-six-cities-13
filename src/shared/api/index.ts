@@ -1,5 +1,5 @@
-export { createAPI } from './axios/createAPI';
-export { saveToken } from './token/saveToken';
-export { getToken } from './token/getToken';
-export { dropToken } from './token/dropToken';
+export { createAPI } from './axios/create-api';
+export { saveToken } from './token/save-token';
+export { getToken } from './token/get-token';
+export { dropToken } from './token/drop-token';
 export { APIStatus } from './const';

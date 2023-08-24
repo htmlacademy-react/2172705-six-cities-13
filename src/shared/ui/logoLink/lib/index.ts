@@ -1,1 +1,1 @@
-export { getLogoSize } from './getLogoSize';
+export { getLogoSize } from './get-logo-size';

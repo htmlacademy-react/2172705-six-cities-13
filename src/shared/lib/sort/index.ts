@@ -1,1 +1,1 @@
-export { sortByProperty } from './sortByProperty';
+export { sortByProperty } from './sort-by-property';

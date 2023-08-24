@@ -1,5 +1,5 @@
 import { Provider as ReduxProvider } from 'react-redux';
-import { store } from '../store/appStore';
+import { store } from '../store/app-store';
 
 export const withRedux = (Component: Component) => {
   const DecoratedComponent = () => (

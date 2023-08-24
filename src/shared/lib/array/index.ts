@@ -1,2 +1,2 @@
-export { getRandomItemsFromArray } from './getRandomItemsFromArray';
-export { getRandomItemFromArray } from './getRandomItemFromArray';
+export { getRandomItemsFromArray } from './get-random-items-from-array';
+export { getRandomItemFromArray } from './get-random-item-from-array';

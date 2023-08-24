@@ -1,3 +1,3 @@
-type State = import('./appStore').State
+type State = import('./app-store').State
 
-type AppDispatch = import('./appStore').AppDispatch;
+type AppDispatch = import('./app-store').AppDispatch;

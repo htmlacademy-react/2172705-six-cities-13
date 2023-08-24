@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createAPI } from '@/shared/api';
 import { redirect } from '../middlewares/redirect';
-import { rootReducer } from './rootReducer';
+import { rootReducer } from './root-reducer';
 
 export type State = ReturnType<typeof store.getState>;
 

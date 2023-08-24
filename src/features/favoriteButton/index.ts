@@ -1,1 +1,1 @@
-export { FavoriteButton } from './ui/favoriteButton';
+export { FavoriteButton } from './ui/favorite-button';

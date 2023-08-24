@@ -1,1 +1,1 @@
-export { RatingFormStarItem } from './ui/ratingFormStarItem';
+export { RatingFormStarItem } from './ui/rating-form-star-item';

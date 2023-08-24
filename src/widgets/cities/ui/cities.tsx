@@ -13,8 +13,8 @@ import {
 import { useAppSelector, useAppDispatch } from '@/shared/lib';
 import { ClockLoader } from '@/shared/ui';
 import { getCurrentOffers } from '../model/selectors';
-import { CitiesNoPlaces } from './citiesNoPlaces';
-import { CitiesRejectedQuestionsFetch } from './citiesRejectedQuestionsFetch';
+import { CitiesNoPlaces } from './cities-no-places';
+import { CitiesRejectedQuestionsFetch } from './cities-rejected-questions-fetch';
 
 export function Cities() {
   const dispatch = useAppDispatch();
